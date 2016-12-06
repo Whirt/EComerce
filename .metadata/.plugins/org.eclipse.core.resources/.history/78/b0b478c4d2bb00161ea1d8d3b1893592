@@ -1,0 +1,38 @@
+package login;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class LoginFrame extends JFrame {
+	
+	private static final int START_X = 200 ;
+	private static final int START_Y = 300 ;
+	private static final int WIDTH = 200 ;
+	private static final int HEIGHT = 100 ;
+	
+	private BoxLayout layout ;
+	private JPanel panel ;
+	private JLabel nameLabel ;
+	private JLabel passwdLabel ;
+	private JTextField nameField ;
+	private JTextField passwdField ;
+	private JTextField errorField ;
+	private JButton login ;
+	
+	public LoginFrame() {
+		super() ;
+		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
+		setResizable(false) ;
+		
+		panel = new JPanel() ;
+
+		layout = new BoxLayout() ;
+		
+		
+	}
+	
+}

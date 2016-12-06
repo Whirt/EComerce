@@ -1,0 +1,18 @@
+!SESSION 2016-12-06 17:32:59.516 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_80
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=it_IT
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.ui.navigator 4 0 2016-12-06 17:36:07.282
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in E-Commerce]
+  <default> (not open)
+  ECommerce (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.ui.navigator 4 0 2016-12-06 17:36:52.475
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in E-Commerce]
+  <default> (not open)
+  ECommerce (not open)
+  login (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.

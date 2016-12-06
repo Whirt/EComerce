@@ -1,0 +1,15 @@
+package login;
+
+import javax.swing.JFrame;
+
+public class LoginFrame extends JFrame {
+	
+	private static final int WIDTH = 200 ;
+	private static final int HEIGHT = 100 ;
+	
+	public LoginFrame() {
+		super() ;
+		setBO
+	}
+	
+}

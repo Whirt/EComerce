@@ -1,0 +1,33 @@
+package login;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
+import java.io.File;
+
+import javax.swing.JPanel;
+
+public class LogoPanel extends JPanel {
+
+	private Image logo ;
+	
+	public void paint(Graphics g) {
+		
+		Toolkit t = Toolkit.getDefaultToolkit() ;
+		if (!(new File("./media/logo.jpg").exists())) {
+			System.out.println("Logo file path error") ;
+			System.exit(-1) ;
+		}
+		logo = t.getImage("./media/logo.jpg") ;
+		MediaTracker m = new MediaTracker(this) ;
+		m.addImage(logo, 1) ;
+		try { m.waitForAll(); 
+		} catch (InterruptedException e) {
+			System.out.println("Logo not loaded") ;
+		}
+		
+		g.drawImage(logo, 0, 0, 300, 200, Color.WHITE, null) ;
+	}
+	
+}

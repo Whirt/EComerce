@@ -16,3 +16,10 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
   <default> (not open)
   ECommerce (not open)
   login (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.ui.navigator 4 0 2016-12-06 21:46:37.921
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "src [in E-Commerce]
+  <default> (not open)
+  ECommerce (not open)
+  common (not open)
+  login (not open)".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.

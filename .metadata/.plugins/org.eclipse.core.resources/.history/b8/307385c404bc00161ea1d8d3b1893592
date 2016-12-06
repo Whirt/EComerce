@@ -1,0 +1,24 @@
+/**
+ * Object Oriented Paradigm
+ * Programmazione 2 - UniMORE 
+ * corso 2016/2017
+ * 
+ * 
+ * Main Class
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package ECommerce;
+
+import login.LoginFrame;
+
+public class Launcher {
+
+	public static void main(String[] args) {
+		
+		LoginFrame mainFrame = new LoginFrame("Login E-Commerce") ;
+		
+	}
+	
+}

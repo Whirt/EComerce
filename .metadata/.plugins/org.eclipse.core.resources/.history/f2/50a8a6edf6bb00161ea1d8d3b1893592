@@ -1,0 +1,31 @@
+package user;
+
+public class User {
+
+	private String username ;
+	private String password ;
+	
+	public User(String username, String password) {
+		this.username = username ;
+		this.password = password ;
+	}
+	
+	public String getUsername() {
+		return username ;
+	}
+	public String getPassword() {
+		return password ;
+	}
+	
+	public boolean setUsername(String username) {
+		if (username == null)
+			return false ;
+		this.username = username ;
+	}
+	public boolean setPassword(String password) {
+		if (password == null)
+			return false ;
+		this.password = password ;
+	}
+	
+}

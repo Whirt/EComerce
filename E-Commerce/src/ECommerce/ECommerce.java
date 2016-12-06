@@ -1,19 +1,37 @@
+/**
+ * ECommerce is the main program state.
+ * 
+ * Any state of this software pass through ECommerce to communicate
+ * to each other.
+ * 
+ * ECommerce class represents the program functionalities core.
+ * It's also E-Commerce's home. It shows different option and commands
+ * depending on which Operative Mode is previously selected.
+ * 
+ * @author Jia Cheng Hu
+ */
+
 package ECommerce;
 
-import login.LoginFrame;
+import javax.swing.JFrame;
 
-public class ECommerce {
+import user.User;
 
-	public static void main(String[] args) {
+public class ECommerce extends JFrame {
+	
+	// Possible way of working
+	private User user ;
+	
+	public ECommerce(String title, User user) {
+		super(title) ;
+		this.user = user ; 
 		
-		LoginFrame frame = new LoginFrame("Login") ;
-		
-		try {
-			Thread.sleep(1000) ;
-		} catch (InterruptedException e) {
-			System.out.println("Interrupted") ;
-		}
-		
-		frame.setVisible(true) ;
+		// Occasione per sfruttare il polimorfismo
+		// In base a user esegui la stessa implementazione!
 	}
+	public ECommerce() { 
+		this("E-Commerce", new User()) ; 
+	}
+	
+	
 }

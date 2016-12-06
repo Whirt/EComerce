@@ -1,0 +1,35 @@
+/**
+ * ECommerce is the main program state.
+ * 
+ * Any state of this software pass through ECommerce to communicate
+ * to each other
+ * from Searching Algorithm to 
+ * 
+ * ECommerce class represents the program functionalities core.
+ * It's also E-Commerce's home. It shows different option and commands
+ * depending on which Operative Mode is previously selected.
+ * 
+ * 
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package ECommerce;
+
+import javax.swing.JFrame;
+
+public class ECommerce extends JFrame {
+	
+	public static final int ADMIN_MODE = 0 ;
+	public static final int CUSTOMER_MODE = 1 ;
+	public static final int DEFAULT_MODE = CUSTOMER_MODE ;
+	
+	public ECommerce(String title, int mode) {
+		super(title) ;
+		if (mode < 0 && mode > 1)
+			mode = DEFAULT_MODE ; 
+		
+	}
+	public ECommerce() { this("E-Commerce", 1) ; }
+	
+}

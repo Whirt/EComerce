@@ -1,13 +1,13 @@
 /**
- * LoginFrame handles E-Commerce and decides whether to sign in as administrator
- * or normal user. It's possible to create account.
+ * LoginFrame handles E-Commerce and decides whether to sign in 
+ * as administrator or normal user. It's possible to an create account.
+ * 
  * @author Hu Jia Cheng
  * @revision 1.0
  */
 
 package login;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -26,6 +26,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private static final int START_Y = 300 ;
 	private static final int WIDTH = 320 ;
 	private static final int HEIGHT = 230 ;
+	private final static int TXTMAXLEN = 20 ;
 	
 	private LogoPanel logoPanel ;
 	
@@ -33,8 +34,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private JLabel nameLabel ;
 	private JLabel passwdLabel ;
 	private JLabel infoLabel ;
-	
-	private final static int TXTMAXLEN = 20 ;
+
 	private JTextField nameField ;
 	private JTextField passwdField ;
 	private JTextField errorField ;
@@ -45,8 +45,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	public LoginFrame(String title) {
 		super(title) ;
 		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
-		//setResizable(false) ;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setResizable(false) ;
 		
 		logoPanel = new LogoPanel() ;
 		
@@ -83,15 +83,21 @@ public class LoginFrame extends JFrame implements ActionListener {
 		//borderLayout.minimumLayoutSize(contentPane) ;
 		//borderLayout.setVgap(10) ;
 		contentPane.setLayout(boxLayout) ;
-		contentPane.add(componentsPanel) ;
 		contentPane.add(logoPanel) ;
+		contentPane.add(componentsPanel) ;
+		
+		setVisible(true) ;
 	}
-	public LoginFrame() { this("Login") ; }
+	public LoginFrame() { this("Login E-Commerce") ; }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
+		Object source = e.getSource() ;
+		if (source == loginButton) {
+			System.out.println("Login button pressed") ;
+		} else if (source == createNewAccountButton) {
+			UserCreator uc = new UserCreator("New Account") ;
+		}
 	}
 	
 }

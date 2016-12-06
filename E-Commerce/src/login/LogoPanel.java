@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class LogoPanel extends JPanel {
 
-	private static final int X_OFFSET = 50 ;
+	private static final int X_OFFSET = 70 ;
 	private static final int Y_OFFSET = 0 ;
 	
 	private static final int LOGO_HEIGHT = 100 ;

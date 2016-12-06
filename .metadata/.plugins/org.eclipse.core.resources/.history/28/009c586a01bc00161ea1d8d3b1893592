@@ -1,0 +1,18 @@
+/**
+ * Main Class
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package ECommerce;
+
+import javax.swing.JFrame;
+
+public class ECommerce extends JFrame {
+
+	public ECommerce(String title) {
+		
+	}
+	public ECommerce() { this("E-Commerce") ; }
+	
+}

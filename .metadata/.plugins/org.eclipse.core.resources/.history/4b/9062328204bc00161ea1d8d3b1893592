@@ -1,0 +1,12 @@
+/**
+ * User Type represents the type of 
+ * 
+ * @author Jia Cheng
+ */
+
+package user;
+
+public enum UserType {
+	ADMINISTRATOR,
+	CUSTOMER
+}

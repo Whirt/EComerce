@@ -1,0 +1,10 @@
+package product;
+
+public enum ProductType {
+	ALL,
+	MUSIC,
+	ELECTRONICS,
+	CLOTHING,
+	GADGET,
+	WORKING,
+}

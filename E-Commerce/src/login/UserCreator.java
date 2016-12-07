@@ -21,7 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ECommerce.ECommerce;
+import ecommerce.ECommerce;
 import user.User;
 import user.UserType;
 

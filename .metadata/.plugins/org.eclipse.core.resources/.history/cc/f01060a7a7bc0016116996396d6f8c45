@@ -1,0 +1,29 @@
+/**
+ * Basic Product abstraction
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package product;
+
+import java.awt.Image;
+
+public class Product {
+
+	// product info
+	private String name ;
+	private String brand ;
+	private String code ;
+	private ProductType type ;
+	private float price ;
+	private String imagePath ;
+	
+	// managing info
+	private int qty ;
+	
+	public Product(String name, String brand,
+				   String code, ProductType type,
+				   float price, Image image) ;
+	
+}
+

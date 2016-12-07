@@ -1,0 +1,34 @@
+package panel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class ProductManager extends JPanel implements ActionListener {
+
+	// Right Panel components
+	private JPanel rightPanel ;
+	private JLabel nameLabel ;
+	private JTextField nameTxtField ;
+	private JButton modifyButton ;
+	private JButton removeButton ;
+
+	private JPanel leftPanel ;
+	
+	public ProductManager() {
+		super() ;
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+}

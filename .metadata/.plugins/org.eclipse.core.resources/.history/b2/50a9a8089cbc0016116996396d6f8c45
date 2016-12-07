@@ -1,0 +1,10 @@
+/**
+ * 
+ * @author Hu Jia Cheng
+ */
+
+package Frame;
+
+public class CustomerFrame extends Frame {
+
+}

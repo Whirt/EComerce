@@ -1,0 +1,6 @@
+package productManager;
+
+public class ProductManager<E> {
+
+	private VectorList<Product> products ;
+}

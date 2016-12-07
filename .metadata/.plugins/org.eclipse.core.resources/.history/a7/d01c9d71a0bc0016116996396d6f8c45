@@ -1,0 +1,12 @@
+package panel;
+
+import java.awt.Image;
+
+import javax.swing.JPanel;
+
+public class AdminPanel extends JPanel {
+
+	private Image background ;
+	private FlowLayout layout ;
+	
+}

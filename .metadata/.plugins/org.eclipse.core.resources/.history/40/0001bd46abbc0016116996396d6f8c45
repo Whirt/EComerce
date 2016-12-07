@@ -1,0 +1,116 @@
+/**
+ * Basic Product abstraction.
+ * 
+ * A product name cannot be modified, as would generate an
+ * inconsistent state. 
+ * Removing and re-inserting the product is the only way
+ * to change a product name.
+ * Warning: do not forget to remove.
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package product;
+
+public class Product {
+
+	// product info
+	private String name ;
+	private String brand ;
+	private String code ;
+	private ProductType type ;
+	private float price ;
+	private String imagePath ;
+	
+	/* available boolean tells whether some information are missing
+	 * it's used only at creation, after construction phase
+	 * all information but name can be modified.
+	 * 
+	 * If is not available after construction phase, IllegalArgumentException
+	 * will be thrown. */
+	private boolean available ;
+	private int quantity ;
+	
+	public Product(String name, String brand,
+				   String code, ProductType type,
+				   float price, String imagePath, 
+				   int quantity) throws IllegalArgumentException {
+		available = true ;
+		
+		setName(name) ;
+		setBrand(brand) ;
+		setCode(code) ;
+		setType(type) ;
+		setPrice(price) ;
+		setImagePath(imagePath) ;
+		setQuantity(quantity) ;
+		
+		if (!available)
+			throw new IllegalArgumentException() ;
+	}
+	// void parameter can't be passed to constructor
+	private Product() {	; }
+	
+	// getters
+	public String getName() {
+		return name ;
+	}
+	public String getBrand() {
+		return brand ;
+	}
+	public String getCode() {
+		return code ;
+	}
+	public ProductType getType() {
+		return type ;
+	}
+	public float getPrice() {
+		return price ;
+	}
+	public String getImagePath() {
+		return imagePath ;
+	}
+	public int getQuantity() {
+		return quantity ;
+	}	
+	
+	// setters
+	private void setName(String name) {
+		if (name == null)
+			available = false ;
+		this.name = name ;
+	}
+	public void setBrand(String brand) {
+		if (brand == null)
+			available = false ;
+		this.brand = brand ;
+	}
+	public void setCode(String code) {
+		if (code == null)
+			available = false ;
+		this.code = code ;
+	}
+	public void setType(ProductType type) {
+		if (type == ProductType.ALL)
+			available = false ;
+		this.type = type ;
+	}
+	public boolean setPrice(float price) {
+		if (price <= 0) 
+			return false ;
+		this.price = price ;
+		return true ;
+	}
+	public boolean setImagePath(String imagePath) {
+		if (imagePath == null)
+			return ;
+		this.imagePath = imagePath ;
+	}
+	public void setQuantity(int quantity) {
+		if (quantity < 0) {
+			quantity = 0 ;
+		}
+		this.quantity = quantity ;
+	}
+}
+

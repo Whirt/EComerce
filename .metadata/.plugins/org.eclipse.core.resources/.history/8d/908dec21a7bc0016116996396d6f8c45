@@ -1,0 +1,9 @@
+package product;
+
+public enum ProductType {
+	ALL,
+	CD_DVD,
+	ELECTRONICS,
+	CLOTHING,
+	
+}

@@ -1,0 +1,20 @@
+/**
+ * Basic Product abstraction
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package product;
+
+public class Product {
+
+	private String name ;
+	private String brand ;
+	private String code ;
+	private ProductType type ;
+	private float price ;
+	private Image image ;
+	
+	
+}
+

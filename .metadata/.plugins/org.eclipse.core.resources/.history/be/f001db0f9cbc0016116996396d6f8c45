@@ -1,0 +1,11 @@
+/**
+ * Admin main operating frame
+ * 
+ * @author hu
+ */
+
+package Frame;
+
+public class AdminFrame extends Frame {
+
+}

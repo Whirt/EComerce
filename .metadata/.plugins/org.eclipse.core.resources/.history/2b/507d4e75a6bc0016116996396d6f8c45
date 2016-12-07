@@ -1,0 +1,11 @@
+/**
+ * Basic Product abstraction
+ * 
+ * @author Jia Cheng Hu
+ */
+
+package productManager;
+
+public class Product {
+
+}

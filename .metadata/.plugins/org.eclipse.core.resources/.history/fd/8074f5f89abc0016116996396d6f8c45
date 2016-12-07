@@ -1,0 +1,12 @@
+/**
+ * Frame consist of base 
+ * 
+ * @author Hu Jia Cheng
+ * @revision 1.0
+ */
+
+package Frame;
+
+public class Frame extends JFrame {
+
+}

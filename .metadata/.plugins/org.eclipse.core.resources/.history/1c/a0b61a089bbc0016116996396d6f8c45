@@ -1,0 +1,19 @@
+/**
+ * Frame consist of base 
+ * 
+ * @author Hu Jia Cheng
+ * @revision 1.0
+ */
+
+package Frame;
+
+import javax.swing.JFrame;
+
+public class Frame extends JFrame {
+
+	private static final int START_X = 100 ;
+	private static final int START_Y = 100 ;
+	private static final int WIDTH = 600 ;
+	private static final int HEIGHT = 200 ;
+	
+}

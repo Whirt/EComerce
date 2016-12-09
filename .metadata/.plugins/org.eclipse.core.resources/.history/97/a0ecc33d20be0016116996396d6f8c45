@@ -1,0 +1,28 @@
+package table;
+
+import javax.swing.table.DefaultTableModel;
+
+import product.Product;
+import productManager.ProductManager;
+
+public class ProductTableModel extends DefaultTableModel {
+
+	private ProductManager<Product> products ;
+	
+	public ProductTableModel(int cols) {
+		super(null, new String[] {"Author", "Title", "NumPages" }) ;
+		rows = 0 ;
+	}
+	
+	
+	@Override
+	public int getRowCount() {
+		return rows ;
+	}
+	@Override
+	public int getColumnCount() {
+		return cols ;
+	}
+
+}
+

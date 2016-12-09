@@ -1,0 +1,49 @@
+/**
+ * ProductTableModel is a table model.
+ * 
+ * ProductTableModel works both as table model and productManager wrapper.
+ * It provides all of productManager method.
+ */
+
+package table;
+
+import javax.swing.table.DefaultTableModel;
+
+import product.Product;
+import productManager.ProductManager;
+
+public class ProductTableModel extends DefaultTableModel {
+	
+	/** This parameter states the class version */
+	private static final long serialVersionUID = -8133314890195531670L;
+	
+	private static final int NUMCOLUMN = 7 ;
+	private static final String[] COLUMNBAR =
+		{"Name", "Brand", "Code", "Class", "Price", "Qty", "Image" } ;
+	
+	// Wrapped class
+	private ProductManager<Product> productManager ;
+	
+	public ProductTableModel() {
+		super(null, COLUMNBAR) ;
+		productManager = new ProductManager<Product>() ;
+	}
+	
+	public Product getProduct(int index) {
+		return productManager.getProduct(index) ;
+	}
+	public boolean addProduct(Product newProduct) {
+		return productManager.add(newProduct) ;
+	}
+	
+	@Override
+	public int getRowCount() {
+		return productManager.getSize() ;
+	}
+	@Override
+	public int getColumnCount() {
+		return NUMCOLUMN ;
+	}
+
+}
+

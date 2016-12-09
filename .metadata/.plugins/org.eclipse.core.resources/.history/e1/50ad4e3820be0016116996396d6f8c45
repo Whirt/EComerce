@@ -1,0 +1,45 @@
+package table;
+
+import javax.swing.table.DefaultTableModel;
+
+public class ProductTableModel extends DefaultTableModel {
+
+	private static int rows = 100 ;
+	private static int cols = 100 ;
+	
+	public ProductTableModel(int cols) {
+		super(null, new String[] {"Author", "Title", "NumPages" }) ;
+		rows = 0 ;
+		this.cols = cols ;
+		bookshelf = new Bookshelf2() ;
+	}
+	
+	public boolean addBook(Book2 book) {
+		if(!bookshelf.addBook(book))
+			return false ;
+		Object[] addRowParams = { book.getAuthor(), 
+								  book.getTitle(),
+								  book.getNumPages() } ;
+		setValueAt(book.getAuthor(), rows, 0) ;
+		setValueAt(book.getTitle(), rows, 1) ;
+		setValueAt(book.getNumPages(), rows, 2) ;
+		rows++ ;
+		
+		return true ;
+	}
+	
+	@Override
+	public int getRowCount() {
+		return rows ;
+	}
+	@Override
+	public int getColumnCount() {
+		return cols ;
+	}
+	
+	public Book2 getBook(int index) {
+		return bookshelf.getBook(index) ;
+	}
+
+}
+

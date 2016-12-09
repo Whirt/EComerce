@@ -23,6 +23,9 @@ package ecommerce;
 
 import frame.Frame;
 import login.LoginFrame;
+import product.Product;
+import product.ProductType;
+import table.ProductTableView;
 import user.User;
 import user.UserType;
 
@@ -39,7 +42,17 @@ public class Launcher {
 		//ECommerce ec = new ECommerce("E-Commerce", user1) ;
 		
 		Frame frame = new Frame() ;
+		
+		ProductTableView table = new ProductTableView() ;
+
+		frame.add(table) ;
 		frame.setVisible(true) ;
+		
+		Product newProd = new Product
+				("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
+				 3500F, null, 1) ;
+		table.addProduct(newProd) ;
+		
 		
 		
 	}

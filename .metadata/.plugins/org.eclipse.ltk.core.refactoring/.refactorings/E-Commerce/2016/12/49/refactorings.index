@@ -10,3 +10,6 @@
 1481130692381	Delete element
 1481133223161	Delete element
 1481133382332	Move compilation unit
+1481295810330	Rename type 'ProductTableModel'
+1481295879783	Rename type 'AdminTableModel'
+1481299066012	Rename type 'ProductManager'

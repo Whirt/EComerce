@@ -1,0 +1,42 @@
+/**
+ * This class consist of the centered panel part of ECommerce's home
+ * it includes Table, and relative buttons.
+ * 
+ * It wrappers ProductTableModel.
+ */
+
+package table;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+
+import product.Product;
+
+public class ProductTableView extends JPanel {
+
+	private static final String[] COLUMNBAR =
+		{"Name", "Brand", "Code", "Class", "Price", "Qty", "Image" } ;
+	
+	private ProductTableModel tableModel ;
+	private JTableHeader tableHeader ;
+	private JTable tableView ;
+	
+	public ProductTableView() {
+		super() ;
+		
+		tableModel = new ProductTableModel() ;
+		tableView = new JTable(tableModel) ;
+		
+		add(tableView) ;
+	}
+	
+	public boolean addProduct(Product newProduct) {
+		return tableModel.addProduct(newProduct) ;
+	}
+	public Product getProduct(int index) {
+		return tableModel.getProduct(index) ;
+	}
+	
+	
+}

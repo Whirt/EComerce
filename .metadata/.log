@@ -94,3 +94,6 @@ org.osgi.framework.BundleException: Unable to acquire the state change lock for 
 
 !ENTRY org.eclipse.ui 4 4 2016-12-07 17:28:24.827
 !MESSAGE Plug-in 'org.springsource.ide.eclipse.gradle.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProject
+
+!ENTRY org.eclipse.ui 4 4 2016-12-09 16:04:20.260
+!MESSAGE Plug-in 'org.springsource.ide.eclipse.gradle.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProject

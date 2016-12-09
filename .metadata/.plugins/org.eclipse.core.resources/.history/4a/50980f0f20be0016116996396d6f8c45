@@ -1,0 +1,9 @@
+package table;
+
+import javax.swing.table.DefaultTableModel;
+
+public class ProductTableModel extends DefaultTableModel {
+
+	
+	
+}

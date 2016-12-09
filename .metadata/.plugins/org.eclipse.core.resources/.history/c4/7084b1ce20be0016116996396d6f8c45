@@ -1,0 +1,29 @@
+package table;
+
+import javax.swing.table.DefaultTableModel;
+
+import product.Product;
+import productManager.ProductManager;
+
+public class AdminTableModel extends DefaultTableModel {
+	
+	private 
+	private ProductManager<Product> productManager ;
+	
+	public AdminTableModel(int cols) {
+		super(null, new String[] {"Author", "Title", "NumPages" }) ;
+		productManager = new ProductManager<Product>() ;
+	}
+	
+	
+	@Override
+	public int getRowCount() {
+		return productManager.getSize() ;
+	}
+	@Override
+	public int getColumnCount() {
+		return cols ;
+	}
+
+}
+

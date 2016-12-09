@@ -1,0 +1,18 @@
+package productManager;
+
+import java.util.Vector;
+
+public class ProductManager<E> {
+
+	// Main product container
+	private Vector<E> products ;
+	
+	public ProductManager() {
+		products = new Vector<E>() ;
+	}
+	
+	public E getProduct(int index) {
+		if (index < 0 || index >= products.size())
+	}
+	
+}

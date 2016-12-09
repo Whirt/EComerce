@@ -1,0 +1,62 @@
+/**
+ * ProductManager consist of a vector handling product basic management
+ * such as get, add, size.
+ * Only class that extends Product are accepted.
+ */
+
+package productManager;
+
+import java.util.Vector;
+
+import product.Product;
+
+public class ProductManager<E extends Product> {
+
+	// Main product container
+	private Vector<E> products ;
+	
+	public ProductManager() {
+		products = new Vector<E>() ;
+	}
+	
+	/** Return the product in vector at position index.
+	 * @param index
+	 * @return E */
+	public E getProduct(int index) {
+		if (index < 0 || index >= products.size())
+			return null ;
+		return products.get(index) ;
+	}
+	
+	/** Add newProduct class, if newProduct is null or
+	 * newProduct already exist in vector  false will be returned.
+	 * @param newProduct
+	 * @return boolean */
+	public boolean add(E newProduct) {
+		if (newProduct == null)
+			return false ;
+		for (int i = 0 ; i < products.size() ; i++) {
+			String examinedProdName = products.get(i).getName();
+			String newProdName = newProduct.getName() ;
+			boolean sameName = examinedProdName.equals(newProdName) ;
+			// If same name, compare brand
+			if (sameName) {
+				String examinedProdBrand = products.get(i).getBrand() ;
+				String newProdBrand = newProduct.getBrand() ;
+				boolean sameBrand = examinedProdBrand.equals(newProdBrand) ;
+				if (sameBrand) // if also same brand cancel add operation
+					return false ;
+				// if same name but different brand add to vector
+				products.add(newProduct) ;
+				return true ;
+			}
+		}
+		// totally new product
+		products.add(newProduct) ;
+		return true ;
+	}
+	
+	public int getSize() {
+		return products.size() ;
+	}
+}

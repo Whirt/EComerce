@@ -25,7 +25,7 @@ import frame.Frame;
 import login.LoginFrame;
 import product.Product;
 import product.ProductType;
-import table.ProductTableView;
+import table.ECommerceTable;
 import user.User;
 import user.UserType;
 
@@ -43,14 +43,29 @@ public class Launcher {
 		
 		Frame frame = new Frame() ;
 		
-		ProductTableView table = new ProductTableView() ;
+		ECommerceTable table = new ECommerceTable() ;
 
-		frame.add(table) ;
+		frame.setContentPane(table) ;
+		
+		try {
+		Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			System.out.println("Interrupt") ;
+		}
+		
 		frame.setVisible(true) ;
+		
+
+		try {
+		Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			System.out.println("Interrupt") ;
+		}
 		
 		Product newProd = new Product
 				("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
 				 3500F, null, 1) ;
+		
 		table.addProduct(newProd) ;
 		
 		

@@ -1,0 +1,9 @@
+package table;
+
+import javax.swing.JPanel;
+
+public class TableHeader extends JPanel {
+
+	private ProductManager<Product> productManager ;
+	
+}

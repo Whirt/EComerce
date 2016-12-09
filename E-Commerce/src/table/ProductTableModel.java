@@ -7,7 +7,6 @@
 
 package table;
 
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import product.Product;
@@ -21,7 +20,7 @@ public class ProductTableModel extends DefaultTableModel {
 	private static final String[] COLUMNBAR =
 		{"Name", "Brand", "Code", "Class", "Price", "Qty", "Image" } ;
 	private static final int NUMCOLUMN = 7 ;
-	private static int rows ;
+	private int rows ;
 	
 	// Wrapped class
 	private ProductManager<Product> productManager ;
@@ -74,6 +73,12 @@ public class ProductTableModel extends DefaultTableModel {
 		case 6: return product.getImagePath() ;
 		default: return null ;
 		}
+	}
+	
+	// Is protected to be invoked by TableHeader
+	protected Product searchProduct(String pattern) {
+		
+		return productManager.getProduct(0) ;
 	}
 }
 

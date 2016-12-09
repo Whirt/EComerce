@@ -1,0 +1,9 @@
+package panel;
+
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class SearchBar extends JPanel implements ActionListener {
+
+}

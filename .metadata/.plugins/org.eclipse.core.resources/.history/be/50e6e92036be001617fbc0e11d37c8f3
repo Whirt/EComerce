@@ -1,0 +1,33 @@
+package table;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TableHeader extends JPanel {
+
+	private JLabel searchLabel ;
+	private JTextField searchField ;
+	private Icon searchIcon ;
+	private JButton searchButton ;
+	
+	public TableHeader() {
+		super() ;
+		// creating components
+		searchLabel = new JLabel("Search") ;
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		g.setColor(Color.CYAN) ;
+		g.fillRect(0, 0, getWidth(), getHeight());
+	}
+
+	
+	
+}

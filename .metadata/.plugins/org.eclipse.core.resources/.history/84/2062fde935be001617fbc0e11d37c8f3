@@ -1,0 +1,25 @@
+package table;
+
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TableHeader extends JPanel {
+
+	private JLabel searchLabel ;
+	private JTextField searchField ;
+	private Icon searchIcon ;
+	private JButton searchButton ;
+	
+	public TableHeader() {
+		super() ;
+	}
+	
+	@Override
+	public void paint(Graphics2D g )
+
+	
+	
+}

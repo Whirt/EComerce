@@ -1,0 +1,5 @@
+package panel;
+
+public class SearchBar extends JPanel implements ActionListener {
+
+}

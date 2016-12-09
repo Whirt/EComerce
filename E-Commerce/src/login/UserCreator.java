@@ -21,7 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ecommerce.ECommerce;
+import frame.ECommerceFrame;
 import user.User;
 import user.UserType;
 
@@ -114,7 +114,7 @@ public class UserCreator extends JFrame implements ActionListener {
 				type = UserType.CUSTOMER ;
 			User user = new User(nameTxtField.getText(),
 						            pswdField.getText(), type) ;
-			ECommerce ec = new ECommerce(user.getUsername()
+			ECommerceFrame ec = new ECommerceFrame(user.getUsername()
 										 + " E-Commerce Home", user) ;
 			dispose() ;
 		}	

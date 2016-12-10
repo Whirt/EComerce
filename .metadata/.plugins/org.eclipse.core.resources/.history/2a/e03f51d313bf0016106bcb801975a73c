@@ -1,0 +1,111 @@
+/**
+ * Singleton
+ */
+
+package cart;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+public class PaymentFrame extends JFrame implements ActionListener {
+
+	private final static int TXTMAXLEN = 15 ;
+	// frame's params
+	private final static int START_X = 100 ;
+	private final static int START_Y = 85 ;
+	private final static int WIDTH = 300 ;
+	private final static int HEIGHT = 200 ;
+	
+
+	/** This boolean states whether payment succeeded
+	 * @param title */
+	private static boolean paymentConfirmed ;
+	
+	// Singleton properties
+	private static PaymentFrame paymentFrame = null ;
+	public static PaymentFrame getPaymentFrame() {
+		if (paymentFrame == null) {
+			paymentFrame = new PaymentFrame("Payment") ;
+		}
+		paymentConfirmed = false ;
+		return paymentFrame ;
+	}
+	
+	// construction
+	private JPanel paymentPanel ;
+	// panel components
+	private ButtonGroup buttonGroup ;
+	private JRadioButton visaButton ;
+	private JRadioButton paypalButton ;
+	private JRadioButton mastercardButton ;
+	private JLabel chooseLabel ;
+	private JLabel addressLabel ;
+	private JTextField addressTextField ;
+	private JButton payButton ;
+	private JButton cancelButton ;
+	
+	
+	private PaymentFrame(String title) {
+		super(title) ;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
+		
+		visaButton = new JRadioButton("Visa") ;
+		paypalButton = new JRadioButton("PayPal") ;
+		mastercardButton = new JRadioButton("MasterCard") ;
+		buttonGroup = new ButtonGroup() ;
+		buttonGroup.add(visaButton) ;
+		buttonGroup.add(paypalButton) ;
+		buttonGroup.add(mastercardButton) ;
+
+		chooseLabel = new JLabel("Choose Payment") ;
+		addressLabel = new JLabel("Address") ;
+		addressTextField = new JTextField("", TXTMAXLEN) ;
+		payButton = new JButton("Confirm") ;
+		payButton.addActionListener(this) ;
+		cancelButton = new JButton("Cancel") ;
+		cancelButton.addActionListener(this) ;
+		
+		paymentPanel = new JPanel() ;
+		paymentPanel.setBackground(Color.CYAN) ;
+		paymentPanel.setLayout(new FlowLayout()) ;
+		paymentPanel.add(chooseLabel) ;
+		paymentPanel.add(visaButton) ;
+		paymentPanel.add(paypalButton) ;
+		paymentPanel.add(mastercardButton) ;
+		paymentPanel.add(addressLabel) ;
+		paymentPanel.add(addressTextField) ;
+		
+		setContentPane(paymentPanel) ;
+		setVisible(true) ;
+	}
+
+	public boolean isConfirmed() {
+		return paymentConfirmed ;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == payButton) {
+			if (visaButton.isSelected() || 
+				mastercardButton.isSelected() ||
+				paypalButton.isSelected()) {
+				paymentConfirmed = true ;
+				paymentFrame.dispose() ;
+			}
+		}
+		
+	}
+	
+}

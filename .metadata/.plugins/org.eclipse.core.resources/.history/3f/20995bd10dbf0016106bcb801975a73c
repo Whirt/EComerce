@@ -1,0 +1,13 @@
+/**
+ * Singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+public class PaymentFrame extends JFrame {
+
+	
+	
+}

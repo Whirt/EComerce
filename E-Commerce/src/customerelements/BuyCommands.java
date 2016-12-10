@@ -23,8 +23,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import product.Product;
+import product.ProductType;
 import table.ECommerceTable;
-import table.QuantityBox;
 
 public class BuyCommands extends JPanel implements ActionListener {
 
@@ -38,7 +39,7 @@ public class BuyCommands extends JPanel implements ActionListener {
 	private Color backgroundColor ;
 	
 	// table of product to work on
-	private ECommerceTable ecommerceTable ;
+	private ECommerceTable productTable ;
 	
 	// componenents
 	private JLabel chooseLabel ;
@@ -47,23 +48,23 @@ public class BuyCommands extends JPanel implements ActionListener {
 	private JLabel costLabel ;
 	private JTextField costTextField ;
 	
-	public BuyCommands(ECommerceTable ecommerceTable) {
+	public BuyCommands(ECommerceTable productTable) {
 		super() ;
 		
 		// setting color
 		backgroundColor = new Color(R, G, B) ;
 		
-		this.ecommerceTable = ecommerceTable ;
+		this.productTable = productTable ;
 		
 		// setting components
 		chooseLabel = new JLabel("Qty ") ;
 		chooseLabel.setForeground(Color.WHITE) ;
 		qtyBox = new QuantityBox() ;
 		addProductButton = new JButton("Add to cart") ;
+		addProductButton.addActionListener(this) ;
 		costLabel = new JLabel("Price ") ;
 		costLabel.setForeground(Color.WHITE) ;
 		costTextField = new JTextField("", TXTMAXLEN) ;
-		//costTextField.setEditable(false) ;
 		
 		// adding up
 		FlowLayout layout = new FlowLayout(FlowLayout.LEFT) ;
@@ -84,7 +85,16 @@ public class BuyCommands extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		Object source = e.getSource() ;
+		if (source == addProductButton) {
+			// Test
+			Product newProd = new Product
+					("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
+					 3500F,
+					 "http://ssl-product-images.www8-hp.com/digmedialib"
+					 +"/prodimg/lowres/c05059975.png") ;
+			productTable.addProduct(newProd) ;
+		}
 		
 	}
 	

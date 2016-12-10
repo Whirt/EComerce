@@ -143,6 +143,7 @@ public class CartTableView extends JPanel implements ActionListener {
 					("Computer", "HP", "1232", 
 					 ProductType.ELECTRONICS, 132, null, 3) ;
 			tableModel.addProduct(newProd) ;
+			PaymentFrame.getPaymentFrame(tableModel) ;
 		}
 		if (source == cancelButton) {
 			// using singleton property

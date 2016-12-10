@@ -1,0 +1,36 @@
+/**
+ * Singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class PaymentFrame extends JFrame {
+
+	private final static int START_X = 100 ;
+	private final static int START_Y = 85 ;
+	private final static int WIDTH = 300 ;
+	private final static int HEIGHT = 200 ;
+	
+	// Singleton properties
+	private static PaymentFrame paymentFrame = null ;
+	public static PaymentFrame getPaymentFrame() {
+		if (paymentFrame == null) {
+			paymentFrame = new PaymentFrame("Payment") ;
+		}
+		return paymentFrame ;
+	}
+	
+	// construction
+	private JPanel panel ;
+	
+	private PaymentFrame(String title) {
+		super(title) ;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setBounds()
+		
+	}
+	
+}

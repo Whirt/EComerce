@@ -1,0 +1,10 @@
+package adminelements;
+
+import javax.swing.JFrame;
+
+public class ProductHandlerFrame extends JFrame {
+
+	public ProductHandler() {
+		super() ;
+	}
+}

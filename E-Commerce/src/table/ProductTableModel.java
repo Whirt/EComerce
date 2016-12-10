@@ -7,8 +7,12 @@
 
 package table;
 
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 import product.Product;
@@ -19,28 +23,32 @@ public class ProductTableModel extends DefaultTableModel {
 	// This parameter states the class version
 	private static final long serialVersionUID = -8133314890195531670L;
 	
+	// image size
+	private static final int SCALED_IMAGE_WIDTH = 50 ;
+	private static final int SCALED_IMAGE_HEIGHT = 30 ;
 	// column and rows
 	public static final int NAME_COLUMN = 0 ;
 	public static final int BRAND_COLUMN = 1 ;
 	public static final int CODE_COLUMN = 2 ;
 	public static final int CLASS_COLUMN = 3 ;
 	public static final int PRICE_COLUMN = 4 ;
-	public static final int SALE_COLUMN = 5 ;
+	public static final int DISCOUNT_COLUMN = 5 ;
 	public static final int IMAGE_COLUMN = 6 ;
-	public static final int QUANTITY_COLUMN = 7 ;
 	private static final String[] COLUMNBAR =
-		{"Name", "Brand", "Code", "Class", "Price", "Sale", "Image", "Qty"} ;
-	private static final int NUMCOLUMN = 8 ;
+		{"Name", "Brand", "Code", "Class", "Price", "Sale", "Image"} ;
+	private static final int NUMCOLUMN = 7 ;
 	private int rows ;
-	
-	private JTextField txtField = new JTextField("", 30);
 	
 	// Wrapped class
 	private ProductManager<Product> productManager ;
 	
+	// url image loader
+	private Toolkit t ;
+	
 	public ProductTableModel() {
 		super(null, COLUMNBAR) ;
 		
+		t = Toolkit.getDefaultToolkit() ;
 		productManager = new ProductManager<Product>() ;
 		rows = 0 ; 
 	}
@@ -71,28 +79,33 @@ public class ProductTableModel extends DefaultTableModel {
 	public int getSize() {
 		return productManager.getSize() ;
 	}
-
+	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		Product product = productManager.getProduct(rowIndex) ;
 		if (product == null)
 			return null ;
 		switch (columnIndex) {
-		case 0: return product.getName() ;
-		case 1: return product.getBrand() ;
-		case 2: return product.getCode() ;
-		case 3: return product.getType() ;
-		case 4: return product.getPrice() ;
-		case 5: return product.getDiscount() ;
-		case 6: return product.getImagePath() ;
-		// handled by JTable 
+		case NAME_COLUMN     : return product.getName() ;
+		case BRAND_COLUMN    : return product.getBrand() ;
+		case CODE_COLUMN     : return product.getCode() ;
+		case CLASS_COLUMN    : return product.getType() ;
+		case PRICE_COLUMN    : return product.getPrice() ;
+		case DISCOUNT_COLUMN : return product.getDiscount() ;
+		case IMAGE_COLUMN    : return loadImage(product.getImagePath()) ;
 		default: return null ;
 		}
 	}
 	
+	// needed to show icons
+	@Override
+    public Class getColumnClass(int column) {
+        return getValueAt(0, column).getClass();
+    }
+	
 	@Override
 	public boolean isCellEditable(int row, int column) {
-		if (column != QUANTITY_COLUMN)
+		if (column != IMAGE_COLUMN)
 			return false ;
 		return true ;
 	}
@@ -100,6 +113,21 @@ public class ProductTableModel extends DefaultTableModel {
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {
 		return productManager.getProduct(0) ;
+	}
+	
+	private ImageIcon loadImage(String imagePath) {
+		// Loading image process
+		URL imgUrl = null ;
+		try { imgUrl = new URL(imagePath) ;
+		} catch (MalformedURLException e) {
+			System.out.println("Url Error") ; e.printStackTrace(); }
+		Image iconImage = t.getImage(imgUrl) ;
+		// scale image
+	
+		iconImage =  iconImage.getScaledInstance(
+				SCALED_IMAGE_WIDTH, SCALED_IMAGE_HEIGHT, 0) ;
+		
+		return new ImageIcon(iconImage) ; 
 	}
 }
 

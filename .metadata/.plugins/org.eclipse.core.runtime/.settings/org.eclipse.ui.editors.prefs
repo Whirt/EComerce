@@ -1,7 +1,8 @@
 AbstractTextEditor.Color.Background=238,238,236
 AbstractTextEditor.Color.Background.SystemDefault=false
 eclipse.preferences.version=1
-lineNumberColor=238,238,236
+lineNumberColor=46,52,54
+lineNumberRuler=true
 overviewRuler_migration=migrated_3.1
 printMargin=true
 spellingEngine=org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine

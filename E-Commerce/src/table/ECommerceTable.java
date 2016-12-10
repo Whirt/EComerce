@@ -8,7 +8,6 @@
 package table;
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,7 +20,6 @@ import product.Product;
 public class ECommerceTable extends JPanel {
 
 	// table data dimension
-	private static final int QUANTITY_COLUMN_WIDTH = 10 ;
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;
 	private static final int ROW_HEIGHT = 50 ;
 
@@ -43,24 +41,20 @@ public class ECommerceTable extends JPanel {
 		tableModel = new ProductTableModel() ;
 		// table view managing
 		tableView = new JTable(tableModel) ;
-		// center all of its column
-		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer() ;
-		// align all to center
-		dtcr.setHorizontalAlignment(SwingConstants.CENTER) ;
-		for (int i = 0 ; i < tableModel.getColumnCount() ; i++)
-			tableView.getColumnModel().getColumn(i).setCellRenderer( dtcr) ;
-		// adding quantity box
-		QuantityBox qtyBox = new QuantityBox() ;
-		tableView.getColumnModel().getColumn(ProductTableModel.QUANTITY_COLUMN)
-			.setCellEditor(new DefaultCellEditor(qtyBox)) ;
-		// other settings
 		tableView.setRowHeight(ROW_HEIGHT) ;
+		
+		// setting center alignment
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer() ;
 		TableColumnModel columnModel = tableView.getColumnModel() ;
-		columnModel.getColumn(ProductTableModel.QUANTITY_COLUMN).
-			setPreferredWidth(QUANTITY_COLUMN_WIDTH) ;
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER) ;
+		for (int i = 0 ; i < tableModel.getColumnCount() ; i++) {
+			if (i != ProductTableModel.IMAGE_COLUMN)
+				columnModel.getColumn(i).setCellRenderer( dtcr) ;
+		}
+		//  setting tableColumnModel
 		columnModel.getColumn(ProductTableModel.IMAGE_COLUMN).
 			setPreferredWidth(IMAGE_COLUMN_WIDTH) ;
-
+		
 		// wrapping into a scrollPane
 		scrollPane = new JScrollPane(tableView) ;
 		
@@ -79,4 +73,8 @@ public class ECommerceTable extends JPanel {
 		return tableModel.getProduct(index) ;
 	}
 	
+	// needed for customerFrame and adminFrame to implement mouse listener
+	public JTable getTableView() {
+		return tableView ;
+	}
 }

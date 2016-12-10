@@ -1,0 +1,18 @@
+/**
+ * Singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+public class PaymentFrame extends JFrame {
+
+	private static PaymentFrame paymentFrame = null ;
+	
+	public static PaymentFrame getPaymentFrame() {
+		
+		return paymentFrame ;
+	}
+	
+}

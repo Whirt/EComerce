@@ -21,7 +21,6 @@
 
 package ecommerce;
 
-import cart.CartFrame;
 import user.User;
 import user.UserType;
 
@@ -32,16 +31,15 @@ public class Launcher {
 		// Funzionamento originale, togliere commenti per il prodotto "finale"
 		// LoginFrame mainFrame = new LoginFrame("Login E-Commerce") ;
 		
-		// Simulazione solo della parte interna di home
-		//User user1 = new User("Paolo", "asfasf", UserType.ADMINISTRATOR) ;
-		//User user2 = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
-		//ECommerce ec = new ECommerce("E-Commerce", user1) ;
+		//User user = new User("Geo", "asfasf", UserType.ADMINISTRATOR) ;
+		User user = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
 		
-		User user1 = new User("Paolo", "asfasf", UserType.ADMINISTRATOR) ;
-		
-		//ECommerce frame = new ECommerce(user1) ;
+		ECommerce frame = new ECommerce(user) ;
 
-		CartFrame frame = CartFrame.getCartFrame() ;
+		//ECommerceTable table  = new ECommerceTable() ;
+		//ProductHandlerFrame frame = 
+		//		ProductHandlerFrame.getFrame(table) ;
+		//CartFrame frame = CartFrame.getCartFrame() ;
 		
 	}
 	

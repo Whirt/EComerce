@@ -30,4 +30,5 @@ public class CartPanel extends JPanel {
 		add(cartHeader) ;
 		add(cartTable) ;
 	}
+	
 }

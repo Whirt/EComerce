@@ -127,7 +127,10 @@ public class AdminCommands extends JPanel implements ActionListener {
 			// Test
 			Product newProd = new Product
 					("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
-					 3500F, null) ;
+					 3500F,
+					 //"./media/logo.png") ;
+					 "http://ssl-product-images.www8-hp.com/digmedialib"
+					 +"/prodimg/lowres/c05059975.png") ;
 			table.addProduct(newProd) ;
 		}	
 	}

@@ -1,0 +1,35 @@
+package customerelements;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class CustomerCommands extends JPanel implements MouseAdapter {
+	
+	private ECommerceTable table ;
+	// panel components
+	private ImageCustomerPanel leftPanel ;
+	private ProductProfile centerPanel ;
+	private BuyCommands rightPanel ;
+
+	public CustomerCommands(ECommerceTable table) {
+		super() ;
+		
+		this.table = table ;
+		// panel components
+		leftPanel = new ImageCustomerPanel() ;
+		centerPanel = new ProductProfile() ;
+		rightPanel = new BuyCommands(table) ;
+		
+		// setting up
+		FlowLayout layout = new FlowLayout() ;
+		setLayout(layout) ;
+		add(leftPanel) ;
+		add(centerPanel) ;
+		add(rightPanel) ;
+	}
+	
+	
+}

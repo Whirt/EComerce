@@ -46,7 +46,7 @@ public class ProductProfile extends JPanel {
 	private JTextField codeTextField ;
 	private JTextField priceTextField ;
 	private JTextField discountTextField ;
-	private JTextField descriptionTextArea ;
+	private JTextField descriptionTextField ;
 	
 	public ProductProfile() {
 		super() ;
@@ -65,14 +65,14 @@ public class ProductProfile extends JPanel {
 		codeTextField = new JTextField("", TXTMAXLEN) ;
 		priceTextField = new JTextField("", TXTMAXLEN) ;
 		discountTextField = new JTextField("", TXTMAXLEN) ;
-		descriptionTextArea = new JTextField("", TXTMAXLEN) ;
+		descriptionTextField = new JTextField("", TXTMAXLEN) ;
 		// none is editable
 		nameTextField.setEditable(false) ;
 		brandTextField.setEditable(false) ;
 		codeTextField.setEditable(false) ;
 		priceTextField.setEditable(false) ;
 		discountTextField.setEditable(false) ;
-		descriptionTextArea.setEditable(false) ;
+		descriptionTextField.setEditable(false) ;
 		// setting background color
 		nameLabel.setBackground(backgroundColor) ;
 		brandLabel.setBackground(backgroundColor) ;
@@ -97,7 +97,7 @@ public class ProductProfile extends JPanel {
 		add(codeLabel) ; add(codeTextField) ;
 		add(priceLabel) ; add(priceTextField) ;
 		add(discountLabel) ; add(discountTextField) ;
-		add(descriptionLabel) ; add(descriptionTextArea) ;
+		add(descriptionLabel) ; add(descriptionTextField) ;
 	}
 	
 	// API
@@ -109,7 +109,7 @@ public class ProductProfile extends JPanel {
 		brandTextField.setText(product.getBrand()) ;
 		codeTextField.setText(product.getCode()) ;
 		priceTextField.setText(new Float(product.getPrice()).toString()) ;
-		descriptionTextArea.setText(product.getDescription()) ;
+		descriptionTextField.setText(product.getDescription()) ;
 		
 		return true ;
 	}

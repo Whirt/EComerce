@@ -1,0 +1,16 @@
+package cart;
+
+import product.Product;
+
+public class ListedProduct {
+
+	private Product product ;
+	private int quantity ;
+	
+	public ListedProduct(Product product, int quantity) {
+		
+	}
+	public ListedProduct(Product product) {	this(product, 0) ; }
+	
+	
+}

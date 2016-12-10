@@ -1,0 +1,6 @@
+package cart;
+
+public class CartPanel extends JPanel {
+
+	
+}

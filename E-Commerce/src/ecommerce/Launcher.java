@@ -21,6 +21,7 @@
 
 package ecommerce;
 
+import cart.CartFrame;
 import user.User;
 import user.UserType;
 
@@ -37,8 +38,10 @@ public class Launcher {
 		//ECommerce ec = new ECommerce("E-Commerce", user1) ;
 		
 		User user1 = new User("Paolo", "asfasf", UserType.ADMINISTRATOR) ;
-		ECommerce frame = new ECommerce(user1) ;
+		
+		//ECommerce frame = new ECommerce(user1) ;
 
+		CartFrame frame = CartFrame.getCartFrame() ;
 		
 	}
 	

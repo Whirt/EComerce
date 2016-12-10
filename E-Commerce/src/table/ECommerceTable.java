@@ -19,11 +19,7 @@ import javax.swing.table.TableColumnModel;
 import product.Product;
 
 public class ECommerceTable extends JPanel {
-	
-	// table view dimension
-	private static final int TABLE_BORDER_WIDTH = 50 ;
-	private static final int TABLE_HEIGHT = 420 ;
-	
+
 	// table data dimension
 	private static final int QUANTITY_COLUMN_WIDTH = 10 ;
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;

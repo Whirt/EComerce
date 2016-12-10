@@ -1,0 +1,37 @@
+/**
+ * Cart frame is a singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+public class CartFrame extends JFrame {
+
+	privaet CartFrame cartFrame = null ;
+	
+	private static final int START_X = 100 ;
+	private static final int START_Y = 50 ;
+	private static final int WIDTH = 500 ;
+	private static final int HEIGHT = 300 ;
+	
+	private CartPanel panel ;
+	
+	public getCartFrame() {
+		
+	}
+	
+	private CartFrame(String title) {
+		super(title) ;
+		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setResizable(false) ;
+		
+		panel = new CartPanel() ;
+		setContentPane(panel) ;
+		
+		setVisible(true) ;
+	}
+	public CartFrame() { this("Cart") ; }
+	
+}

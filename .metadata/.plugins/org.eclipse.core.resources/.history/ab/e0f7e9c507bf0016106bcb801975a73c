@@ -1,0 +1,33 @@
+package cart;
+
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+public class CartPanel extends JPanel {
+
+	private static final float CART_HEADER_PORTION = 1F/5 ;
+	private static final float CART_TABLE_PORTION = 4F/5 ;
+	
+	private CartHeader cartHeader ;
+	private CartTableView cartTable ;
+	
+	private BoxLayout cartLayout ;
+	
+	public CartPanel() {
+		super() ;
+		
+		cartHeader = new CartHeader() ;
+		cartHeader.setPreferredSize(new Dimension(getWidth(), 
+				(int)(getHeight()*CART_HEADER_PORTION))) ;
+		cartTable = new CartTableView() ;
+		cartTable.setPreferredSize(new Dimension(getWidth(),
+				(int)(getHeight()*CART_TABLE_PORTION)));
+		
+		cartLayout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(cartLayout) ;
+		add(cartHeader) ;
+		add(cartTable) ;
+	}
+}

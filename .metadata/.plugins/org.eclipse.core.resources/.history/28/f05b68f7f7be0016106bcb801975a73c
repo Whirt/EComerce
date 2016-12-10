@@ -1,0 +1,7 @@
+package cart;
+
+import javax.swing.JPanel;
+
+public class CartTableView extends JPanel  {
+
+}

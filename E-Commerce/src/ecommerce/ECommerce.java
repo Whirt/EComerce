@@ -24,11 +24,7 @@ import user.UserType;
 
 public class ECommerce {
 	
-	// Possible way of working
-	private User user ;
-	
 	public ECommerce(User user) {
-		this.user = user ; 
 		
 		Frame mainFrame = new Frame() ;
 		Panel mainPanel ;

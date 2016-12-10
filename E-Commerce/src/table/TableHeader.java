@@ -82,16 +82,6 @@ public class TableHeader extends JPanel implements ActionListener {
 	protected void paintComponent(Graphics g) {
 		g.setColor(backgroundColor) ;
 		g.fillRect(0, 0, getWidth(), getHeight()) ;
-		
-		/* paint automatically repaint all of its panel components
-		so we have to repeat it
-		searchLabel.repaint() ;
-		searchField.repaint() ;
-		searchButton.repaint() ;
-		FIX: searchLabel not working anyway.
-		changed method from paint to paintComponent.
-		this fixed it.
-		*/
 	}
 
 	@Override

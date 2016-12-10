@@ -1,0 +1,29 @@
+package cart;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class CartPanel extends JPanel implements ActionListener {
+
+	// background color
+	private static final int R = 28 ;
+	private static final int G = 106 ;
+	private static final int B = 208 ;
+	private Color backgroundColor ;
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void paintComponents(Graphics g) {
+		
+	}
+	
+	
+}

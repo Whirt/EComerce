@@ -1,0 +1,9 @@
+/**
+ * Cart frame is a singulet
+ */
+
+package cart;
+
+public class CartFrame {
+
+}

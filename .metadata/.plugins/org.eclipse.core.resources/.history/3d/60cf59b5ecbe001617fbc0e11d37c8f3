@@ -1,0 +1,13 @@
+/**
+ * Cart frame is a singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+public class CartFrame extends JFrame {
+
+	
+	
+}

@@ -1,0 +1,19 @@
+/**
+ * Cart frame is a singleton
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+public class CartFrame extends JFrame {
+
+	private static final int WIDTH = 400 ;
+	private static final int HEIGHT = 600 ;
+	
+	public CartFrame(String title) {
+		super(title) ;
+	}
+	public CartFrame() { this("Cart") ; }
+	
+}

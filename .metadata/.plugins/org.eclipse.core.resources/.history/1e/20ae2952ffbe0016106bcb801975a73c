@@ -1,0 +1,10 @@
+package cart;
+
+public class CartPanel {
+
+	
+	
+	/**
+	 * Rinchiudi tutti i JPanel
+	 */
+}

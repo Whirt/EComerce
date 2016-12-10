@@ -1,0 +1,28 @@
+package cart;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class CartTableView extends JPanel implements ActionListener {
+
+	private CartTableModel tableModel ;
+	private JTable table ;
+	
+	public CartTableView() {
+		super() ;
+		
+		tableModel = new CartTableModel() ;
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+

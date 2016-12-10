@@ -1,0 +1,19 @@
+package cart;
+
+import product.Product;
+
+public class ListedProduct {
+
+	private Product product ;
+	private int quantity ;
+	
+	public ListedProduct(Product product, int quantity) {
+		this.product = product ;
+		if (quantity <= 0)
+			quantity = 1 ;
+	}
+	public ListedProduct(Product product) {	this(product, 1) ; }
+	private ListedProduct() { ; }
+	
+	// getters and setters
+}

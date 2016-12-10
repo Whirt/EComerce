@@ -1,0 +1,77 @@
+package cart;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import product.ProductType;
+
+public class CartHeader extends JPanel {
+
+	// background color
+	private static final int R = 43 ;
+	private static final int G = 105 ;
+	private static final int B = 210 ;
+	private Color backgroundColor ;
+	
+	private static final int MAXSEARCHLEN = 15 ;
+	
+	// panel components
+	private JLabel titleLabel ;
+	private Image titleImage ;
+	
+	public CartHeader() {
+		super() ;
+		// setting color
+		backgroundColor = new Color(R, G, B) ;
+		
+		Toolkit t = Toolkit.getDefaultToolkit() ;
+		Image image = new Image("./media/searchIcon.png") ;
+		// mixing up
+		
+		FlowLayout layout = new FlowLayout(FlowLayout.CENTER) ;
+		setLayout(layout) ;
+		add(searchLabel) ;
+		add(searchField) ;
+		add(searchButton) ;
+		add(fieldLabel) ;
+		add(fieldComboBox) ;
+		add(categoryComboBox) ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
+		
+		/* paint automatically repaint all of its panel components
+		so we have to repeat it
+		searchLabel.repaint() ;
+		searchField.repaint() ;
+		searchButton.repaint() ;
+		FIX: searchLabel not working anyway.
+		changed method from paint to paintComponent.
+		this fixed it.
+		*/
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == searchButton)
+			System.out.println("Search Button pressed") ;
+		
+	}
+	
+}

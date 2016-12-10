@@ -1,0 +1,12 @@
+package cart;
+
+public class ListedProduct {
+
+	private Product product ;
+	private int quantity ;
+	
+	public ListedProduct() {
+		
+	}
+	
+}

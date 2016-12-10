@@ -1,0 +1,44 @@
+/**
+ * Main Cart List element.
+ * 
+ * It consist of a product and its counter
+ */
+
+package cart;
+
+import product.Product;
+
+public class ListedProduct {
+
+	private Product product ;
+	private int quantity ;
+	
+	public ListedProduct(Product product, int quantity) {
+		this.product = product ;
+		if (quantity <= 0)
+			quantity = 1 ;
+	}
+	public ListedProduct(Product product) {	this(product, 1) ; }
+	private ListedProduct() { ; }
+	
+	// getters and setters
+	public Product getProduct() {
+		return product ;
+	}
+	public int getQuantity() {
+		return quantity ;
+	}
+	public void setQuantity(int quantity) {
+		if (quantity <= 0)
+			this.quantity = 1 ;
+		this.quantity = quantity ;
+	}
+	public void inc() {
+		quantity++ ;
+	}
+	public void dec() {
+		if (quantity > 1)
+			return ;
+		
+	}
+}

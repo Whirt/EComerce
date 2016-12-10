@@ -1,0 +1,19 @@
+package cart;
+
+import javax.swing.JPanel;
+
+public class CartPanel extends JPanel {
+
+	private CartHeader cartHeader ;
+	private CartTableView cartTable ;
+	
+	private BoxLayout cartLayout ;
+	
+	public CartPanel() {
+		super() ;
+		
+		cartHeader = new CartHeader() ;
+		cartTable = new CartTableView() ;
+		
+	}
+}

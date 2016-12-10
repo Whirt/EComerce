@@ -128,7 +128,7 @@ public class AdminComands extends JPanel implements ActionListener {
 			// Test
 			Product newProd = new Product
 					("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
-					 3500F, null, 1) ;
+					 3500F, null) ;
 			table.addProduct(newProd) ;
 		}
 		

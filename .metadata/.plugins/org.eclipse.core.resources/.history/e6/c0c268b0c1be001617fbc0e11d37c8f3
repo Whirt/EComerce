@@ -1,0 +1,33 @@
+/**
+ * Special Sale Product consist of a product that can be sold
+ * in bulk of a defined quantity and paid 
+ */
+
+package product;
+
+public class SpecialSaleProduct extends Product {
+
+	private static final int PRODUCT_NUM = 3 ;
+	private static final int PAY_NUM = 2 ;
+	
+	public SpecialSaleProduct(String name, String brand, String code, ProductType type, float price, String imagePath)
+			throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath);
+	}
+	public SpecialSaleProduct(String name, String brand, 
+							  ProductType type, float price) {
+		this(name, brand, null, type, price, null) ;
+	}
+	
+	public int getMinimunProduct() {
+		return PRODUCT_NUM ;
+	}
+	public int getMinimunPayment() {
+		return PAY_NUM ;
+	}
+	/**
+	 * 
+	 */
+	@Override
+	
+}

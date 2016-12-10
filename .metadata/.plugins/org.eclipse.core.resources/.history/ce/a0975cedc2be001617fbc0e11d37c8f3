@@ -1,0 +1,50 @@
+/**
+ * Special Sale Product consist of a product quantity that can be 
+ * paid as though the selected quantity is lesser. 
+ * 
+ *  In particular, the selling formula is the following:
+ *  
+ *  Q = selected Quantity
+ *  N = Q / PRODUCT_NUM
+ *  Products to be Paid = N * (PAY_NUM) 
+ *  
+ */
+
+package product;
+
+public class SpecialSaleProduct extends Product {
+
+	// Public defined integers
+	public static final int PRODUCT_NUM = 3 ;
+	public static final int PAY_NUM = 2 ;
+	
+	// constructor
+	public SpecialSaleProduct(String name, String brand, 
+							  String code, ProductType type, 
+							  float price, String imagePath)
+	throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath);
+	}
+	public SpecialSaleProduct(String name, String brand, 
+							  ProductType type, float price) {
+		this(name, brand, null, type, price, null) ;
+	}
+	
+	/** Buy Product.
+	 * The following formula will be used:
+	 * 		Q = selected Quantity
+	 * 		N = Q / PRODUCT_NUM
+	 * 		products to be Paid = N * (PAY_NUM)
+	 * @param quantity ;
+	 * @return float */
+	@Override
+	public float buyProduct(int quantity) {
+		if (quantity <= 0)
+			return 0 ;
+		
+		float totalPrice = 0 ;
+		
+		return totalPrice ;
+	}
+	
+}

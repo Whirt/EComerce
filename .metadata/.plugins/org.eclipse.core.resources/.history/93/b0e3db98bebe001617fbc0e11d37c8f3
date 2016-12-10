@@ -1,0 +1,18 @@
+package product;
+
+public class ProductDiscounted extends Product {
+
+	// constructor
+	public ProductDiscounted(String name, String brand,
+							 String code, ProductType type, 
+							 float price, String imagePath,
+							 int discount) throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath, discount) ;
+	}
+	public ProductDiscounted(String name, String brand, 
+							 ProductType type, float price) {
+		this(name, brand, null, type, price, null, 0) ;
+	}
+	
+	
+}

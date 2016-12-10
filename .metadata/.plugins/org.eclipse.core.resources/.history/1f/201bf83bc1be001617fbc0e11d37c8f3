@@ -1,0 +1,12 @@
+package product;
+
+public class SpecialSaleProduct extends Product {
+
+	public SpecialSaleProduct(String name, String brand, String code, ProductType type, float price, String imagePath)
+			throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath);
+	}
+	
+	
+	
+}

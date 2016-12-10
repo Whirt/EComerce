@@ -21,12 +21,19 @@ public class Product {
 	private float price ;
 	private String imagePath ;
 	
-	private int sale ;
+	/** not used in Product class
+	 * It's a king od force polymorphism, discount is only setted
+	 * and used in DiscountedProduct, but for TableManager to work well
+	 * it need to be definied here.
+	 * 
+	 * For this reason, by default is set to 0 automatically
+	 */
+	private int discount = 0 ;
 	
 	public Product(String name, String brand,
 				   String code, ProductType type,
-				   float price, String imagePath, 
-				   int sale) throws IllegalArgumentException {
+				   float price, String imagePath)
+	throws IllegalArgumentException {
 		/* available boolean tells whether some core information
 		 * are missing it's used only at creation, after construction phase
 		 * all information but name can be modified.
@@ -43,10 +50,9 @@ public class Product {
 		
 		this.imagePath = imagePath ;
 		setCode(code) ;
-		setSale(sale) ;
 	}
 	public Product(String name, String brand, ProductType type, float price) {
-		this(name, brand, null, type, price, null, 0) ;
+		this(name, brand, null, type, price, null) ;
 	}
 	// void parameter can't be passed to constructor
 	// as name field must be satisfied
@@ -71,8 +77,8 @@ public class Product {
 	public String getImagePath() {
 		return imagePath ;
 	}
-	public int getSale() {
-		return sale ;
+	public int getDiscount() {
+		return discount ;
 	}
 	
 	// setters
@@ -109,12 +115,24 @@ public class Product {
 		this.imagePath = imagePath ;
 		return true ;
 	}
-	// quantity handling
-	public void setSale(int quantity) {
-		if (quantity < 0) {
-			quantity = 0 ;
+	public void setDiscount(int discount) {
+		if (discount < 0) {
+			discount = 0 ;
 		}
-		this.sale = quantity ;
+		this.discount = discount ;
+	}
+	
+	/**
+	 * Buy Product return the price based on the given quantity.
+	 * @param quantity
+	 * @return float
+	 */
+	public float buyProduct(int quantity) {
+		float totalPrice = 0 ;
+		if (quantity <= 0)
+			return totalPrice ;
+		totalPrice = this.price * quantity ;
+		return totalPrice ;
 	}
 }
 

@@ -36,3 +36,5 @@
 1481327601266	Rename type 'ProductTableModel'
 1481328862213	Rename type 'CustomerTableModel'
 1481330832855	Delete element
+1481363738423	Rename type 'ProductDiscounted'
+1481364744005	Rename type 'Product3x2'

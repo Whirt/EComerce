@@ -1,0 +1,13 @@
+package product;
+
+public class ProductDiscounted extends Product {
+
+	public ProductDiscounted(String name, String brand,
+							 ProductType type, float price) {
+		super(name, brand, type, price);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}

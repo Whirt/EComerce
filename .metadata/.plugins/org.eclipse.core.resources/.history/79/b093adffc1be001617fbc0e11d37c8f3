@@ -1,0 +1,35 @@
+/**
+ * Special Sale Product consist of a product quantity that can be 
+ * paid as though the selected quantity is lesser. 
+ * 
+ *  In particular, PRODUCT_NUM specify 
+ */
+
+package product;
+
+public class SpecialSaleProduct extends Product {
+
+	private static final int PRODUCT_NUM = 3 ;
+	private static final int PAY_NUM = 2 ;
+	
+	public SpecialSaleProduct(String name, String brand, String code, ProductType type, float price, String imagePath)
+			throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath);
+	}
+	public SpecialSaleProduct(String name, String brand, 
+							  ProductType type, float price) {
+		this(name, brand, null, type, price, null) ;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public float buyProduct(int quantity) {
+		float totalPrice = 0 ;
+		if (quantity <= 0)
+			return totalPrice ;
+		return totalPrice ;
+	}
+	
+}

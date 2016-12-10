@@ -1,0 +1,35 @@
+/**
+ * 
+ */
+
+package product;
+
+public class DiscountedProduct extends Product {
+
+	// constructor
+	public DiscountedProduct(String name, String brand,
+							 String code, ProductType type, 
+							 float price, String imagePath,
+							 int discount) throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath) ;
+		super.setDiscount(discount) ;
+	}
+	public DiscountedProduct(String name, String brand, 
+							 ProductType type, float price) {
+		this(name, brand, null, type, price, null, 0) ;
+	}
+	
+	/**
+	 * Polimorphism
+	 */
+	@Override
+	public float buyProduct(int quantity) {
+		float totalPrice = 0 ;
+		if (quantity <= 0)
+			return totalPrice ;
+		float discountedPrice = super.getPrice() ;
+		discountedPrice -= super.getPrice() * super.getDiscount() / 100 ;
+		totalPrice = discountedPrice * quantity ;
+		return totalPrice ;
+	}
+}

@@ -72,7 +72,6 @@ public class ECommerceTable extends JPanel {
 		add(scrollPane) ;
 	}
 	
-	
 	// ProductTable API
 	public boolean addProduct(Product newProduct) {
 		return tableModel.addProduct(newProduct) ;

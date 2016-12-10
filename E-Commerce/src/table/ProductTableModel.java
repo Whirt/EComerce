@@ -75,7 +75,7 @@ public class ProductTableModel extends DefaultTableModel {
 		case 2: return product.getCode() ;
 		case 3: return product.getType() ;
 		case 4: return product.getPrice() ;
-		case 5: return product.getSale() ;
+		case 5: return product.getDiscount() ;
 		case 6: return product.getImagePath() ;
 		// handled by JTable 
 		default: return null ;

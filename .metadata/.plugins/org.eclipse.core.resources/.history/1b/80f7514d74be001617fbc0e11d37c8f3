@@ -9,6 +9,7 @@ package table;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,7 +23,7 @@ public class ECommerceTable extends JPanel {
 
 	private static final int IMAGE_COLUMN = 6 ;
 	private static final int QUANTITY_COLUMN = 7 ;
-	private static final int QUANTITY_COLUMN_WIDTH = 10 ;
+	private static final int QUANTITY_COLUMN_WIDTH = 7 ;
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;
 	private static final int ROW_HEIGHT = 50 ;
 

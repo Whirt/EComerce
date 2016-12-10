@@ -8,7 +8,6 @@
 package table;
 
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import product.Product;
@@ -25,7 +24,7 @@ public class ProductTableModel extends DefaultTableModel {
 	private static final int NUMCOLUMN = 8 ;
 	private int rows ;
 	
-	private JTextField txtField = new JTextField("", 30);
+	private JTextField txtField ;
 	
 	// Wrapped class
 	private ProductManager<Product> productManager ;
@@ -77,15 +76,16 @@ public class ProductTableModel extends DefaultTableModel {
 		case 4: return product.getPrice() ;
 		case 5: return product.getSale() ;
 		case 6: return product.getImagePath() ;
-		// handled by JTable 
+		// The 7th case is left to JTable for  a quantityBox to be placed
 		default: return null ;
 		}
 	}
 	
-	//@Override
-	//public boolean isCellEditable(int row, int column) {
-	//	return false ;
-	//}
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		// is never editable
+		return false ;
+	}
 	
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {

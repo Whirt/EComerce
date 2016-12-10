@@ -82,10 +82,12 @@ public class ProductTableModel extends DefaultTableModel {
 		}
 	}
 	
-	//@Override
-	//public boolean isCellEditable(int row, int column) {
-	//	return false ;
-	//}
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		if (column == 7)
+			return true ;
+		return false ;
+	}
 	
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {

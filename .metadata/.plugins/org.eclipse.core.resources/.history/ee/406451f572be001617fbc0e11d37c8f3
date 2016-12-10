@@ -77,15 +77,17 @@ public class ProductTableModel extends DefaultTableModel {
 		case 4: return product.getPrice() ;
 		case 5: return product.getSale() ;
 		case 6: return product.getImagePath() ;
-		// handled by JTable 
+		// case 7: 
 		default: return null ;
 		}
 	}
 	
-	//@Override
-	//public boolean isCellEditable(int row, int column) {
-	//	return false ;
-	//}
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		if (row == 7)
+			return true ;
+		return false ;
+	}
 	
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {

@@ -9,6 +9,7 @@ package table;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,7 +23,7 @@ public class ECommerceTable extends JPanel {
 
 	private static final int IMAGE_COLUMN = 6 ;
 	private static final int QUANTITY_COLUMN = 7 ;
-	private static final int QUANTITY_COLUMN_WIDTH = 10 ;
+	private static final int QUANTITY_COLUMN_WIDTH = 5 ;
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;
 	private static final int ROW_HEIGHT = 50 ;
 
@@ -51,9 +52,9 @@ public class ECommerceTable extends JPanel {
 		for (int i = 0 ; i < tableModel.getColumnCount() ; i++)
 			tableView.getColumnModel().getColumn(i).setCellRenderer( dtcr) ;
 		// adding quantity box
-		QuantityBox qtyBox = new QuantityBox() ;
-		tableView.getColumnModel().getColumn(QUANTITY_COLUMN)
-			.setCellEditor(new DefaultCellEditor(qtyBox)) ;
+		//QuantityComboBox qtyBox = new QuantityComboBox() ;
+		JComboBox qtyBox = new JComboBox(new String[]{"c", "b"}) ;
+		tableView.getColumnModel().getColumn(QUANTITY_COLUMN).setCellEditor(new DefaultCellEditor(qtyBox)) ;
 		// other settings
 		tableView.setRowHeight(ROW_HEIGHT) ;
 		TableColumnModel columnModel = tableView.getColumnModel() ;

@@ -23,9 +23,10 @@ package ecommerce;
 
 import javax.swing.BoxLayout;
 
-import adminelements.AdminComands;
+import adminelements.AdminCommands;
 import login.LoginFrame;
 import mainframe.AdminFrame;
+import mainframe.CustomerFrame;
 import mainframe.Frame;
 import product.Product;
 import product.ProductType;
@@ -46,15 +47,15 @@ public class Launcher {
 		//User user2 = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
 		//ECommerce ec = new ECommerce("E-Commerce", user1) ;
 		
-		AdminFrame frame = new AdminFrame() ;
+		Frame frame = new CustomerFrame() ;
 		
 		try {
 		Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			System.out.println("Interrupt") ;
 		}
-	
-
+		
+		frame.pack();
 		frame.setVisible(true) ;
 	}
 	

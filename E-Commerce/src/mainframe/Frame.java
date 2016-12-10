@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 public class Frame extends JFrame {
 	
 	private static final int START_X = 100 ;
-	private static final int START_Y = 80 ;
+	private static final int START_Y = 50 ;
 	private static final int WIDTH = 800 ;
 	private static final int HEIGHT = 620 ;
 	
@@ -22,7 +22,6 @@ public class Frame extends JFrame {
 		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
 		setResizable(false) ;
-	
 	}
 	public Frame() { this("Frame") ; } 
 	

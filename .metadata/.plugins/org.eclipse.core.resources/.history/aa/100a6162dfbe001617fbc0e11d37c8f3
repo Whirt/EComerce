@@ -1,0 +1,34 @@
+package mainpanel;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import customerelements.CustomerCommands;
+import table.ECommerceTable;
+
+public class CustomerPanel extends JPanel {
+
+	private BoxLayout layout ;
+	private FrameHeader header ;
+	private ECommerceTable table ;
+	private CustomerCommands comands ;
+	
+	public CustomerPanel() {
+		super() ;
+		
+		table = new ECommerceTable() ;
+		header = new FrameHeader() ;
+		comands = new CustomerCommands(table) ;
+		
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(header) ;
+		add(table) ;
+		add(comands) ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		
+	}
+}

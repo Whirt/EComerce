@@ -24,7 +24,8 @@ public class SpecialSaleProduct extends Product {
 							  String code, ProductType type, 
 							  float price, String imagePath)
 	throws IllegalArgumentException {
-		super(name, brand, code, type, price, imagePath);
+		super(name, brand, code, type, price, imagePath) ;
+		isSpecial = true ;
 	}
 	public SpecialSaleProduct(String name, String brand, 
 							  ProductType type, float price) {

@@ -21,15 +21,33 @@ public class Product {
 	private float price ;
 	private String imagePath ;
 	
-	/** not used in Product class
-	 * It's a king od force polymorphism, discount is only setted
-	 * and used in DiscountedProduct, but for TableManager to work well
-	 * it need to be definied here.
-	 * 
-	 * For this reason, by default is set to 0 automatically
-	 */
-	private int discount = 0 ;
+	// not showed in table
+	private String description ;
 	
+	/* not used in Product class.
+	 * 
+	 * It's a kind of forced polymorphism, discount is only set
+	 * and used in DiscountedProduct, but for TableManager to work well
+	 * it need to be defined here.
+	 * 
+	 * For this reason, by default is set to 0 automatically */
+	protected int discount = 0 ;
+	/* not used in Product class.
+	 * 
+	 * It's needed to force polymorphism, it's only used in
+	 * SpecialSaleProduct */
+	protected boolean isSpecial = false ;
+	
+	/**
+	 * 
+	 * @param name
+	 * @param brand
+	 * @param code
+	 * @param type
+	 * @param price
+	 * @param imagePath
+	 * @throws IllegalArgumentException
+	 */
 	public Product(String name, String brand,
 				   String code, ProductType type,
 				   float price, String imagePath)
@@ -58,7 +76,9 @@ public class Product {
 	// as name field must be satisfied
 	private Product() {	; }
 	
-	// getters
+	/**
+	 * 
+	 * @return */
 	public String getName() {
 		return name ;
 	}
@@ -79,6 +99,12 @@ public class Product {
 	}
 	public int getDiscount() {
 		return discount ;
+	}
+	public String getDescription() {
+		return description ;
+	}
+	public boolean isSpecial() {
+		return isSpecial ;
 	}
 	
 	// setters
@@ -115,12 +141,13 @@ public class Product {
 		this.imagePath = imagePath ;
 		return true ;
 	}
-	public void setDiscount(int discount) {
-		if (discount < 0) {
-			discount = 0 ;
-		}
-		this.discount = discount ;
+	public boolean setDescription(String description) {
+		if (description == null)
+			return false ;
+		this.description = description ;
+		return false ;
 	}
+	
 	
 	/**
 	 * Buy Product return the price based on the given quantity.

@@ -1,0 +1,42 @@
+package customerelements;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class CustomerCommands extends JPanel {
+
+	private static final int TXTMAXLEN = 15 ;
+	// background color 
+	private static final Color backgroundColor = new Color(222, 38, 38) ;
+	private static final Color innerColor = new Color(215, 67, 67) ;
+	
+	// panel components
+	private ECommerceTable table ;
+	
+	private ImageCustomerPanel leftPanel ;
+	private ProductProfile centerPanel ;
+	private BuyCommands rightPanel ;
+	
+
+	public CustomerCommands() {
+		super() ;
+		
+		// generating table
+		table = new ECommerceTable() ;
+		
+		// panel components
+		leftPanel = new ImageCustomerPanel() ;
+		centerPanel = new ProductProfile() ;
+		rightPanel = new BuyCommands(table) ;
+		
+		FlowLayout layout = new FlowLayout() ;
+		setLayout(layout) ;
+		add(leftPanel) ;
+		add(centerPanel) ;
+		add(rightPanel) ;
+	}
+}

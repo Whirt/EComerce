@@ -1,0 +1,10 @@
+package customerelements;
+
+import javax.swing.JPanel;
+
+public class BuyCommands extends JPanel {
+
+	private ECommerceTable ecommerceTable ;
+	
+	
+}

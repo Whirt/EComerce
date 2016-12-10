@@ -5,6 +5,7 @@
 package customerelements;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -12,26 +13,30 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 public class ImageCustomerPanel extends JPanel {
-
+	
+	private static final int PREFERRED_WIDTH = 200 ;
+	private static final int PREFERRED_HEIGHT = 150 ;
+	
 	// Backgrouund
-	private static final int R = 222 ;
-	private static final int G = 38 ;
-	private static final int B = 38 ;
+	private static final int R = 28 ;
+	private static final int G = 106 ;
+	private static final int B = 208 ;
 	private Color backgroundColor ;
 	
 	private String imagePath = null ;
 	
-	
 	public ImageCustomerPanel() {
 		super() ;
-		backgroundColor = new Color(222, 38, 38) ;
+		backgroundColor = new Color(R, G, B) ;
+		setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT)) ;
 	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
 		if (imagePath == null) {
 			g.setColor(backgroundColor) ;
-			
+			// this reserves the panel handling
+			g.fillRect(0, 0, PREFERRED_WIDTH, PREFERRED_HEIGHT) ;
  		} else {
 			Toolkit t = Toolkit.getDefaultToolkit() ;
 			Image newImage = t.getImage(imagePath) ;

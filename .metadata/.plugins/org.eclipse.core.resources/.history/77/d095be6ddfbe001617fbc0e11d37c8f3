@@ -1,0 +1,45 @@
+package mainpanel;
+
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import customerelements.CustomerCommands;
+import table.ECommerceTable;
+
+public class CustomerPanel extends JPanel {
+
+	// Backgrouund
+	private static final int R = 222 ;
+	private static final int G = 38 ;
+	private static final int B = 38 ;
+	private Color backgroundColor ;
+	
+	private BoxLayout layout ;
+	private FrameHeader header ;
+	private ECommerceTable table ;
+	private CustomerCommands comands ;
+	
+	public CustomerPanel() {
+		super() ;
+		
+		
+		backgroundColor = new Color(R, G, B) ;
+		
+		table = new ECommerceTable() ;
+		header = new FrameHeader() ;
+		comands = new CustomerCommands(table) ;
+		
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(header) ;
+		add(table) ;
+		add(comands) ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		
+	}
+}

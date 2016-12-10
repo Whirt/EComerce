@@ -1,0 +1,79 @@
+/**
+ * BuyCommands Panel.
+ * 
+ * 
+ * BuyCommands Panel consist of main customer interaction 
+ * button to buy the product.
+ * 
+ * It's pretty simply, it offers a quantity Box and a button
+ * to add into cart.
+ * 
+ * Also the price will be shown.
+ */
+
+package customerelements;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import table.ECommerceTable;
+import table.QuantityBox;
+
+public class BuyCommands extends JPanel implements ActionListener {
+
+	private static final int TXTMAXLEN = 15 ;
+	// Backgrouund
+	private static final int R = 222 ;
+	private static final int G = 38 ;
+	private static final int B = 38 ;
+	private Color backgroundColor ;
+	
+	// table of product to work on
+	private ECommerceTable ecommerceTable ;
+	
+	// componenents
+	private JLabel chooseLabel ;
+	private QuantityBox qtyBox ;
+	private JButton addProduct ;
+	private JLabel priceLabel ;
+	
+	private JTextField priceTextField ;
+	
+	public BuyCommands(ECommerceTable ecommerceTable) {
+		super() ;
+		
+		// setting color
+		backgroundColor = new Color(R, G, B) ;
+		
+		this.ecommerceTable = ecommerceTable ;
+		
+		// setting components
+		qtyBox = new QuantityBox() ;
+		chooseLabel = new JLabel("Qty ") ;
+		addProduct = new JButton("Add to cart") ;
+		priceLabel = new JLabel("Price ") ;
+		priceTextField = new JTextField("", TXTMAXLEN) ;
+		
+		
+		
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

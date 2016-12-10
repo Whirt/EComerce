@@ -1,0 +1,46 @@
+package mainpanel;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import customerelements.BuyCommands;
+import customerelements.ImageCustomerPanel;
+import customerelements.ProductProfile;
+import table.ECommerceTable;
+
+public class CustomerPanel extends JPanel {
+	
+	private static final int TXTMAXLEN = 15 ;
+	// background color 
+	private static final Color backgroundColor = new Color(222, 38, 38) ;
+	private static final Color innerColor = new Color(215, 67, 67) ;
+	
+	// panel components
+	private ECommerceTable table ;
+	private ImageCustomerPanel leftPanel ;
+	private ProductProfile centerPanel ;
+	private BuyCommands rightPanel ;
+	
+	public CustomerPanel() {
+		super() ;
+		
+		this.table = table ;
+		
+		// panel components
+		leftPanel = new ImageCustomerPanel() ;
+		centerPanel = new ProductProfile() ;
+		rightPanel = new BuyCommands(table) ;
+		
+		FlowLayout layout = new FlowLayout() ;
+		setLayout(layout) ;
+		add(leftPanel) ;
+		add(centerPanel) ;
+		add(rightPanel) ;
+	}
+}

@@ -1,0 +1,41 @@
+package mainpanel;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import adminelements.AdminCommands;
+import customerelements.BuyCommands;
+import customerelements.CustomerCommands;
+import customerelements.ImageCustomerPanel;
+import customerelements.ProductProfile;
+import table.ECommerceTable;
+
+public class CustomerPanel extends JPanel {
+
+	private BoxLayout layout ;
+	private FrameHeader header ;
+	private ECommerceTable table ;
+	private CustomerCommands comands ;
+	
+	
+	public CustomerPanel() {
+		super() ;
+		
+		table = new ECommerceTable() ;
+		header = new FrameHeader() ;
+		comands = new CustomerCommands(table) ;
+		
+		layout = new BoxLayout(BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(leftPanel) ;
+		add(centerPanel) ;
+		add(rightPanel) ;
+	}
+}

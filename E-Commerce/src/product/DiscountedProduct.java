@@ -15,11 +15,18 @@ public class DiscountedProduct extends Product {
 							 int discount) 
 	throws IllegalArgumentException {
 		super(name, brand, code, type, price, imagePath) ;
-		super.setDiscount(discount) ;
+		setDiscount(discount) ;
 	}
 	public DiscountedProduct(String name, String brand, 
 							 ProductType type, float price) {
 		this(name, brand, null, type, price, null, 0) ;
+	}
+	
+	private void setDiscount(int discount) {
+		if (discount < 0) {
+			discount = 0 ;
+		}
+		this.discount = discount ;
 	}
 	
 	/**
@@ -31,7 +38,7 @@ public class DiscountedProduct extends Product {
 		if (quantity <= 0)
 			return totalPrice ;
 		float discountedPrice = super.getPrice() ;
-		discountedPrice -= super.getPrice() * super.getDiscount() / 100 ;
+		discountedPrice -= super.getPrice() * discount / 100 ;
 		totalPrice = discountedPrice * quantity ;
 		return totalPrice ;
 	}

@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import product.Product;
-import productManager.ProductManager;
+import product.ProductManager;
 
 public class ProductTableModel extends DefaultTableModel {
 
@@ -20,6 +20,14 @@ public class ProductTableModel extends DefaultTableModel {
 	private static final long serialVersionUID = -8133314890195531670L;
 	
 	// column and rows
+	public static final int NAME_COLUMN = 0 ;
+	public static final int BRAND_COLUMN = 1 ;
+	public static final int CODE_COLUMN = 2 ;
+	public static final int CLASS_COLUMN = 3 ;
+	public static final int PRICE_COLUMN = 4 ;
+	public static final int SALE_COLUMN = 5 ;
+	public static final int IMAGE_COLUMN = 6 ;
+	public static final int QUANTITY_COLUMN = 7 ;
 	private static final String[] COLUMNBAR =
 		{"Name", "Brand", "Code", "Class", "Price", "Sale", "Image", "Qty"} ;
 	private static final int NUMCOLUMN = 8 ;
@@ -82,10 +90,12 @@ public class ProductTableModel extends DefaultTableModel {
 		}
 	}
 	
-	//@Override
-	//public boolean isCellEditable(int row, int column) {
-	//	return false ;
-	//}
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		if (column != QUANTITY_COLUMN)
+			return false ;
+		return true ;
+	}
 	
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {

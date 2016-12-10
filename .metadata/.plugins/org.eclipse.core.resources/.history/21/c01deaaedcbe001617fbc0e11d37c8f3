@@ -1,0 +1,104 @@
+/**
+ * This just show prodcut profile,
+ * do not implement listener because no interaction with customer
+ * is needed.
+ */
+
+package customerelements;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import product.Product;
+import table.ECommerceTable;
+
+public class ProductProfile extends JPanel {
+	
+	private static final int TXTMAXLEN = 15 ;
+	private static final int AREA_ROWS = 5 ;
+	private static final int AREA_COLUMNS = 10 ;
+	// Backgrouund
+	private static final int R = 222 ;
+	private static final int G = 38 ;
+	private static final int B = 38 ;
+	private Color backgroundColor ;
+	
+	// table of product to work on
+	private ECommerceTable ecommerceTable ;
+	
+	// panel components
+	private JLabel nameLabel ;
+	private JLabel brandLabel ;
+	private JLabel codeLabel ;
+	private JLabel priceLabel ;
+	private JLabel discountLabel ;
+	private JLabel descriptionLabel ;
+	private JTextField nameTextField ;
+	private JTextField brandTextField ;
+	private JTextField codeTextField ;
+	private JTextField priceTextField ;
+	private JTextField discountTextField ;
+	private JTextArea descriptionTextArea ;
+	
+	public ProductProfile() {
+		super() ;
+		
+		// setting up components
+		nameLabel = new JLabel("Name") ;
+		brandLabel = new JLabel("Brand") ;
+		codeLabel = new JLabel("Code") ;
+		priceLabel = new JLabel("Price") ;
+		discountLabel = new JLabel("Discount") ;
+		descriptionLabel = new JLabel("Description") ;
+		nameTextField = new JTextField("", TXTMAXLEN) ;
+		brandTextField = new JTextField("", TXTMAXLEN) ;
+		codeTextField = new JTextField("", TXTMAXLEN) ;
+		priceTextField = new JTextField("", TXTMAXLEN) ;
+		discountTextField = new JTextField("", TXTMAXLEN) ;
+		descriptionTextArea = new JTextArea(AREA_ROWS, AREA_COLUMNS) ;
+		// none is editable
+		nameTextField.setEditable(false) ;
+		brandTextField.setEditable(false) ;
+		codeTextField.setEditable(false) ;
+		priceTextField.setEditable(false) ;
+		discountTextField.setEditable(false) ;
+		descriptionTextArea.setEditable(false) ;
+		
+		// adding up
+		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(nameLabel) ; add(nameTextField) ;
+		add(brandLabel) ; add(brandTextField) ;
+		add(codeLabel) ; add(codeTextField) ;
+		add(priceLabel) ; add(priceTextField) ;
+		add(discountLabel) ; add(discountTextField) ;
+		add(descriptionLabel) ; add(descriptionTextArea) ;
+	}
+	
+	// API
+	public boolean setProductProfile(Product product) {
+		if (product == null)
+			return false ;
+		
+		nameTextField.setText(product.getName()) ;
+		brandTextField.setText(product.getBrand()) ;
+		codeTextField.setText(product.getCode()) ;
+		priceTextField.setText(new Float(product.getPrice()).toString()) ;
+		descriptionTextArea.setText(product.getDescription()) ;
+		
+		return true ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
+	}
+}

@@ -1,0 +1,24 @@
+/**
+ * Admin main operating frame
+ * 
+ * @author hu
+ */
+
+package mainframe;
+
+import mainpanel.AdminPanel;
+import table.ECommerceTable;
+
+public class AdminFrame extends Frame {
+	
+	private AdminPanel panel ;
+	private ECommerceTable table ;
+	
+	public AdminFrame(String title, ECommerceTable table) {
+		super(title) ;
+		this.table = table ;
+		panel = new AdminPanel(table) ;
+		setContentPane(panel) ;
+	}
+	public AdminFrame() { this("Administrator ECommerce Home") ; }
+}

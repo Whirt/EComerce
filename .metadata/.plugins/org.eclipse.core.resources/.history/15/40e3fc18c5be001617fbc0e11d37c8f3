@@ -1,0 +1,17 @@
+package customerelements;
+
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class BuyCommands extends JPanel {
+
+	private ECommerceTable ecommerceTable ;
+	
+	public BuyCommands(ECommerceTable ecommerceTable) {
+		super() ;
+		
+		this.ecommerceTable = ecommerceTable ;
+	}
+	
+}

@@ -7,6 +7,8 @@
 
 package table;
 
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
@@ -19,9 +21,12 @@ import javax.swing.table.TableColumnModel;
 import product.Product;
 
 public class ECommerceTable extends JPanel {
-
-	private static final int IMAGE_COLUMN = 6 ;
-	private static final int QUANTITY_COLUMN = 7 ;
+	
+	// table view dimension
+	private static final int TABLE_BORDER_WIDTH = 50 ;
+	private static final int TABLE_HEIGHT = 420 ;
+	
+	// table data dimension
 	private static final int QUANTITY_COLUMN_WIDTH = 10 ;
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;
 	private static final int ROW_HEIGHT = 50 ;
@@ -52,18 +57,20 @@ public class ECommerceTable extends JPanel {
 			tableView.getColumnModel().getColumn(i).setCellRenderer( dtcr) ;
 		// adding quantity box
 		QuantityBox qtyBox = new QuantityBox() ;
-		tableView.getColumnModel().getColumn(QUANTITY_COLUMN)
+		tableView.getColumnModel().getColumn(ProductTableModel.QUANTITY_COLUMN)
 			.setCellEditor(new DefaultCellEditor(qtyBox)) ;
 		// other settings
 		tableView.setRowHeight(ROW_HEIGHT) ;
 		TableColumnModel columnModel = tableView.getColumnModel() ;
-		columnModel.getColumn(QUANTITY_COLUMN).
+		columnModel.getColumn(ProductTableModel.QUANTITY_COLUMN).
 			setPreferredWidth(QUANTITY_COLUMN_WIDTH) ;
-		columnModel.getColumn(IMAGE_COLUMN).
+		columnModel.getColumn(ProductTableModel.IMAGE_COLUMN).
 			setPreferredWidth(IMAGE_COLUMN_WIDTH) ;
 
 		// wrapping into a scrollPane
 		scrollPane = new JScrollPane(tableView) ;
+		//scrollPane.setPreferredSize(
+		//		new Dimension(getWidth() - TABLE_BORDER_WIDTH, TABLE_HEIGHT)) ;
 		
 		// setting up
 		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;

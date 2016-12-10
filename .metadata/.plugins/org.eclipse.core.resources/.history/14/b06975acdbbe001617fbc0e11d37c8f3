@@ -1,0 +1,39 @@
+package customerelements;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class CustomerCommands extends JPanel {
+	
+	// panel components
+	private ECommerceTable table ;
+	
+	private ImageCustomerPanel leftPanel ;
+	private ProductProfile centerPanel ;
+	private BuyCommands rightPanel ;
+	
+
+	public CustomerCommands(ECommerceTable table) {
+		super() ;
+		
+		this.table = table ;
+		
+		// generating table
+		table = new ECommerceTable() ;
+		
+		// panel components
+		leftPanel = new ImageCustomerPanel() ;
+		centerPanel = new ProductProfile() ;
+		rightPanel = new BuyCommands(table) ;
+		
+		FlowLayout layout = new FlowLayout() ;
+		setLayout(layout) ;
+		add(leftPanel) ;
+		add(centerPanel) ;
+		add(rightPanel) ;
+	}
+}

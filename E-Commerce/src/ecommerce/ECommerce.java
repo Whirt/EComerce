@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 
 import mainframe.AdminFrame;
 import mainframe.Frame;
+import table.ECommerceTable;
 import user.User;
 import user.UserType;
 

@@ -1,0 +1,11 @@
+package customerelements;
+
+import java.awt.Color;
+
+public class CustomerCommands extends JPanel {
+
+	private static final int TXTMAXLEN = 15 ;
+	// background color 
+	private static final Color backgroundColor = new Color(222, 38, 38) ;
+	private static final Color innerColor = new Color(215, 67, 67) ;
+}

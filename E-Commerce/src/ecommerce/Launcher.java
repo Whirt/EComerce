@@ -21,11 +21,16 @@
 
 package ecommerce;
 
-import frame.Frame;
+import javax.swing.BoxLayout;
+
+import adminelements.AdminComands;
 import login.LoginFrame;
+import mainframe.AdminFrame;
+import mainframe.Frame;
 import product.Product;
 import product.ProductType;
 import table.ECommerceTable;
+import table.TableHeader;
 import user.User;
 import user.UserType;
 
@@ -41,35 +46,16 @@ public class Launcher {
 		//User user2 = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
 		//ECommerce ec = new ECommerce("E-Commerce", user1) ;
 		
-		Frame frame = new Frame() ;
-		
-		ECommerceTable table = new ECommerceTable() ;
-
-		frame.setContentPane(table) ;
+		AdminFrame frame = new AdminFrame() ;
 		
 		try {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			System.out.println("Interrupt") ;
 		}
-		
+	
+
 		frame.setVisible(true) ;
-		
-
-		try {
-		Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			System.out.println("Interrupt") ;
-		}
-		
-		Product newProd = new Product
-				("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
-				 3500F, null, 1) ;
-		
-		table.addProduct(newProd) ;
-		
-		
-		
 	}
 	
 }

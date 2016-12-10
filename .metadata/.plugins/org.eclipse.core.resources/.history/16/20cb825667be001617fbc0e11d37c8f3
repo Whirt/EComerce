@@ -1,0 +1,10 @@
+package customerelements;
+
+import javax.swing.JPanel;
+
+public class ImageCustomerPanel extends JPanel {
+
+	public ImageCustomerPanel() {
+		super() ;
+	}
+}

@@ -1,0 +1,20 @@
+package customerelements;
+
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class ImageCustomerPanel extends JPanel {
+
+	private String imagePath = null ;
+	
+	public ImageCustomerPanel() {
+		super() ;
+	}
+	
+	@Overidde
+	protect void paintComponent(Graphics g) {
+		
+	}
+	
+}

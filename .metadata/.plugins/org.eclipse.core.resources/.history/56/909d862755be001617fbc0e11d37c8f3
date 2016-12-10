@@ -1,0 +1,123 @@
+/**
+ * TableHeader contains search bar, chart icon, and char elements counter.
+ */
+
+package table;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import product.ProductType;
+
+public class TableHeader extends JPanel implements ActionListener {
+
+	// background color
+	private static final int R = 43 ;
+	private static final int G = 105 ;
+	private static final int B = 210 ;
+	private Color backgroundColor ;
+	
+	private static final int MAXSEARCHLEN = 15 ;
+	
+	// panel components
+	private JButton ecommerceButton ;
+	private ImageIcon ecommerceIcon ;
+	private JLabel helloLabel ;
+	private JLabel searchLabel ;
+	private JTextField searchField ;
+	private ImageIcon searchIcon ;
+	private JButton searchButton ;
+	private JLabel fieldLabel ;
+	private JComboBox fieldComboBox ;
+	private JLabel categoryLabel ;
+	private JComboBox categoryComboBox ;
+	
+	public TableHeader() {
+		super() ;
+		// setting color
+		backgroundColor = new Color(R, G, B) ;
+		
+		// creating components
+		ecommerceIcon = new ImageIcon("./media/inLogo80x50.png") ;
+		ecommerceButton = new JButton(ecommerceIcon) ;
+		ecommerceButton.setBorderPainted(false) ;
+		ecommerceButton.setBackground(backgroundColor) ;
+		helloLabel = new JLabel("Hello User!") ;
+		helloLabel.setForeground(Color.WHITE) ;
+		searchLabel = new JLabel(
+		"  Find") ;
+		searchLabel.setForeground(Color.WHITE) ;
+		searchField = new JTextField("", 15) ;
+		searchField.setEditable(true) ;
+		searchField.setBackground(Color.WHITE) ;
+		
+		// button and icon image handling
+		searchIcon = new ImageIcon("./media/searchIcon.png") ;
+		searchButton = new JButton() ;
+		searchButton.setBorderPainted(false) ;
+		searchButton.setBackground(backgroundColor) ;
+		searchButton.addActionListener(this) ;
+		searchButton.setIcon(searchIcon) ;
+		
+		
+		// combo box setting
+		fieldLabel = new JLabel("Field") ;
+		String[] fields = {"Name", "Brand", "Code", "Price", "Quantity"} ;
+		fieldComboBox = new JComboBox(fields) ;
+		fieldComboBox.addActionListener(this) ;
+		categoryLabel = new JLabel("Category") ;
+		categoryComboBox = new JComboBox(ProductType.values()) ;
+		categoryComboBox.addActionListener(this) ;
+		
+		// mixing up
+		FlowLayout layout = new FlowLayout(FlowLayout.LEFT) ;
+		setLayout(layout) ;
+		add(ecommerceButton) ;
+		add(helloLabel) ;
+		add(searchLabel) ;
+		add(searchField) ;
+		add(searchButton) ;
+		add(fieldLabel) ;
+		add(fieldComboBox) ;
+		add(categoryComboBox) ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
+		
+		/* paint automatically repaint all of its panel components
+		// so we have to repeat it
+		searchLabel.repaint() ;
+		searchField.repaint() ;
+		searchButton.repaint() ;
+		FIX: searchLabel not working anyway.
+		changed overrided method from paint to paintComponent
+		this fixed it.
+		*/
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == searchButton)
+			System.out.println("Search Button pressed") ;
+		
+	}
+
+	public void setHelloUserName(String userName) {
+		helloLabel.setText("Hello " + userName + "!") ;
+	}
+	
+}

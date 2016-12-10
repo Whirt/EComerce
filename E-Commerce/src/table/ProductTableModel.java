@@ -7,19 +7,21 @@
 
 package table;
 
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 import product.Product;
 import productManager.ProductManager;
 
 public class ProductTableModel extends DefaultTableModel {
-	
-	/** This parameter states the class version */
+
+	// This parameter states the class version
 	private static final long serialVersionUID = -8133314890195531670L;
 	
+	// column and rows
 	private static final String[] COLUMNBAR =
-		{"Name", "Brand", "Code", "Class", "Price", "Qty", "Image" } ;
-	private static final int NUMCOLUMN = 7 ;
+		{"Name", "Brand", "Code", "Class", "Price", "Sale", "Image", "Qty"} ;
+	private static final int NUMCOLUMN = 8 ;
 	private int rows ;
 	
 	// Wrapped class
@@ -27,6 +29,7 @@ public class ProductTableModel extends DefaultTableModel {
 	
 	public ProductTableModel() {
 		super(null, COLUMNBAR) ;
+		
 		productManager = new ProductManager<Product>() ;
 		rows = 0 ; 
 	}
@@ -69,15 +72,21 @@ public class ProductTableModel extends DefaultTableModel {
 		case 2: return product.getCode() ;
 		case 3: return product.getType() ;
 		case 4: return product.getPrice() ;
-		case 5: return product.getQuantity() ;
+		case 5: return product.getSale() ;
 		case 6: return product.getImagePath() ;
+		// The 7th case is left to JTable for  a quantityBox to be placed
 		default: return null ;
 		}
 	}
 	
+	@Override
+	public boolean isCellEditable(int row, int column) {
+		// is never editable
+		return false ;
+	}
+	
 	// Is protected to be invoked by TableHeader
 	protected Product searchProduct(String pattern) {
-		
 		return productManager.getProduct(0) ;
 	}
 }

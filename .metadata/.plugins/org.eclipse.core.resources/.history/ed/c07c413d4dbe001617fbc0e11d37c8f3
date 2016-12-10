@@ -1,0 +1,14 @@
+package panel;
+
+import javax.swing.JPanel;
+
+public class AdminPanel extends JPanel {
+
+	private ECommerceTable table ;
+	
+	public AdminPanel() {
+		super() ;
+		ECommerceTable
+	}
+	
+}

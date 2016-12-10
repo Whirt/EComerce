@@ -1,0 +1,16 @@
+package mainpanel;
+
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
+
+public class FrameHeader extends JPanel {
+
+	private Color background ;
+	
+	@@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor();
+	}
+	
+}

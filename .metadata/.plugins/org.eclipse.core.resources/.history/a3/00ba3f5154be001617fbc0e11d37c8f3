@@ -1,0 +1,15 @@
+package product;
+
+public enum ProductType {
+	ALL,
+	MUSIC,
+	ELECTRONICS,
+	CLOTHING,
+	TOOL,
+	BOOK ;
+	
+	public static String[] getStringArray() {
+		
+	}
+	
+}

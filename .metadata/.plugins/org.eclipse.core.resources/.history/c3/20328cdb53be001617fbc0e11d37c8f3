@@ -1,0 +1,10 @@
+package product;
+
+public class ProductTypeUtil {
+	
+	private ProductTypeUtil() { ; }
+	
+	public String getProductTypeStringArray() {
+		
+	}
+}

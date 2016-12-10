@@ -1,0 +1,21 @@
+package panel;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class AdminPanel extends JPanel {
+
+	private BoxLayout layout ;
+	private ECommerceTable tablePanel ;
+	private AdminComands comandsPanel ;
+	
+	public AdminPanel() {
+		super() ;
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		tablePanel = new ECommerceTable() ;
+		comandsPanel = new AdminComands ;
+	}
+	
+}

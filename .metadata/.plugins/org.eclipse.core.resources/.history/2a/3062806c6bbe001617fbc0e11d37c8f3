@@ -1,0 +1,9 @@
+package table;
+
+public class QuantityComboBox extends JComboBox {
+
+	public QuantityComboBox() {
+		super() ;
+		
+	}
+}

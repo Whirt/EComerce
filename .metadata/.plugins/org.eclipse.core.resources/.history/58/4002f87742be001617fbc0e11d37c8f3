@@ -1,0 +1,88 @@
+/**
+ * TableHeader contains search bar, chart icon, and char elements counter.
+ */
+
+package table;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TableHeader extends JPanel implements ActionListener {
+
+	// background color
+	private static final int R = 43 ;
+	private static final int G = 105 ;
+	private static final int B = 210 ;
+	private Color backgroundColor ;
+	
+	private static final int MAXSEARCHLEN = 15 ;
+	
+	// panel components
+	private JLabel searchLabel ;
+	private JTextField searchField ;
+	private ImageIcon searchIcon ;
+	private JButton searchButton ;
+	
+	public TableHeader() {
+		super() ;
+		// setting color
+		backgroundColor = new Color(R, G, B) ;
+		
+		// creating components
+		searchLabel = new JLabel("Search") ;
+		searchLabel.setForeground(Color.WHITE) ;
+		searchField = new JTextField("", 15) ;
+		searchField.setEditable(true) ;
+		searchField.setBackground(Color.WHITE) ;
+		
+		// button and icon image handling
+		Toolkit t = Toolkit.getDefaultToolkit() ;
+		Image icon = t.getImage("./media/searchIcon.png") ;
+		MediaTracker m = new MediaTracker(this) ;
+		m.addImage(icon, 0) ;
+		try {	m.waitForAll() ;
+		} catch (InterruptedException e) {
+			System.out.println("searchIcon loading interrupted") ;
+			System.exit(-1) ;	}
+		searchIcon = new ImageIcon(icon) ;
+		searchButton = new JButton() ;
+		searchButton.setBorderPainted(false) ;
+		searchButton.setBackground(backgroundColor) ;
+		searchButton.addActionListener(this) ;
+		searchButton.setIcon(searchIcon) ;
+		
+		// mixing up
+		FlowLayout layout = new FlowLayout(FlowLayout.TRAILING) ;
+		setLayout(layout) ;
+		add(searchLabel) ;
+		add(searchField) ;
+		add(searchButton) ;
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == searchButton)
+			System.out.println("Search Button pressed") ;	
+	}
+
+}

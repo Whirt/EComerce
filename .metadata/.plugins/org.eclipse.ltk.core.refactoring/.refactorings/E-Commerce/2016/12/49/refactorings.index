@@ -19,3 +19,20 @@
 1481302136907	Rename type 'ECommerce'
 1481302244633	Rename type 'ProductTableView'
 1481302350032	Rename type 'ProductFinder'
+1481310640276	Delete element
+1481314602394	Rename type 'ECommerceFrame'
+1481314606069	Move compilation unit
+1481314617819	Move file
+1481314778310	Delete element
+1481314795474	Rename type 'AdminComandsPanel'
+1481316321448	Rename package 'frame'
+1481316335280	Rename package 'panel'
+1481316411687	Rename package 'adminframe'
+1481316421336	Move compilation unit
+1481317940498	Delete element
+1481320901117	Delete element
+1481322651960	Delete element
+1481326150817	Rename type 'LeftCustomerPanel'
+1481327601266	Rename type 'ProductTableModel'
+1481328862213	Rename type 'CustomerTableModel'
+1481330832855	Delete element

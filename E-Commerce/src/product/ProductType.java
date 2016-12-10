@@ -6,5 +6,5 @@ public enum ProductType {
 	ELECTRONICS,
 	CLOTHING,
 	TOOL,
-	BOOK,
+	BOOK ;
 }

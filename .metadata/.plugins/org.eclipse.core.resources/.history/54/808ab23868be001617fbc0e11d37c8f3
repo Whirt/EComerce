@@ -1,0 +1,34 @@
+/**
+ * Simply Image Renderer
+ */
+
+package customerelements;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
+import javax.swing.JPanel;
+
+public class ImageCustomerPanel extends JPanel {
+
+	private String imagePath = null ;
+	
+	public ImageCustomerPanel() {
+		super() ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		if (imagePath == null) {
+			
+		} else {
+			Toolkit t = Toolkit.getDefaultToolkit() ;
+			Image newImage = t.getImage(imagePath) ;
+			g.drawImage(newImage, 0, 0, getWidth(), getHeight(), null) ;
+		}
+	}
+	
+	
+	
+}

@@ -1,0 +1,13 @@
+package product;
+
+public class ProductTypeUtil {
+	
+	private ProductTypeUtil() { ; }
+	
+	public String[] getProductTypeStringArray() {
+		ProducType type = new ProductType() ;
+		for (int i = 0 ; i < ; i++) {
+			
+		}
+	}
+}

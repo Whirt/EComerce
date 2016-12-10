@@ -21,7 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import frame.ECommerceFrame;
+import ecommerce.ECommerce;
 import user.User;
 import user.UserType;
 
@@ -114,8 +114,7 @@ public class UserCreator extends JFrame implements ActionListener {
 				type = UserType.CUSTOMER ;
 			User user = new User(nameTxtField.getText(),
 						            pswdField.getText(), type) ;
-			ECommerceFrame ec = new ECommerceFrame(user.getUsername()
-										 + " E-Commerce Home", user) ;
+			ECommerce ec = new ECommerce(user) ;
 			dispose() ;
 		}	
 		outcomeTxtField.setText("Password not repeated") ;

@@ -12,9 +12,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import product.ProductType;
 
 public class TableHeader extends JPanel implements ActionListener {
 
@@ -31,9 +34,9 @@ public class TableHeader extends JPanel implements ActionListener {
 	private JTextField searchField ;
 	private ImageIcon searchIcon ;
 	private JButton searchButton ;
-	
-	// container panel layout
-	private FlowLayout layout ;
+	private JLabel fieldLabel ;
+	private JComboBox<String> fieldComboBox ;
+	private JComboBox<ProductType> categoryComboBox ;
 	
 	public TableHeader() {
 		super() ;
@@ -41,12 +44,13 @@ public class TableHeader extends JPanel implements ActionListener {
 		backgroundColor = new Color(R, G, B) ;
 		
 		// creating components
-		searchLabel = new JLabel("Search") ;
-		searchField = new JTextField("", 15) ;
+		searchLabel = new JLabel("Find") ;
+		searchLabel.setForeground(Color.WHITE) ;
+		searchField = new JTextField("", MAXSEARCHLEN) ;
 		searchField.setEditable(true) ;
 		searchField.setBackground(Color.WHITE) ;
 		
-		// button and icon handling
+		// button and icon image handling
 		searchIcon = new ImageIcon("./media/searchIcon.png") ;
 		searchButton = new JButton() ;
 		searchButton.setBorderPainted(false) ;
@@ -54,27 +58,48 @@ public class TableHeader extends JPanel implements ActionListener {
 		searchButton.addActionListener(this) ;
 		searchButton.setIcon(searchIcon) ;
 		
+		// combo box setting
+		fieldLabel = new JLabel("Field") ;
+		fieldLabel.setForeground(Color.WHITE) ;
+		String[] fields = {"Name", "Brand", "Code", "Price", "Quantity"} ;
+		fieldComboBox = new JComboBox<String>(fields) ;
+		fieldComboBox.addActionListener(this) ;
+		categoryComboBox = new JComboBox<ProductType>(ProductType.values()) ;
+		categoryComboBox.addActionListener(this) ;
+		
 		// mixing up
-		layout = new FlowLayout(FlowLayout.LEFT) ;
+		FlowLayout layout = new FlowLayout(FlowLayout.CENTER) ;
 		setLayout(layout) ;
 		add(searchLabel) ;
 		add(searchField) ;
 		add(searchButton) ;
-		
-		setVisible(true) ;
+		add(fieldLabel) ;
+		add(fieldComboBox) ;
+		add(categoryComboBox) ;
 	}
 	
 	@Override
-	public void paint(Graphics g) {
+	protected void paintComponent(Graphics g) {
 		g.setColor(backgroundColor) ;
 		g.fillRect(0, 0, getWidth(), getHeight()) ;
+		
+		/* paint automatically repaint all of its panel components
+		so we have to repeat it
+		searchLabel.repaint() ;
+		searchField.repaint() ;
+		searchButton.repaint() ;
+		FIX: searchLabel not working anyway.
+		changed method from paint to paintComponent.
+		this fixed it.
+		*/
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource() ;
 		if (source == searchButton)
-			System.out.println("Search Button pressed") ;	
+			System.out.println("Search Button pressed") ;
+		
 	}
-
+	
 }

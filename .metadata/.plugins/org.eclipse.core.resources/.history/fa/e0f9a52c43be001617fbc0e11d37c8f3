@@ -1,0 +1,20 @@
+/**
+ * Asset Loader class idea
+ */
+
+package IO;
+
+import java.awt.Toolkit;
+
+public class AssetLoader {
+	
+	
+	
+	public AssetLoader() {
+		Toolkit t = Toolkit.getDefaultToolkit() ;
+		//MediaTracker m = new MediaTracker() ;
+		
+		
+	}
+	
+}

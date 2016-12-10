@@ -21,12 +21,12 @@ public class Product {
 	private float price ;
 	private String imagePath ;
 	
-	private int quantity ;
+	private int sale ;
 	
 	public Product(String name, String brand,
 				   String code, ProductType type,
 				   float price, String imagePath, 
-				   int quantity) throws IllegalArgumentException {
+				   int sale) throws IllegalArgumentException {
 		/* available boolean tells whether some core information
 		 * are missing it's used only at creation, after construction phase
 		 * all information but name can be modified.
@@ -43,10 +43,10 @@ public class Product {
 		
 		this.imagePath = imagePath ;
 		setCode(code) ;
-		setQuantity(quantity) ;
+		setSale(sale) ;
 	}
 	public Product(String name, String brand, ProductType type, float price) {
-		this(name, brand, null, type, price, null, 1) ;
+		this(name, brand, null, type, price, null, 0) ;
 	}
 	// void parameter can't be passed to constructor
 	// as name field must be satisfied
@@ -71,9 +71,9 @@ public class Product {
 	public String getImagePath() {
 		return imagePath ;
 	}
-	public int getQuantity() {
-		return quantity ;
-	}	
+	public int getSale() {
+		return sale ;
+	}
 	
 	// setters
 	private boolean setName(String name) {
@@ -110,20 +110,11 @@ public class Product {
 		return true ;
 	}
 	// quantity handling
-	public void setQuantity(int quantity) {
+	public void setSale(int quantity) {
 		if (quantity < 0) {
 			quantity = 0 ;
 		}
-		this.quantity = quantity ;
-	}
-	public void incQuantity() {
-		quantity++ ;
-	}
-	public boolean decQuantity() {
-		if (quantity <= 0)
-			return false ;
-		quantity-- ;
-		return true ;
+		this.sale = quantity ;
 	}
 }
 

@@ -7,8 +7,6 @@
 
 package table;
 
-import java.awt.Dimension;
-
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
@@ -69,8 +67,6 @@ public class ECommerceTable extends JPanel {
 
 		// wrapping into a scrollPane
 		scrollPane = new JScrollPane(tableView) ;
-		//scrollPane.setPreferredSize(
-		//		new Dimension(getWidth() - TABLE_BORDER_WIDTH, TABLE_HEIGHT)) ;
 		
 		// setting up
 		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;

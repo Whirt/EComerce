@@ -1,0 +1,37 @@
+package mainpanel;
+
+import java.awt.Color;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class Panel extends JPanel {
+
+	// Background
+	private static final int R = 53 ;
+	private static final int G = 53 ;
+	private static final int B = 159 ;
+	private Color backgroundColor ;
+	
+	private BoxLayout layout ;
+	private FrameHeader header ;
+	private ECommerceTable table ;
+	
+	public Panel() {
+		super() ;
+	
+		backgroundColor = new Color(R, G, B) ;
+		
+		header = new FrameHeader() ;
+		header.setBackground(backgroundColor) ;
+		table = new ECommerceTable() ;
+		table.setBackground(backgroundColor) ;
+		
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(header) ;
+		add(table) ;
+	}
+}

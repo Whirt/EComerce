@@ -1,0 +1,24 @@
+/**
+ * Administrator frame outermost panel
+ * 
+ */
+
+package mainpanel;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import adminelements.AdminCommands;
+import table.ECommerceTable;
+
+public class AdminPanel extends Panel {
+	
+	private AdminCommands commands ;
+	
+	public AdminPanel() {
+		super() ;
+
+		add(commands) ;
+	}
+	
+}

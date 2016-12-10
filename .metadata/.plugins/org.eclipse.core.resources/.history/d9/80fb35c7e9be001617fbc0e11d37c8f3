@@ -1,0 +1,19 @@
+package mainpanel;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class Panel extends JPanel {
+	
+	protected BoxLayout layout ;
+	protected FrameHeader header ;
+	protected ECommerceTable table ;
+	
+	public Panel() {
+		super() ;
+		
+		usern
+	}
+}

@@ -7,15 +7,16 @@
 package mainframe;
 
 import mainpanel.CustomerPanel;
+import mainpanel.Panel;
 
 public class CustomerFrame extends Frame {
 
-	private CustomerPanel panel ;
+	private Panel panel ;
 	
-	public CustomerFrame(String title) {
-		super(title) ;
-		panel = new CustomerPanel() ;
+	public CustomerFrame(String username, Panel panel) {
+		super(username + " home") ;
+		panel.setHeaderName(username) ;
 		setContentPane(panel) ;
 	}
-	public CustomerFrame() { this("Customer Frame") ; }
+	public CustomerFrame() { this("Customer Frame", new CustomerPanel()) ; }
 }

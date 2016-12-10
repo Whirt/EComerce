@@ -13,12 +13,12 @@
 
 package ecommerce ;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import mainframe.AdminFrame;
+import mainframe.CustomerFrame;
 import mainframe.Frame;
-import table.ECommerceTable;
+import mainpanel.AdminPanel;
+import mainpanel.CustomerPanel;
+import mainpanel.Panel;
 import user.User;
 import user.UserType;
 
@@ -31,17 +31,19 @@ public class ECommerce {
 		this.user = user ; 
 		
 		Frame mainFrame = new Frame() ;
-		if (user.getType() == UserType.ADMINISTRATOR)
-			mainFrame = new AdminFrame(user.getUsername() + " ECommerce home") ;
-		else if (user.getType() == UserType.CUSTOMER) ;
-			// not implemented yet
-		
-		
+		Panel mainPanel ;
+		if (user.getType() == UserType.ADMINISTRATOR) {
+			mainPanel = new AdminPanel() ;
+			mainFrame = new AdminFrame(user.getUsername(), mainPanel) ;
+		} else if (user.getType() == UserType.CUSTOMER) {
+			mainPanel = new CustomerPanel() ;
+			mainFrame = new CustomerFrame(user.getUsername(), mainPanel) ;
+		}
+	
 		// Occasione per sfruttare il polimorfismo
 		// In base a user esegui la stessa implementazione!
 		
-		/**
-		 * ECommerceFrame in base al tipo di utente costruirà in modi
+		/**true		 * ECommerceFrame in base al tipo di utente costruirà in modi
 		 * differenti per usermode e modalità utente
 		 * 
 		 * L'idea è creare due oggetti di tipo ECommerce,
@@ -49,8 +51,10 @@ public class ECommerce {
 		 * sono i tre elementi che devono raccogliere i principali
 		 * elementi della pagina di ecommerce
 		 */
+		
+		mainFrame.pack() ;
+		mainFrame.setVisible(true) ;
 	}
-	
 	private ECommerce() {
 		// user must be definied!
 	}

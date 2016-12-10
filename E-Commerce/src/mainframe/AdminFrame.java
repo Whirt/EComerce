@@ -7,15 +7,15 @@
 package mainframe;
 
 import mainpanel.AdminPanel;
+import mainpanel.Panel;
 
 public class AdminFrame extends Frame {
 	
-	private AdminPanel panel ;
-	
-	public AdminFrame(String title) {
-		super(title) ;
-		panel = new AdminPanel() ;
+	public AdminFrame(String username, Panel panel) {
+		super(username + " home") ;
+		panel.setHeaderName(username) ;
 		setContentPane(panel) ;
 	}
-	public AdminFrame() { this("Administrator ECommerce Home") ; }
+	public AdminFrame() { 
+		this("Administrator ECommerce Home", new AdminPanel()) ; }
 }

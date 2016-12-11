@@ -1,5 +1,0 @@
-package customerelements;
-
-public class LeftCustomerPanel extends JPanel {
-
-}

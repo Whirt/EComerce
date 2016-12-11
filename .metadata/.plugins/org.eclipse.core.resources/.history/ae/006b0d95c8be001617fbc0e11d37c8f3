@@ -1,7 +1,0 @@
-package customerelements;
-
-import javax.swing.JPanel;
-
-public class ProductProfile extends JPanel {
-
-}

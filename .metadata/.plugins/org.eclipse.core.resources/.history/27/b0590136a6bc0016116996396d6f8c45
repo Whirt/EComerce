@@ -1,9 +1,0 @@
-/**
- * Basic Product abstraction
- */
-
-package productManager;
-
-public class Product {
-
-}

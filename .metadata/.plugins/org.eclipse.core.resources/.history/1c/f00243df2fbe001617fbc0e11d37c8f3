@@ -1,9 +1,0 @@
-package table;
-
-import javax.swing.JPanel;
-
-public class ProductFinder extends JPanel {
-
-	
-	
-}

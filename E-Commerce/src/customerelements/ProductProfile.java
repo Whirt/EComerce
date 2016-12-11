@@ -40,13 +40,13 @@ public class ProductProfile extends JPanel {
 	private JLabel codeLabel ;
 	private JLabel priceLabel ;
 	private JLabel discountLabel ;
-	private JLabel descriptionLabel ;
+	private JLabel detailLabel ;
 	private JTextField nameTextField ;
 	private JTextField brandTextField ;
 	private JTextField codeTextField ;
 	private JTextField priceTextField ;
 	private JTextField discountTextField ;
-	private JTextField descriptionTextField ;
+	private JTextField detailTextField ;
 	
 	public ProductProfile() {
 		super() ;
@@ -54,39 +54,39 @@ public class ProductProfile extends JPanel {
 		backgroundColor = new Color(R, G, B) ;
 		
 		// setting up components
-		nameLabel = new JLabel("      Name") ;
-		brandLabel = new JLabel("      Brand") ;
-		codeLabel = new JLabel("      Code") ;
-		priceLabel = new JLabel("      Price") ;
-		discountLabel = new JLabel("     Discount") ;
-		descriptionLabel = new JLabel("Description") ;
+		nameLabel = new JLabel("   Name") ;
+		brandLabel = new JLabel("  Brand") ;
+		codeLabel = new JLabel("  Code") ;
+		priceLabel = new JLabel(" Price") ;
+		discountLabel = new JLabel("Discount") ;
+		detailLabel = new JLabel(" Detail") ;
 		nameTextField = new JTextField("", TXTMAXLEN) ;
 		brandTextField = new JTextField("", TXTMAXLEN) ;
 		codeTextField = new JTextField("", TXTMAXLEN) ;
 		priceTextField = new JTextField("", TXTMAXLEN) ;
 		discountTextField = new JTextField("", TXTMAXLEN) ;
-		descriptionTextField = new JTextField("", TXTMAXLEN) ;
+		detailTextField = new JTextField("", TXTMAXLEN) ;
 		// none is editable
 		nameTextField.setEditable(false) ;
 		brandTextField.setEditable(false) ;
 		codeTextField.setEditable(false) ;
 		priceTextField.setEditable(false) ;
 		discountTextField.setEditable(false) ;
-		descriptionTextField.setEditable(false) ;
+		detailTextField.setEditable(false) ;
 		// setting background color
 		nameLabel.setBackground(backgroundColor) ;
 		brandLabel.setBackground(backgroundColor) ;
 		codeLabel.setBackground(backgroundColor) ;
 		priceLabel.setBackground(backgroundColor) ;
 		discountLabel.setBackground(backgroundColor) ;
-		descriptionLabel.setBackground(backgroundColor) ;
+		detailLabel.setBackground(backgroundColor) ;
 		// text color
 		nameLabel.setForeground(Color.WHITE) ;
 		brandLabel.setForeground(Color.WHITE) ;
 		codeLabel.setForeground(Color.WHITE) ;
 		priceLabel.setForeground(Color.WHITE) ;
 		discountLabel.setForeground(Color.WHITE) ;
-		descriptionLabel.setForeground(Color.WHITE) ;
+		detailLabel.setForeground(Color.WHITE) ;
 		
 		// adding up
 		FlowLayout layout = new FlowLayout(FlowLayout.TRAILING) ;
@@ -97,7 +97,7 @@ public class ProductProfile extends JPanel {
 		add(codeLabel) ; add(codeTextField) ;
 		add(priceLabel) ; add(priceTextField) ;
 		add(discountLabel) ; add(discountTextField) ;
-		add(descriptionLabel) ; add(descriptionTextField) ;
+		add(detailLabel) ; add(detailTextField) ;
 	}
 	
 	// API
@@ -109,7 +109,7 @@ public class ProductProfile extends JPanel {
 		brandTextField.setText(product.getBrand()) ;
 		codeTextField.setText(product.getCode()) ;
 		priceTextField.setText(new Float(product.getPrice()).toString()) ;
-		descriptionTextField.setText(product.getDescription()) ;
+		detailTextField.setText(product.getDetail()) ;
 		
 		return true ;
 	}

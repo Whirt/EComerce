@@ -12,14 +12,20 @@ public class DiscountedProduct extends Product {
 	public DiscountedProduct(String name, String brand,
 							 String code, ProductType type, 
 							 float price, String imagePath,
-							 int discount) 
+							 int discount, String detail) 
 	throws IllegalArgumentException {
-		super(name, brand, code, type, price, imagePath) ;
+		super(name, brand, code, type, price, imagePath, detail) ;
 		setDiscount(discount) ;
+	}
+	public DiscountedProduct(String name, String brand,
+								 String code, ProductType type, 
+								 float price, String imagePath,
+								 int discount) {
+			this(name, brand, code, type, price, imagePath, discount, null) ;
 	}
 	public DiscountedProduct(String name, String brand, 
 							 ProductType type, float price) {
-		this(name, brand, null, type, price, null, 0) ;
+		this(name, brand, null, type, price, null, 0, null) ;
 	}
 	
 	private void setDiscount(int discount) {

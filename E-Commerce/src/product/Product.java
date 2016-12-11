@@ -12,7 +12,7 @@
 package product;
 
 public class Product {
-
+	
 	// product info
 	private String name ;
 	private String brand ;
@@ -22,7 +22,7 @@ public class Product {
 	private String imagePath ;
 	
 	// not showed in table
-	private String description ;
+	private String detail ;
 	
 	/* not used in Product class.
 	 * 
@@ -50,7 +50,8 @@ public class Product {
 	 */
 	public Product(String name, String brand,
 				   String code, ProductType type,
-				   float price, String imagePath)
+				   float price, String imagePath,
+				   String detail)
 	throws IllegalArgumentException {
 		/* available boolean tells whether some core information
 		 * are missing it's used only at creation, after construction phase
@@ -63,11 +64,17 @@ public class Product {
 					setBrand(brand) && 
 					setPrice(price) &&
 					setType(type) ;
+					
 		if (!available)
 			throw new IllegalArgumentException() ;
 		
 		this.imagePath = imagePath ;
 		setCode(code) ;
+		setDetail(detail) ;
+	}
+	public Product(String name, String brand, String code, ProductType type,
+			   float price, String imagePath) {
+		this(name, brand, code, type, price, imagePath, null) ;
 	}
 	public Product(String name, String brand, ProductType type, float price) {
 		this(name, brand, null, type, price, null) ;
@@ -100,8 +107,8 @@ public class Product {
 	public int getDiscount() {
 		return discount ;
 	}
-	public String getDescription() {
-		return description ;
+	public String getDetail() {
+		return detail ;
 	}
 	public boolean isSpecial() {
 		return isSpecial ;
@@ -109,18 +116,22 @@ public class Product {
 	
 	// setters
 	private boolean setName(String name) {
-		if (name == null)
+		if (name == null || name.equals(""))
 			return false ;
 		this.name = name ;
 		return true ;
 	}
 	public boolean setBrand(String brand) {
-		if (brand == null)
+		if (brand == null || brand.equals(""))
 			return false ;
 		this.brand = brand ;
 		return true ;
 	}
 	public void setCode(String code) {
+		if (code == null) {
+			this.code = "" ;
+			return ;
+		}
 		this.code = code ;
 	}
 	public boolean setType(ProductType type) {
@@ -136,16 +147,17 @@ public class Product {
 		return true ;
 	}
 	public boolean setImagePath(String imagePath) {
-		if (imagePath == null)
+		if (imagePath == null || imagePath.equals(""))
 			return false ;
 		this.imagePath = imagePath ;
 		return true ;
 	}
-	public boolean setDescription(String description) {
-		if (description == null)
-			return false ;
-		this.description = description ;
-		return false ;
+	public void setDetail(String detail) {
+		if (detail == null) {
+			this.detail = "" ;
+			return ;
+		}
+		this.detail = detail ;
 	}
 	
 	

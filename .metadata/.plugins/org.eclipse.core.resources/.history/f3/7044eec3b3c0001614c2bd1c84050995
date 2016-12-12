@@ -1,0 +1,35 @@
+package adminelements;
+
+import javax.swing.JTextField;
+
+import product.Product;
+import table.ECommerceTable;
+
+public class ModifyProductFrame extends AddProductFrame  {
+	
+	private int productIndex ;
+	
+	public ModifyProductFrame(String title, ECommerceTable productTable,
+							 int index) 
+	throws IllegalArgumentException {
+		super(title, productTable) ;
+		
+		// control index
+		if ((index < 0) && (index >= productTable.getTableSize()))
+			this.productIndex = index ;
+		else
+			throw new IllegalArgumentException() ;
+		Product modifiedProduct = productTable.getProduct(index) ;
+		
+		// set data to be modified
+		nameTextField.setText(modifiedProduct.getName()) ;
+		brandTextField.setText(modifiedProduct.getBrand()) ;
+		codeTextField.setText(modifiedProduct.getCode()) ;
+		priceTextField.setText(
+				Float.toString(modifiedProduct.getPrice())) ;
+		detailTextField.setText(modifiedProduct.getDetail()) ;
+		
+		
+		
+	}
+}

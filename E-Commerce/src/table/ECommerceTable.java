@@ -72,6 +72,12 @@ public class ECommerceTable extends JPanel {
 	public Product getProduct(int index) {
 		return tableModel.getProduct(index) ;
 	}
+	public boolean removeProduct(int index) {
+		return tableModel.removeProduct(index) ;
+	}
+	public int getTableSize() {
+		return tableModel.getTableSize() ;
+	}
 	
 	// needed for customerFrame and adminFrame to implement mouse listener
 	public JTable getTableView() {

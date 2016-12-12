@@ -21,9 +21,9 @@ public class AddProductFrame extends ProductHandlerFrame
 	private JTextField urlTextField ;
 
 	// handling option
-	private JButton confirmButton ;
-	private JLabel outcomeLabel ;
-	private JTextField outcomeTextField ;
+	protected JButton confirmButton ;
+	protected JLabel outcomeLabel ;
+	protected JTextField outcomeTextField ;
 	
 	public AddProductFrame(String title, ECommerceTable productTable) {
 		super(title, productTable);
@@ -57,6 +57,16 @@ public class AddProductFrame extends ProductHandlerFrame
 		if (source != confirmButton) 
 			return ;
 		
+		Product newProduct = addNewProduct() ;
+		if (newProduct != null) {
+			productTable.addProduct(newProduct) ;
+			dispose() ;
+		}
+		
+	}
+
+	// API
+	protected Product addNewProduct() {
 		String name = nameTextField.getText() ;
 		String brand = brandTextField.getText() ;
 		String code = codeTextField.getText() ;
@@ -70,12 +80,12 @@ public class AddProductFrame extends ProductHandlerFrame
 		if (name.equals("") || brand.equals("") || 
 			!checkFloatString(priceString)) {
 			outcomeTextField.setText("Name, Brand or price must be defined") ;
-			return ;
+			return null ;
 		}
 		
 		if (productType == ProductType.ALL) {
 			outcomeTextField.setText("Class cannot be ALL") ;
-			return ;
+			return null ;
 		}
 			
 		
@@ -87,7 +97,7 @@ public class AddProductFrame extends ProductHandlerFrame
 		if (!isNotEmpty && specialSaleCheck.isSelected()) {
 			outcomeTextField.
 				setText("ERROR: No Special and discounted") ;
-			return ;
+			return null ;
 		}
 		boolean isDiscountCorrect = 
 				isNotEmpty && checkIntegerString(discountString, false) ;
@@ -111,13 +121,9 @@ public class AddProductFrame extends ProductHandlerFrame
 									 productType, price, url, detail) ;
 		}
 		
-		if (productTable.addProduct(newProduct))
-			outcomeTextField.setText("Success") ;
-			//dispose() ; // if everything fine
-		
-		//outcomeTextField.setText("Error occurred during product insertion") ;
+		return newProduct ;
 	}
-
+	
 	// Check if floatString has valid correct format
 	private boolean checkFloatString(String floatString) {
 		if (floatString.equals("") || floatString == null)

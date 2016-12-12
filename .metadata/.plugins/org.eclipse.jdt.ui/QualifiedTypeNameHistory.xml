@@ -38,15 +38,17 @@
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="adminelements.ProductHandlerFrame"/>
 <fullyQualifiedTypeName name="javax.swing.JButton"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="javax.swing.SpringLayout"/>
 <fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
-<fullyQualifiedTypeName name="product.Product"/>
 <fullyQualifiedTypeName name="product.DiscountedProduct"/>
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 <fullyQualifiedTypeName name="java.awt.ComponentOrientation"/>
 <fullyQualifiedTypeName name="product.ProductType"/>
 <fullyQualifiedTypeName name="java.lang.Float"/>
+<fullyQualifiedTypeName name="javax.swing.JCheckBox"/>
+<fullyQualifiedTypeName name="product.SpecialSaleProduct"/>
+<fullyQualifiedTypeName name="product.Product"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 </qualifiedTypeNameHistroy>

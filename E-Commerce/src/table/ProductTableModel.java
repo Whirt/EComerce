@@ -76,7 +76,14 @@ public class ProductTableModel extends DefaultTableModel {
 		}
 		return false ;
 	}
-	public int getSize() {
+	public boolean removeProduct(int index) {
+		if (!productManager.remove(index))
+			return false ;
+		rows-- ;
+		fireTableDataChanged() ;
+		return true ;
+	}
+	public int getTableSize() {
 		return productManager.getSize() ;
 	}
 	

@@ -3,42 +3,46 @@ package adminelements;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
+import product.Product;
 import table.ECommerceTable;
 
-public class ModifyProductFrame extends ProductHandlerFrame 
-								implements ActionListener {
+public class ModifyProductFrame extends AddProductFrame {
 	
-	private static final int TXTMAXLEN = 15 ;
+	private int productIndex ;
 	
-	private JButton confirmButton ;
-	private JLabel outcomeLabel ;
-	private JTextField outcomeTextField ;
-	
-	public ModifyProductFrame(String title, ECommerceTable productTable) {
+	public ModifyProductFrame(String title, ECommerceTable productTable,
+							 int index) 
+	throws IllegalArgumentException {
 		super(title, productTable) ;
-	
-		confirmButton = new JButton("Confirm") ;
-		confirmButton.addActionListener(this) ;
-		outcomeLabel = new JLabel("Outcome") ;
-		outcomeTextField = new JTextField("", TXTMAXLEN) ;
-		outcomeTextField.setEditable(false) ;
 		
-		add(outcomeLabel) ;
-		add(outcomeTextField) ;
-		add(confirmButton) ;
-	}
-	public ModifyProductFrame(ECommerceTable productTable) {
-		super(productTable) ;
+		// control index
+		if ((index < 0) && (index >= productTable.getTableSize()))
+			productIndex = index ;
+		else
+			throw new IllegalArgumentException() ;
+		Product modifiedProduct = productTable.getProduct(index) ;
+		
+		// set data to be modified
+		nameTextField.setText(modifiedProduct.getName()) ;
+		brandTextField.setText(modifiedProduct.getBrand()) ;
+		codeTextField.setText(modifiedProduct.getCode()) ;
+		priceTextField.setText(
+				Float.toString(modifiedProduct.getPrice())) ;
+		detailTextField.setText(modifiedProduct.getDetail()) ;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		Object source = e.getSource() ;
+		if (source != confirmButton) 
+			return ;
 		
+		Product newProduct = addNewProduct() ;
+		if (newProduct != null) {
+			// modify consist of removing and re-applying
+			productTable.removeProduct(productIndex) ;
+			productTable.addProduct(newProduct) ;
+			dispose() ;
+		}
 	}
-
 }

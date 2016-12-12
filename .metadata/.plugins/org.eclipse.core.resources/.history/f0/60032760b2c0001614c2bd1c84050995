@@ -1,0 +1,16 @@
+package adminelements;
+
+import table.ECommerceTable;
+
+public class ModifyProductFrame extends AddProductFrame  {
+	
+	private int productIndex ;
+	
+	public ModifyProductFrame(String title, ECommerceTable productTable,
+							 int productIndex) {
+		super(title, productTable) ;
+		if ((productIndex < 0) && 
+			(productIndex >= productTable.getTableSize()))
+			this.productIndex = productIndex ;
+	}
+}

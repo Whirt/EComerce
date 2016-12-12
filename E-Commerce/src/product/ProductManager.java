@@ -55,6 +55,13 @@ public class ProductManager<E extends Product> {
 		return true ;
 	}
 	
+	public boolean remove(int index) {
+		if (index < 0 || index >= products.size())
+			return false ;
+		products.removeElementAt(index) ;
+		return true ;
+	}
+	
 	public int getSize() {
 		return products.size() ;
 	}

@@ -20,12 +20,18 @@ public class SpecialSaleProduct extends Product {
 	public static final int PAY_NUM = 2 ;
 	
 	// constructor
+	public SpecialSaleProduct(String name, String brand,
+			 String code, ProductType type, 
+			 float price, String imagePath,
+			 String detail) 
+					 throws IllegalArgumentException {
+		super(name, brand, code, type, price, imagePath, detail) ;
+		isSpecial = true ;
+	}
 	public SpecialSaleProduct(String name, String brand, 
 							  String code, ProductType type, 
-							  float price, String imagePath)
-	throws IllegalArgumentException {
-		super(name, brand, code, type, price, imagePath) ;
-		isSpecial = true ;
+							  float price, String imagePath) {
+		this (name, brand, code, type, price, imagePath, null) ;
 	}
 	public SpecialSaleProduct(String name, String brand, 
 							  ProductType type, float price) {

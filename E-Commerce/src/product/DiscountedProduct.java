@@ -8,7 +8,7 @@ package product;
 
 public class DiscountedProduct extends Product {
 
-	// constructor
+	// constructor horizontal polymorphism
 	public DiscountedProduct(String name, String brand,
 							 String code, ProductType type, 
 							 float price, String imagePath,

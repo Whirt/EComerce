@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import product.DiscountedProduct;
 import product.Product;
 import product.ProductType;
+import product.SpecialSaleProduct;
 import table.ECommerceTable;
 
 public class AddProductFrame extends ProductHandlerFrame 
@@ -33,9 +34,9 @@ public class AddProductFrame extends ProductHandlerFrame
 		urlLabel.setForeground(Color.WHITE) ;
 		urlTextField = new JTextField("", TXTMAXLEN) ;
 		
-		confirmButton = new JButton("  Confirm") ;
+		confirmButton = new JButton("Confirm") ;
 		confirmButton.addActionListener(this) ;
-		outcomeLabel = new JLabel("     Outcome") ;
+		outcomeLabel = new JLabel("Outcome") ;
 		outcomeLabel.setForeground(Color.WHITE) ;
 		outcomeTextField = new JTextField("", TXTMAXLEN) ;
 		outcomeTextField.setEditable(false) ;
@@ -72,22 +73,49 @@ public class AddProductFrame extends ProductHandlerFrame
 			return ;
 		}
 		
+		if (productType == ProductType.ALL) {
+			outcomeTextField.setText("Class cannot be ALL") ;
+			return ;
+		}
+			
+		
 		float price = Float.parseFloat(priceString) ;
-		System.out.println(price) ;
+		
+		// data control and product creation
+		boolean isNotEmpty = discountString.equals("") ;
+		// a product cannot be either discounted and special
+		if (!isNotEmpty && specialSaleCheck.isSelected()) {
+			outcomeTextField.
+				setText("ERROR: No Special and discounted") ;
+			return ;
+		}
+		boolean isDiscountCorrect = 
+				isNotEmpty && checkIntegerString(discountString, false) ;
+		if (!isDiscountCorrect)
+			outcomeTextField.setText("Discount must contain only numbers") ;
 		
 		// polymorphic new product creation
-		Product newProduct ;
-		if (checkIntegerString(discountString, false)) {
+		Product newProduct = null ;
+		if (!isNotEmpty) {
+			System.out.println("Discount product created") ;
 			int discount = Integer.parseInt(discountString) ;
 			newProduct = new DiscountedProduct(name, brand, code, productType,
 											   price, url, discount, detail) ;
+		} else if (specialSaleCheck.isSelected()) {
+			System.out.println("Special Sale product created") ;
+			newProduct = new SpecialSaleProduct(name, brand, code,
+											productType, price, url, detail) ;
 		} else {
+			System.out.println("Normal product created") ;
 			newProduct = new Product(name, brand, code, 
 									 productType, price, url, detail) ;
 		}
 		
 		if (productTable.addProduct(newProduct))
-			System.out.println("ERROR: during new product insert") ;
+			outcomeTextField.setText("Success") ;
+			//dispose() ; // if everything fine
+		
+		//outcomeTextField.setText("Error occurred during product insertion") ;
 	}
 
 	// Check if floatString has valid correct format
@@ -113,8 +141,9 @@ public class AddProductFrame extends ProductHandlerFrame
 	// check whether integerString has valid correct format
 	private boolean checkIntegerString(String integerString, 
 									   boolean acceptDot) {
-		if (integerString.equals("") || integerString == null)
+		if (integerString == null)
 			return false ;
+		// checking string contents
 		int length = integerString.length() ;
 		for (int i = 0 ; i < length ; i++) {
 			char examinedChar = integerString.charAt(i) ;
@@ -123,6 +152,7 @@ public class AddProductFrame extends ProductHandlerFrame
 			if (!(isNumber || isAcceptedDot))
 				return false ;
 		}
+		
 		return true ;
 	}
 	

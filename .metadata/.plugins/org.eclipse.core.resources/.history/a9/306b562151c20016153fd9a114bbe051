@@ -1,0 +1,13 @@
+/**
+ * Error values container
+ */
+
+package ecommerce;
+
+public class IOError {
+
+	private IOError() { ; }
+	
+	public static final int LOGIN_ERROR = -1 ;
+	public static final int CREATING_USER_ERROR = -2 ;
+}

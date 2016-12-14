@@ -12,6 +12,7 @@
 package customerelements;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -31,7 +32,7 @@ public class BuyCommands extends JPanel implements ActionListener {
 
 	private static final int PREFERRED_WIDTH = 150 ;
 	private static final int PREFERRED_HEIGHT = 150 ;
-	private static final int TXTMAXLEN = 12 ;
+	private static final int TXTMAXLEN = 7 ;
 	// Backgrouund
 	private static final int R = 28 ;
 	private static final int G = 106 ;
@@ -57,7 +58,7 @@ public class BuyCommands extends JPanel implements ActionListener {
 		this.productTable = productTable ;
 		
 		// setting components
-		chooseLabel = new JLabel("Qty ") ;
+		chooseLabel = new JLabel("Quantity ") ;
 		chooseLabel.setForeground(Color.WHITE) ;
 		qtyBox = new QuantityBox() ;
 		addProductButton = new JButton("Add to cart") ;
@@ -68,11 +69,12 @@ public class BuyCommands extends JPanel implements ActionListener {
 		
 		// adding up
 		FlowLayout layout = new FlowLayout(FlowLayout.LEFT) ;
+		setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT) ;
 		setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT)) ;
 		setLayout(layout) ;
-		add(chooseLabel) ; add(qtyBox) ;
+		add(qtyBox) ; add(chooseLabel) ;
+		add(costTextField) ; add(costLabel) ;
 		add(addProductButton) ;
-		add(costLabel) ; add(costTextField) ;
 	}
 	// to construct without EcommerceTable is prohibited
 	private BuyCommands() { ; }

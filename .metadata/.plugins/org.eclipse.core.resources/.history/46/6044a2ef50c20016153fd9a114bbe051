@@ -1,0 +1,13 @@
+/**
+ * Error container
+ */
+
+package IO;
+
+public class IOError {
+
+	private IOError() { ; }
+	
+	public static final int LOGIN_ERROR = -1 ;
+	public static final int LOAD_USER_ERROR = -2 ;
+}

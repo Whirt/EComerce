@@ -1,0 +1,130 @@
+/**
+ * LoginFrame handles E-Commerce and decides whether to sign in 
+ * as administrator or normal user. It's possible to an create account.
+ * 
+ * @author Hu Jia Cheng
+ * @revision 1.0
+ */
+
+package login;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class LoginFrame extends JFrame implements ActionListener {
+	
+	// text settings
+	private final static int TXTMAXLEN = 20 ;
+	
+	// frame settings
+	private static final int WIDTH = 320 ;
+	private static final int HEIGHT = 220 ;
+	
+	// color
+	private static final int R = 84 ;
+	private static final int G = 108 ;
+	private static final int B = 206 ;
+	private Color backgroundColor ;
+	
+	// frame's components
+	private LogoPanel logoPanel ;
+	
+	private JPanel componentsPanel ;
+	private JLabel nameLabel ;
+	private JLabel passwdLabel ;
+	private JLabel infoLabel ;
+
+	private JTextField nameField ;
+	private JTextField passwdField ;
+	private JTextField errorField ;
+	
+	private JButton loginButton ;
+	private JButton createNewAccountButton ; 
+
+	public LoginFrame(String title) {
+		super(title) ;
+		setPreferredSize(new Dimension(WIDTH, HEIGHT)) ;
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setResizable(false) ;
+		
+		backgroundColor = new Color(R, G, B) ;
+		
+		logoPanel = new LogoPanel() ;
+		
+		nameLabel = new JLabel("Name ") ;
+		passwdLabel = new JLabel("Password ") ;
+		infoLabel = new JLabel("Info: ") ;
+		nameLabel.setBackground(backgroundColor) ;
+		passwdLabel.setBackground(backgroundColor) ;
+		infoLabel.setBackground(backgroundColor) ;
+		nameLabel.setForeground(Color.WHITE) ;
+		passwdLabel.setForeground(Color.WHITE) ;
+		infoLabel.setForeground(Color.WHITE) ;
+		nameField = new JTextField("", TXTMAXLEN) ;
+		nameField.setEditable(true) ;
+		passwdField = new JTextField("", TXTMAXLEN) ;
+		passwdField.setEditable(true) ;
+		errorField = new JTextField("", TXTMAXLEN) ;
+		errorField.setEditable(false) ;
+		
+		loginButton = new JButton("Login") ;
+		loginButton.addActionListener(this) ;
+		createNewAccountButton = new JButton("Create new account") ;
+		createNewAccountButton.addActionListener(this) ;
+		
+		FlowLayout flowLayout = new FlowLayout(FlowLayout.TRAILING) ;
+		componentsPanel = new JPanel() ;
+		componentsPanel.setBackground(backgroundColor) ;
+		componentsPanel.setLayout(flowLayout) ;
+		componentsPanel.add(nameLabel) ; 
+		componentsPanel.add(nameField) ;
+		componentsPanel.add(passwdLabel) ; 
+		componentsPanel.add(passwdField) ;
+		componentsPanel.add(infoLabel) ;
+		componentsPanel.add(errorField) ;
+		componentsPanel.add(loginButton) ; 
+		componentsPanel.add(createNewAccountButton) ;
+		
+		Container contentPane = getContentPane() ;
+		BoxLayout boxLayout = new BoxLayout(contentPane, BoxLayout.Y_AXIS) ;
+		contentPane.setLayout(boxLayout) ;
+		contentPane.setBackground(backgroundColor) ;
+		contentPane.add(logoPanel) ;
+		contentPane.add(componentsPanel) ;
+		
+		pack() ;
+		setVisible(true) ;
+	}
+	public LoginFrame() { this("Login E-Commerce") ; }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == createNewAccountButton) {
+			UserRegister uc = UserRegister.getUserRegister() ;
+		}
+		 
+		 
+		 
+	}
+	
+	private boolean checkAllTextField() {
+		if (passwdField == null) {
+			return false ;
+		}
+		
+		return true ;
+	}
+	
+}

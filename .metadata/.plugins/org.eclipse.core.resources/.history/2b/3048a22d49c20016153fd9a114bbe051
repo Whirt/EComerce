@@ -1,0 +1,59 @@
+/**
+ * The user identify all of people who this software can be used for.
+ * The application is developed to support two ways of working
+ * - Administrator mode
+ * - Customer mode
+ * During the account creation process a way can be chosen
+ * 
+ * @author Jia Cheng Hu
+ * @revision 1.0
+ */
+
+package user;
+
+import java.io.Serializable;
+
+import cart.CartTableModel;
+import product.ListedProduct;
+import product.ProductManager;
+
+public class User implements Serializable {
+
+	// serial class version unique identifier
+	private static final long serialVersionUID = 2064696062064722263L;
+	
+	private String username ;
+	private String password ;
+
+	private ProductManager<ListedProduct> cart ;
+	
+	private UserType type ;
+	
+	// Constructor
+	public User(String username, String password, UserType type,
+				ProductManager<ListedProduct> cart) {
+		this.username = username ;
+		this.password = password ;
+		this.cart = cart ;
+		this.type = type ;
+	}
+	public User(String username, String password, UserType type) {
+		this (username, password, type, new ProductManager<L>) ;
+	}
+	private User() { ; }
+	
+	// getters
+	public String getUsername() {
+		return username ;
+	}
+	public String getPassword() {
+		return password ;
+	}
+	public ProductManager<ListedProduct> getCartModel() {
+		return cart ;
+	}
+	public UserType getType() {
+		return type ;
+	}
+	
+}

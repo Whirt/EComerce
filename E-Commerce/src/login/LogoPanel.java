@@ -11,14 +11,28 @@ import javax.swing.JPanel;
 
 public class LogoPanel extends JPanel {
 
+	// color
+	private static final int R = 84 ;
+	private static final int G = 103 ;
+	private static final int B = 206 ;
+	private Color background ;
+	
+	// Image settings
 	private static final int X_OFFSET = 70 ;
 	private static final int Y_OFFSET = 0 ;
 	
 	private static final int LOGO_HEIGHT = 100 ;
-	private static final int LOGO_WIDTH = 180 ;
+	private static final int LOGO_WIDTH = 150 ;
 	private Image logo ;
 	
+	public LogoPanel() {
+		super() ;
+		background = new Color(R, G, B) ;
+	}
+	
 	public void paint(Graphics g) {
+		g.setColor(background) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
 		
 		Toolkit t = Toolkit.getDefaultToolkit() ;
 		if (!(new File("./media/logo.png").exists())) {

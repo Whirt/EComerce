@@ -1,0 +1,45 @@
+/**
+ * The user identify all of people who this software can be used for.
+ * The application is developed to support two ways of working
+ * - Administrator mode
+ * - Customer mode
+ * During the account creation process a way can be chosen
+ * 
+ * @author Jia Cheng Hu
+ * @revision 1.0
+ */
+
+package user;
+
+import cart.CartTableModel;
+
+public class User {
+
+	private String username ;
+	private String password ;
+
+	private CartTableModel cart ;
+	
+	private UserType type ;
+	
+	// Constructor
+	public User(String username, String password, UserType type) {
+		this.username = username ;
+		this.password = password ;
+		this.type = type ;
+	}
+	public User() { this("noname", "nopassword", UserType.CUSTOMER) ; }
+	
+	
+	// getters
+	public String getUsername() {
+		return username ;
+	}
+	public String getPassword() {
+		return password ;
+	}
+	public UserType getType() {
+		return type ;
+	}
+	
+}

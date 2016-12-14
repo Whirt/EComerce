@@ -1,0 +1,103 @@
+/**
+ * BuyCommands Panel.
+ * 
+ * 
+ * BuyCommands Panel consist of main customer interaction 
+ * button to buy the product.
+ * 
+ * It's pretty simply, it offers a quantity Box and a button
+ * to add into cart and the cost will be shown.
+ */
+
+package customerelements;
+
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import product.Product;
+import product.ProductType;
+import table.ECommerceTable;
+
+public class BuyCommands extends JPanel implements ActionListener {
+
+	private static final int PREFERRED_WIDTH = 200 ;
+	private static final int PREFERRED_HEIGHT = 150 ;
+	private static final int TXTMAXLEN = 12 ;
+	// Backgrouund
+	private static final int R = 28 ;
+	private static final int G = 106 ;
+	private static final int B = 208 ;
+	private Color backgroundColor ;
+	
+	// table of product to work on
+	private ECommerceTable productTable ;
+	
+	// componenents
+	private JLabel chooseLabel ;
+	private QuantityBox qtyBox ;
+	private JButton addProductButton ;
+	private JLabel costLabel ;
+	private JTextField costTextField ;
+	
+	public BuyCommands(ECommerceTable productTable) {
+		super() ;
+		
+		// setting color
+		backgroundColor = new Color(R, G, B) ;
+		
+		this.productTable = productTable ;
+		
+		// setting components
+		chooseLabel = new JLabel("Qty ") ;
+		chooseLabel.setForeground(Color.WHITE) ;
+		qtyBox = new QuantityBox() ;
+		addProductButton = new JButton("Add to cart") ;
+		addProductButton.addActionListener(this) ;
+		costLabel = new JLabel("Price ") ;
+		costLabel.setForeground(Color.WHITE) ;
+		costTextField = new JTextField("", TXTMAXLEN) ;
+		
+		// adding up
+		FlowLayout layout = new FlowLayout(FlowLayout.LEFT) ;
+		setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT) ;
+		setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT)) ;
+		setLayout(layout) ;
+		add(qtyBox) ; add(chooseLabel) ;
+		add(costTextField) ; add(costLabel) ;
+		add(addProductButton) ;
+	}
+	// to construct without EcommerceTable is prohibited
+	private BuyCommands() { ; }
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight());
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource() ;
+		if (source == addProductButton) {
+			// Test
+			Product newProd = new Product
+					("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
+					 3500F,
+					 "http://ssl-product-images.www8-hp.com/digmedialib"
+					 +"/prodimg/lowres/c05059975.png") ;
+			productTable.addProduct(newProd) ;
+		}
+		
+	}
+	
+}

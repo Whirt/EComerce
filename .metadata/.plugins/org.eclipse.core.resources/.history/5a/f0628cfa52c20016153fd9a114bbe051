@@ -1,0 +1,59 @@
+/**
+ * ECommerce is the main program state.
+ * 
+ * Any state of this software pass through ECommerce to communicate
+ * to each other.
+ * 
+ * ECommerce class represents the program functionalities core.
+ * It's also E-Commerce's home. It shows different option and commands
+ * depending on which Operative Mode is previously selected.
+ * 
+ * @author Hu Jia Cheng
+ */
+
+package ecommerce ;
+
+import mainframe.AdminFrame;
+import mainframe.CustomerFrame;
+import mainframe.Frame;
+import mainpanel.AdminPanel;
+import mainpanel.CustomerPanel;
+import mainpanel.Panel;
+import user.User;
+import user.UserType;
+
+public class ECommerce {
+	
+	public ECommerce(User user) {
+		
+		Frame mainFrame = new Frame() ;
+		Panel mainPanel ;
+		if (user.getType() == UserType.ADMINISTRATOR) {
+			mainPanel = new AdminPanel() ;
+			mainFrame = new AdminFrame(user.getUsername(), mainPanel) ;
+		} else if (user.getType() == UserType.CUSTOMER) {
+			mainPanel = new CustomerPanel() ;
+			mainFrame = new CustomerFrame(user.getUsername(), mainPanel) ;
+		}
+	
+		// Occasione per sfruttare il polimorfismo
+		// In base a user esegui la stessa implementazione!
+		
+		/**true		 * ECommerceFrame in base al tipo di utente costruirà in modi
+		 * differenti per usermode e modalità utente
+		 * 
+		 * L'idea è creare due oggetti di tipo ECommerce,
+		 * ECommerce Panel, ECommerce Table, ECommerce Commands
+		 * sono i tre elementi che devono raccogliere i principali
+		 * elementi della pagina di ecommerce
+		 */
+		
+		mainFrame.pack() ;
+		mainFrame.setVisible(true) ;
+	}
+	private ECommerce() {
+		// user must be definied!
+	}
+	
+	
+}

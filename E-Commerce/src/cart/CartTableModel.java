@@ -37,11 +37,14 @@ public class CartTableModel extends DefaultTableModel {
 	// Wrapped class
 	private ProductManager<ListedProduct> productManager ;
 	
-	public CartTableModel() {
+	public CartTableModel(ProductManager<ListedProduct> cart) {
 		super(null, COLUMNBAR) ;
 		
-		productManager = new ProductManager<ListedProduct>() ;
+		productManager = cart ;
 		rows = 0 ; 
+	}
+	public CartTableModel() {
+		this(new ProductManager<ListedProduct>()) ;
 	}
 	
 	@Override

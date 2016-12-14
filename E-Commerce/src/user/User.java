@@ -11,20 +11,42 @@
 
 package user;
 
-public class User {
+import java.io.Serializable;
 
+import cart.CartTableModel;
+import product.ListedProduct;
+import product.ProductManager;
+
+public class User implements Serializable {
+
+	// serial class version unique identifier
+	private static final long serialVersionUID = 2064696062064722263L;
+	
 	private String username ;
 	private String password ;
 
+	private ProductManager<ListedProduct> cart ;
+	
 	private UserType type ;
 	
 	// Constructor
-	public User(String username, String password, UserType type) {
+	public User(String username, String password, UserType type,
+				ProductManager<ListedProduct> cart) 
+	throws IllegalArgumentException {
+		if (username == null || password == null ||
+			username.equals("") || password.equals(""))
+			throw new IllegalArgumentException() ;
+		
 		this.username = username ;
 		this.password = password ;
+		this.cart = cart ;
 		this.type = type ;
 	}
-	public User() { this("noname", "nopassword", UserType.CUSTOMER) ; }
+	public User(String username, String password, UserType type) {
+		this (username, password, type, 
+				new ProductManager<ListedProduct>()) ;
+	}
+	private User() { ; }
 	
 	// getters
 	public String getUsername() {
@@ -32,6 +54,9 @@ public class User {
 	}
 	public String getPassword() {
 		return password ;
+	}
+	public ProductManager<ListedProduct> getCartModel() {
+		return cart ;
 	}
 	public UserType getType() {
 		return type ;

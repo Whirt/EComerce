@@ -1,0 +1,9 @@
+/**
+ * In questo file si mantiene memoria de
+ */
+
+package login;
+
+public class UserDataBase {
+
+}

@@ -35,12 +35,12 @@ public class Launcher {
 	public static void main(String[] args) {
 		
 		// Funzionamento originale, togliere commenti per il prodotto "finale"
-		//LoginFrame mainFrame = new LoginFrame("Login E-Commerce") ;
+		LoginFrame mainFrame = new LoginFrame("Login E-Commerce") ;
 		
 		//User user = new User("Geo", "asfasf", UserType.ADMINISTRATOR) ;
-		User user = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
+		//User user = new User("Angelo", "asfasf", UserType.CUSTOMER) ;
 		
-		ECommerce frame = new ECommerce(user) ;
+		//ECommerce frame = new ECommerce(user) ;
 		
 		//ECommerceTable table  = new ECommerceTable() ;
 		//ProductHandlerFrame frame = 

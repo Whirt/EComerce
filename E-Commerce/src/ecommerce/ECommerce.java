@@ -24,10 +24,12 @@ import user.UserType;
 
 public class ECommerce {
 	
+	private Frame mainFrame ;
+	private Panel mainPanel ;
+	
 	public ECommerce(User user) {
 		
-		Frame mainFrame = new Frame() ;
-		Panel mainPanel ;
+		mainFrame = new Frame() ;
 		if (user.getType() == UserType.ADMINISTRATOR) {
 			mainPanel = new AdminPanel() ;
 			mainFrame = new AdminFrame(user.getUsername(), mainPanel) ;
@@ -49,11 +51,13 @@ public class ECommerce {
 		 */
 		
 		mainFrame.pack() ;
-		mainFrame.setVisible(true) ;
 	}
 	private ECommerce() {
 		// user must be definied!
 	}
 	
+	public void setVisible(boolean visible) {
+		mainFrame.setVisible(visible) ;
+	}
 	
 }

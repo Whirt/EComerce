@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 
 public class Frame extends JFrame {
 	
-	private static final int WIDTH = 900 ;
+	private static final int WIDTH = 840 ;
 	private static final int HEIGHT = 620 ;
 	
 	public Frame(String title) {

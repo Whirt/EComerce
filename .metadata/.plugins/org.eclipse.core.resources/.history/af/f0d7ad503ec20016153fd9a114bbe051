@@ -1,0 +1,109 @@
+/**
+ * This just show prodcut profile,
+ * do not implement listener because no interaction with customer
+ * is needed.
+ */
+
+package customerelements;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import product.Product;
+import table.ECommerceTable;
+
+public class ProductProfile extends JPanel {
+	
+	private static final int TXTAREACOL = 26 ;
+	private static final int TXTAREAROW = 5 ;
+	
+	// panel preferred size
+	private static final int PREFERRED_WIDTH = 355 ;
+	private static final int PREFERRED_HEIGHT = 150 ;
+	
+	private static final int TXTMAXLEN = 26 ;
+	// backgrouund
+	private static final int R = 28 ;
+	private static final int G = 106 ;
+	private static final int B = 208 ;
+	private Color backgroundColor ;
+	
+	// table of product to work on
+	private ECommerceTable ecommerceTable ;
+	
+	// panel components
+	private JLabel nameLabel ;
+	private JLabel brandLabel ;
+	private JLabel codeLabel ;
+	private JLabel detailLabel ;
+	private JTextField nameTextField ;
+	private JTextField brandTextField ;
+	private JTextField codeTextField ;
+	private JTextArea detailTextArea ;
+	
+	public ProductProfile() {
+		super() ;
+		
+		backgroundColor = new Color(R, G, B) ;
+		
+		// setting up components
+		nameLabel = new JLabel("   Name") ;
+		brandLabel = new JLabel("  Brand") ;
+		codeLabel = new JLabel("  Code") ;
+		detailLabel = new JLabel(" Detail") ;
+		nameTextField = new JTextField("", TXTMAXLEN) ;
+		brandTextField = new JTextField("", TXTMAXLEN) ;
+		codeTextField = new JTextField("", TXTMAXLEN) ;
+		detailTextArea = new JTextArea(TXTAREAROW, TXTAREACOL) ;
+		// none is editable
+		nameTextField.setEditable(false) ;
+		brandTextField.setEditable(false) ;
+		codeTextField.setEditable(false) ;
+		detailTextArea.setEditable(false) ;
+		// setting background color
+		nameLabel.setBackground(backgroundColor) ;
+		brandLabel.setBackground(backgroundColor) ;
+		codeLabel.setBackground(backgroundColor) ;
+		detailLabel.setBackground(backgroundColor) ;
+		// text color
+		nameLabel.setForeground(Color.WHITE) ;
+		brandLabel.setForeground(Color.WHITE) ;
+		codeLabel.setForeground(Color.WHITE) ;
+		detailLabel.setForeground(Color.WHITE) ;
+		
+		// adding up
+		FlowLayout layout = new FlowLayout(FlowLayout.TRAILING) ;
+		setLayout(layout) ;
+		setPreferredSize(new Dimension(PREFERRED_WIDTH, PREFERRED_HEIGHT)) ;
+		add(nameLabel) ; add(nameTextField) ;
+		add(brandLabel) ; add(brandTextField) ;
+		add(codeLabel) ; add(codeTextField) ;
+		add(detailLabel) ; add(detailTextArea) ;
+	}
+	
+	// API
+	public boolean setProductProfile(Product product) {
+		if (product == null)
+			return false ;
+		
+		nameTextField.setText(product.getName()) ;
+		brandTextField.setText(product.getBrand()) ;
+		codeTextField.setText(product.getCode()) ;
+		detailTextArea.setText(product.getDetail()) ;
+		
+		return true ;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		g.setColor(backgroundColor) ;
+		g.fillRect(0, 0, getWidth(), getHeight()) ;
+	}
+}

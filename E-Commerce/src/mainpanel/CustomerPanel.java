@@ -3,11 +3,7 @@ package mainpanel;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-
 import customerelements.CustomerCommands;
-import table.ECommerceTable;
 
 public class CustomerPanel extends Panel {
 	

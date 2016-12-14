@@ -1,11 +1,27 @@
-package IO;
-
 /**
  * Object Writer Reader
  *
  * Classe che scrive e legge tramite operazioni di serializzazione
  * e deserializazione.
+ * 
+ * IDEA:
+ * L'amministratore può caricare e salvare i dati del contenuto
+ * della tabella dei prodotti.
+ * 
+ * L'utente invece carica il proprio carrello in automatico
+ * con un operazione di IO che avviene
+ * nel momento del login, il file contenente i dati del carrello
+ * è specificato dal nomeLogin + cart
+ * 
+ * Gli elementi che consistono di IO
+ * - sono Tabella dei prodotti
+ * - carrello e quindi relativa tabella dei prodotti
+ * - utente password
+ * 
+ * 
  */
+
+package IO;
 
 import java.io.FileOutputStream ;
 import java.io.FileInputStream ;

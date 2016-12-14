@@ -28,7 +28,7 @@ public class ModifyProductFrame extends AddProductFrame {
 		codeTextField.setText(modifiedProduct.getCode()) ;
 		priceTextField.setText(
 				Float.toString(modifiedProduct.getPrice())) ;
-		detailTextField.setText(modifiedProduct.getDetail()) ;
+		detailTextArea.setText(modifiedProduct.getDetail()) ;
 	}
 	
 	@Override

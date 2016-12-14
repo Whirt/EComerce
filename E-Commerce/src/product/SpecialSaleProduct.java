@@ -14,8 +14,11 @@ package product;
 
 public class SpecialSaleProduct extends Product {
 
+	// Serial class version Unique identifier 
+	private static final long serialVersionUID = -1236828593590531513L;
+	
 	// Public defined integers
-	// absolutely not to set 0! if needed use Product class instead
+	// absolutely do not set to 0! use Product class instead
 	public static final int PRODUCT_NUM = 3 ;
 	public static final int PAY_NUM = 2 ;
 	
@@ -49,6 +52,10 @@ public class SpecialSaleProduct extends Product {
 	public float buyProduct(int quantity) {
 		if (quantity <= 0)
 			return 0 ;
+		if (quantity < PRODUCT_NUM) {
+			return quantity * super.getPrice() ;
+		}
+		
 		int multiple = quantity/PRODUCT_NUM ;
 		int paidProductNum = multiple * PAY_NUM ;
 		float totalPrice = paidProductNum * super.getPrice() ;

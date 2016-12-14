@@ -8,6 +8,9 @@ package product;
 
 public class ListedProduct extends Product {
 
+	// Serial class version Unique identifier 
+	private static final long serialVersionUID = 4090515427504131803L;
+	
 	// core extension
 	private int quantity ;
 	

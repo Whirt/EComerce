@@ -8,6 +8,9 @@ package product;
 
 public class DiscountedProduct extends Product {
 
+	// Serial class version Unique identifier 
+	private static final long serialVersionUID = -1067270721878454864L;
+
 	// constructor horizontal polymorphism
 	public DiscountedProduct(String name, String brand,
 							 String code, ProductType type, 

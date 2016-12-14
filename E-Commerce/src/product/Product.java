@@ -11,7 +11,12 @@
 
 package product;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
+	
+	// Serial class version Unique identifier 
+	private static final long serialVersionUID = 9014395475380886208L;
 	
 	// product info
 	private String name ;

@@ -17,6 +17,13 @@ import table.ECommerceTable;
 public class AddProductFrame extends ProductHandlerFrame 
 							 implements ActionListener {
 	
+	// String size limits
+	private static final int PRODUCTTXTMAXLEN = 15 ;
+	private static final int PRODUCTAREAMAXLEN = 
+								TXTAREACOL*TXTAREAROW ;
+	private static final int URLMAXLEN = 100 ;
+	
+	// URL text field
 	private JLabel urlLabel ;
 	private JTextField urlTextField ;
 
@@ -65,8 +72,8 @@ public class AddProductFrame extends ProductHandlerFrame
 		
 	}
 
-	// API
 	protected Product addNewProduct() {
+		// retrieving data
 		String name = nameTextField.getText() ;
 		String brand = brandTextField.getText() ;
 		String code = codeTextField.getText() ;
@@ -74,23 +81,36 @@ public class AddProductFrame extends ProductHandlerFrame
 				(ProductType)categoryComboBox.getSelectedItem() ;
 		String priceString = priceTextField.getText() ;
 		String discountString = discountTextField.getText() ;
-		String detail = detailTextField.getText() ;
 		String url = urlTextField.getText() ;
+		String detail = detailTextArea.getText() ;
 		
+		// checking texts and text area length
+		if (name.length() > PRODUCTTXTMAXLEN ||
+			brand.length() > PRODUCTTXTMAXLEN ||
+			code.length() > PRODUCTTXTMAXLEN ||
+			priceString.length() > PRODUCTTXTMAXLEN ||
+			discountString.length() > PRODUCTTXTMAXLEN ||
+			detail.length() > PRODUCTAREAMAXLEN ||
+			url.length() > URLMAXLEN) {
+			outcomeTextField.setText("Maximum length exceeded") ;
+			return null ;
+		}
+		
+		// checking if main data are present
 		if (name.equals("") || brand.equals("") || 
+			// check if float string format is correct
 			!checkFloatString(priceString)) {
 			outcomeTextField.setText("Name, Brand or price must be defined") ;
 			return null ;
 		}
+		float price = Float.parseFloat(priceString) ;
 		
+		// check class setting
 		if (productType == ProductType.ALL) {
 			outcomeTextField.setText("Class cannot be ALL") ;
 			return null ;
 		}
-			
-		
-		float price = Float.parseFloat(priceString) ;
-		
+				
 		// data control and product creation
 		boolean isNotEmpty = discountString.equals("") ;
 		// a product cannot be either discounted and special

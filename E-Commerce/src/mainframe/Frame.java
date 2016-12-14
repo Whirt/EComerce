@@ -8,18 +8,18 @@
 
 package mainframe;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 public class Frame extends JFrame {
 	
-	private static final int START_X = 100 ;
-	private static final int START_Y = 50 ;
-	private static final int WIDTH = 800 ;
+	private static final int WIDTH = 900 ;
 	private static final int HEIGHT = 620 ;
 	
 	public Frame(String title) {
 		super(title) ;
-		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
+		setPreferredSize(new Dimension(WIDTH, HEIGHT)) ;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
 		setResizable(false) ;
 	}

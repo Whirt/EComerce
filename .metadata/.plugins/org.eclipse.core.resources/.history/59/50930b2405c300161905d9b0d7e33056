@@ -1,0 +1,22 @@
+/**
+ * Customer main operating frame.
+ * 
+ * @author Hu Jia Cheng
+ */
+
+package mainframe;
+
+import mainpanel.CustomerPanel;
+import mainpanel.Panel;
+
+public class CustomerFrame extends Frame {
+
+	private Panel panel ;
+	
+	public CustomerFrame(String username, Panel panel) {
+		super(username) ;
+		panel.setHeaderName(username) ;
+		setContentPane(panel) ;
+	}
+	public CustomerFrame() { this("Customer Frame", new CustomerPanel()) ; }
+}

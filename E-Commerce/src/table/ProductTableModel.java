@@ -97,7 +97,7 @@ public class ProductTableModel extends DefaultTableModel {
 		case BRAND_COLUMN    : return product.getBrand() ;
 		case CODE_COLUMN     : return product.getCode() ;
 		case CLASS_COLUMN    : return product.getType() ;
-		case PRICE_COLUMN    : return product.getPrice() ;
+		case PRICE_COLUMN    : return product.getPrice() + " €" ;
 		case DISCOUNT_COLUMN : return product.getDiscount() ;
 		case IMAGE_COLUMN    : return loadImage(product.getImagePath()) ;
 		default: return null ;

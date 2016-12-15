@@ -33,10 +33,10 @@ import user.User;
 public class LoginFrame extends JFrame implements ActionListener {
 	
 	// text settings
-	private final static int TXTMAXLEN = 20 ;
+	private final static int TXTMAXLEN = 25 ;
 	
 	// frame settings
-	private static final int WIDTH = 320 ;
+	private static final int WIDTH = 370 ;
 	private static final int HEIGHT = 220 ;
 	
 	// color
@@ -67,9 +67,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 		setResizable(false) ;
 		
 		backgroundColor = new Color(R, G, B) ;
-		
-		logoPanel = new LogoPanel() ;
-		
+	
+		// components setting
 		nameLabel = new JLabel("Name ") ;
 		passwdLabel = new JLabel("Password ") ;
 		infoLabel = new JLabel("Info: ") ;
@@ -104,10 +103,13 @@ public class LoginFrame extends JFrame implements ActionListener {
 		componentsPanel.add(loginButton) ; 
 		componentsPanel.add(createNewAccountButton) ;
 		
+		// mixing up
 		Container contentPane = getContentPane() ;
 		BoxLayout boxLayout = new BoxLayout(contentPane, BoxLayout.Y_AXIS) ;
 		contentPane.setLayout(boxLayout) ;
 		contentPane.setBackground(backgroundColor) ;
+		// adding logo
+		logoPanel = new LogoPanel() ;
 		contentPane.add(logoPanel) ;
 		contentPane.add(componentsPanel) ;
 		
@@ -120,7 +122,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource() ;
 		if (source == createNewAccountButton) {
-			UserRegister uc = UserRegister.getUserRegister() ;
+			UserRegister.getUserRegister() ;
+			return ;
 		}
 		
 		// login phase
@@ -136,7 +139,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		dispose() ;
 	}
 	
-	
+	// Method that load and return an User that matches the user name field
 	private User getUser() {
 		String username = nameField.getText() ;
 		if (username == null) 

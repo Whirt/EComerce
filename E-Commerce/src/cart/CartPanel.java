@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import user.User;
+
 public class CartPanel extends JPanel {
 
 	private static final float CART_HEADER_PORTION = 1F/3 ;
@@ -15,13 +17,13 @@ public class CartPanel extends JPanel {
 	
 	private BoxLayout cartLayout ;
 	
-	public CartPanel() {
+	public CartPanel(User user) {
 		super() ;
 		
 		cartHeader = new CartHeader() ;
 		cartHeader.setPreferredSize(new Dimension(getWidth(), 
 				(int)(getHeight()*CART_HEADER_PORTION))) ;
-		cartTable = new CartTableView() ;
+		cartTable = new CartTableView(user.getCartProduct()) ;
 		cartTable.setPreferredSize(new Dimension(getWidth(),
 				(int)(getHeight()*CART_TABLE_PORTION)));
 		

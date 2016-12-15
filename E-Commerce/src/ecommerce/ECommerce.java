@@ -29,12 +29,12 @@ public class ECommerce {
 	
 	public ECommerce(User user) {
 		
-		mainFrame = new Frame() ;
+		mainFrame = null ;
 		if (user.getType() == UserType.ADMINISTRATOR) {
-			mainPanel = new AdminPanel() ;
+			mainPanel = new AdminPanel(user) ;
 			mainFrame = new AdminFrame(user.getUsername(), mainPanel) ;
 		} else if (user.getType() == UserType.CUSTOMER) {
-			mainPanel = new CustomerPanel() ;
+			mainPanel = new CustomerPanel(user) ;
 			mainFrame = new CustomerFrame(user.getUsername(), mainPanel) ;
 		}
 	
@@ -52,9 +52,7 @@ public class ECommerce {
 		
 		mainFrame.pack() ;
 	}
-	private ECommerce() {
-		// user must be definied!
-	}
+	private ECommerce() { } // user argument is mandatory
 	
 	public void setVisible(boolean visible) {
 		mainFrame.setVisible(visible) ;

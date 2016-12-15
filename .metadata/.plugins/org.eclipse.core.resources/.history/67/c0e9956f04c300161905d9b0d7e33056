@@ -1,0 +1,20 @@
+/**
+ * Admin main operating frame
+ * 
+ * @author hu
+ */
+
+package mainframe;
+
+import mainpanel.AdminPanel;
+import mainpanel.Panel;
+import user.User;
+
+public class AdminFrame extends Frame {
+	
+	public AdminFrame(User user, Panel panel) {
+		super(user) ;
+		panel.setHeaderName(user.getUsername()) ;
+		setContentPane(panel) ;
+	}
+}

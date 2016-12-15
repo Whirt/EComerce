@@ -12,17 +12,19 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import user.User;
+
 public class Frame extends JFrame {
 	
 	private static final int WIDTH = 840 ;
 	private static final int HEIGHT = 620 ;
 	
-	public Frame(String title) {
-		super(title) ;
+	public Frame(String username) {
+		super(username + " E-Commerce home") ;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT)) ;
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
 		setResizable(false) ;
 	}
-	public Frame() { this("Frame") ; } 
+	public Frame() { this("E-Commerce home") ; } 
 	
 }

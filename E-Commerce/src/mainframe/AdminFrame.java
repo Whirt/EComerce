@@ -6,16 +6,13 @@
 
 package mainframe;
 
-import mainpanel.AdminPanel;
 import mainpanel.Panel;
 
 public class AdminFrame extends Frame {
 	
 	public AdminFrame(String username, Panel panel) {
-		super(username + " home") ;
+		super(username) ;
 		panel.setHeaderName(username) ;
 		setContentPane(panel) ;
 	}
-	public AdminFrame() { 
-		this("Administrator ECommerce Home", new AdminPanel()) ; }
 }

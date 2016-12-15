@@ -38,7 +38,7 @@ public class PaymentFrame extends JFrame implements ActionListener {
 		if (paymentFrame == null) {
 			paymentFrame = new PaymentFrame("Payment", productTable) ;
 		}
-		paymentFrame.repaint() ;
+		paymentFrame.setVisible(true) ;
 		paymentConfirmed = false ;
 		return paymentFrame ;
 	}
@@ -118,11 +118,13 @@ public class PaymentFrame extends JFrame implements ActionListener {
 				paymentConfirmed = true ;
 				// The only reason to pass reference to cartTableModel 
 				productTable.emptyProductList() ;
-				paymentFrame.dispose();
+				// force paymentFrame to be rebuilt
+				paymentFrame = null ;
+				paymentFrame.setVisible(false) ;
 			}
 		}
 		if (source == cancelButton)
-			paymentFrame.dispose() ;
+			paymentFrame.setVisible(false) ;
 		
 	}
 	

@@ -32,15 +32,13 @@ public class CartTableModel extends DefaultTableModel {
 	private static final int NUMCOLUMN = 7 ;
 	private int rows ;
 	
-	private JTextField txtField = new JTextField("", 30);
-	
 	// Wrapped class
 	private ProductManager<ListedProduct> productManager ;
 	
-	public CartTableModel(ProductManager<ListedProduct> cart) {
+	public CartTableModel(ProductManager<ListedProduct> productManager) {
 		super(null, COLUMNBAR) ;
 		
-		productManager = cart ;
+		this.productManager = productManager ;
 		rows = 0 ; 
 	}
 	public CartTableModel() {
@@ -81,7 +79,7 @@ public class CartTableModel extends DefaultTableModel {
 		switch (columnIndex) {
 		case 0: return product.getName() ;
 		case 1: return product.getBrand() ;
-		case 2: return product.getPrice() ;
+		case 2: return product.getPrice() + " €" ;
 		case 3: return product.getQuantity() ;
 		// other cases handled by JTable 
 		default: return null ;

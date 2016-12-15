@@ -25,13 +25,13 @@ public class User implements Serializable {
 	private String username ;
 	private String password ;
 
-	private ProductManager<ListedProduct> cart ;
+	private ProductManager<ListedProduct> cartProducts ;
 	
 	private UserType type ;
 	
 	// Constructor
 	public User(String username, String password, UserType type,
-				ProductManager<ListedProduct> cart) 
+				ProductManager<ListedProduct> cartProducts) 
 	throws IllegalArgumentException {
 		if (username == null || password == null ||
 			username.equals("") || password.equals(""))
@@ -39,14 +39,14 @@ public class User implements Serializable {
 		
 		this.username = username ;
 		this.password = password ;
-		this.cart = cart ;
+		this.cartProducts = cartProducts ;
 		this.type = type ;
 	}
 	public User(String username, String password, UserType type) {
-		this (username, password, type, 
+		this(username, password, type, 
 				new ProductManager<ListedProduct>()) ;
 	}
-	private User() { ; }
+	public User() { this("user", "user", UserType.CUSTOMER) ; }
 	
 	// getters
 	public String getUsername() {
@@ -55,8 +55,8 @@ public class User implements Serializable {
 	public String getPassword() {
 		return password ;
 	}
-	public ProductManager<ListedProduct> getCartModel() {
-		return cart ;
+	public ProductManager<ListedProduct> getCartProduct() {
+		return cartProducts ;
 	}
 	public UserType getType() {
 		return type ;

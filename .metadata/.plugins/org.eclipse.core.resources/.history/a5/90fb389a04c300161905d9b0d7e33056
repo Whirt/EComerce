@@ -1,0 +1,29 @@
+package mainpanel;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+import table.ECommerceTable;
+
+public class Panel extends JPanel {
+	
+	protected BoxLayout layout ;
+	protected FrameHeader header ;
+	protected ECommerceTable table ;
+	
+	public Panel(User user) {
+		super() ;
+		
+		header = new FrameHeader() ;
+		table = new ECommerceTable() ;
+		
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(header) ;
+		add(table) ;
+	}
+	
+	public void setHeaderName(String username) {
+		header.setHelloUserName(username);
+	}
+}

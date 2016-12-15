@@ -10,39 +10,43 @@ package cart;
 
 import javax.swing.JFrame;
 
+import user.User;
+
 public class CartFrame extends JFrame {
 
+	// frame 
 	private static final int START_X = 100 ;
 	private static final int START_Y = 50 ;
 	private static final int WIDTH = 630 ;
 	private static final int HEIGHT = 300 ;
-	private static final String title = "CART" ;
 	
 	private CartPanel panel ;
 	
-	// singleton
 	private static CartFrame cartFrame = null ;
 	
-	// the only getter
+	public static void initCartUser(User user) {
+		cartFrame = new CartFrame(user) ;
+	}
 	public static CartFrame getCartFrame() {
 		if (cartFrame == null) {
-			cartFrame = new CartFrame(title) ;
+			CartFrame.initCartUser(new User()) ;
 		}
+		cartFrame.setVisible(true) ;
 		return cartFrame ;
 	}
 	
 	// private constructors
-	private CartFrame(String title) {
-		super(title) ;
+	private CartFrame(User user) {
+		super(user.getUsername() + " Cart") ;
 		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE) ;
 		setResizable(false) ;
 		
-		panel = new CartPanel() ;
+		panel = new CartPanel(user) ;
 		setContentPane(panel) ;
 		
 		setVisible(true) ;
 	}
-	private CartFrame() { ; }
+	private CartFrame() { } // user argument is mandatory
 	
 }

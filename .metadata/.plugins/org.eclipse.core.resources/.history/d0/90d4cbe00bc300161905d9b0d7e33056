@@ -1,0 +1,51 @@
+/**
+ * Cart frame is a singleton
+ * per due motivi:
+ * 1) Nel caso in cui uno provi a creare piu' finestre di Cart fallisce
+ * 2) i pannelli o bottoni che necssitano di spegnerlo
+ * possono invocarlo direttamente senza passarlo come parametro
+ */
+
+package cart;
+
+import javax.swing.JFrame;
+
+import user.User;
+
+public class CartFrame extends JFrame {
+
+	// frame 
+	private static final int START_X = 100 ;
+	private static final int START_Y = 50 ;
+	private static final int WIDTH = 630 ;
+	private static final int HEIGHT = 300 ;
+	
+	private CartPanel panel ;
+	
+	private static CartFrame cartFrame = null ;
+	
+	public static CartFrame initCartUser(User user) {
+		if (cartFrame == null)
+			cartFrame = new CartFrame(user) ;
+		return getCartFrame() ;
+	}
+	public static CartFrame getCartFrame() {
+		cartFrame.setVisible(true) ;
+		return cartFrame ;
+	}
+	
+	// private constructors
+	private CartFrame(User user) {
+		super(user.getUsername() + " Cart") ;
+		setBounds(START_X, START_Y, WIDTH, HEIGHT) ;
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE) ;
+		setResizable(false) ;
+		
+		panel = new CartPanel(user) ;
+		setContentPane(panel) ;
+		
+		setVisible(true) ;
+	}
+	private CartFrame() { } // user argument is mandatory
+	
+}

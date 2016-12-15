@@ -13,6 +13,7 @@ import table.ECommerceTable;
 public class CustomerCommands extends JPanel implements MouseListener {
 	
 	private ECommerceTable table ;
+	
 	// panel components
 	private ImageCustomerPanel leftPanel ;
 	private ProductProfile centerPanel ;

@@ -1,0 +1,8 @@
+package IO;
+
+public class Directories {
+	
+	public static String USER_DIR = "./user/" ;
+	public static 
+	
+}

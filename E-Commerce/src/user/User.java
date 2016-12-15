@@ -13,9 +13,9 @@ package user;
 
 import java.io.Serializable;
 
-import cart.CartTableModel;
 import product.ListedProduct;
 import product.ProductManager;
+import table.CartTableModel;
 
 public class User implements Serializable {
 

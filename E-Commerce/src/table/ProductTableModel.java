@@ -39,19 +39,26 @@ public class ProductTableModel extends DefaultTableModel {
 	private static final int NUMCOLUMN = 7 ;
 	private int rows ;
 	
-	// Wrapped class
+	// cartTableModel is concerned as an wrapper table of productManager
 	private ProductManager<Product> productManager ;
 	
 	// url image loader
 	private Toolkit t ;
 	
-	public ProductTableModel() {
+	public ProductTableModel(ProductManager<Product> productManager) {
 		super(null, COLUMNBAR) ;
 		
 		t = Toolkit.getDefaultToolkit() ;
-		productManager = new ProductManager<Product>() ;
-		rows = 0 ; 
+		
+		if (productManager == null) {
+			productManager = new ProductManager<Product>() ;
+			rows = 0 ;
+		} else {
+			this.productManager = productManager ;
+			rows = productManager.getSize() ;
+		}
 	}
+	public ProductTableModel() { this(new ProductManager<Product>()) ; }
 	
 	// table model methods
 	@Override
@@ -61,30 +68,6 @@ public class ProductTableModel extends DefaultTableModel {
 	@Override
 	public int getColumnCount() {
 		return NUMCOLUMN ;
-	}
-
-	// product manager getters & adder
-	public Product getProduct(int index) {
-		return productManager.getProduct(index) ;
-	}
-	public boolean addProduct(Product newProduct) {
-		boolean success = productManager.add(newProduct) ;
-		if (success) {
-			rows++ ;
-			fireTableDataChanged() ;
-			return true ;
-		}
-		return false ;
-	}
-	public boolean removeProduct(int index) {
-		if (!productManager.remove(index))
-			return false ;
-		rows-- ;
-		fireTableDataChanged() ;
-		return true ;
-	}
-	public int getTableSize() {
-		return productManager.getSize() ;
 	}
 	
 	@Override
@@ -122,6 +105,42 @@ public class ProductTableModel extends DefaultTableModel {
 		return productManager.getProduct(0) ;
 	}
 	
+	// product manager getters & adder
+	public Product getProduct(int index) {
+		return productManager.getProduct(index) ;
+	}
+	public boolean addProduct(Product newProduct) {
+		boolean success = productManager.add(newProduct) ;
+		if (success) {
+			rows++ ;
+			fireTableDataChanged() ;
+			return true ;
+		}
+		return false ;
+	}
+	public boolean removeProduct(int index) {
+		if (!productManager.remove(index))
+			return false ;
+		rows-- ;
+		fireTableDataChanged() ;
+		return true ;
+	}
+	public int getTableSize() {
+		return productManager.getSize() ;
+	}
+	public ProductManager<Product> getProductManager() {
+		return productManager ;
+	}
+	public boolean setProductManager(ProductManager<Product> productManager) {
+		if (productManager == null)
+			return false ;
+		this.productManager = productManager ;
+		rows = this.productManager.getSize() ;
+		fireTableDataChanged() ;
+		return true ;
+	}
+	
+	// private implementation methods
 	private ImageIcon loadImage(String imagePath) {
 		// Loading image process
 		URL imgUrl = null ;

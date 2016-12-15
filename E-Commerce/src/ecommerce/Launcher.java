@@ -23,8 +23,8 @@ package ecommerce;
 
 import adminelements.AddProductFrame;
 import adminelements.ProductHandlerFrame;
-import cart.CartFrame;
 import login.LoginFrame;
+import mainframe.CartFrame;
 import mainframe.Frame;
 import table.ECommerceTable;
 import user.User;

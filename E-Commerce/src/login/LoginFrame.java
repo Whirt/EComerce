@@ -25,9 +25,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import IO.ErrorValue;
+import IO.IOPath;
+import IO.IOExtension;
 import IO.ObjectWR;
 import ecommerce.ECommerce;
-import ecommerce.ErrorValue;
 import user.User;
 
 public class LoginFrame extends JFrame implements ActionListener {
@@ -132,7 +134,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 			outcomeTextField.setText("Username or password not matching") ;
 			return ;
 		}
-			
+		
 		// login to ECommerce home
 		ECommerce ecommerce = new ECommerce(loginUser) ;
 		ecommerce.setVisible(true) ;
@@ -145,14 +147,15 @@ public class LoginFrame extends JFrame implements ActionListener {
 		if (username == null) 
 			return null ;
 		// searching for occurrences
-		File file = new File("./users/" + username + ".save") ;
+		File file = new File(IOPath.USER + username + IOExtension.USER) ;
 		if (!file.exists())
 			return null ;
 		
 		// loading user
 		User occurredUser = null ;
 		try { occurredUser =
-			(User)ObjectWR.read("./users/" + username + ".save") ;
+			(User)ObjectWR.read(IOPath.USER + 
+								username + IOExtension.USER) ;
 		} catch (IOException | ClassNotFoundException e) {
 			System.err.println("Fatal error, user login failed") ;
 			e.printStackTrace() ;

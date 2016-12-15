@@ -36,7 +36,6 @@ public class AddProductFrame extends ProductHandlerFrame
 		super(title, productTable);
 		
 		// adding elements
-
 		urlLabel = new JLabel("URL") ;
 		urlLabel.setForeground(Color.WHITE) ;
 		urlTextField = new JTextField("", TXTMAXLEN) ;
@@ -61,15 +60,14 @@ public class AddProductFrame extends ProductHandlerFrame
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource() ;
-		if (source != confirmButton) 
-			return ;
-		
-		Product newProduct = addNewProduct() ;
-		if (newProduct != null) {
-			productTable.addProduct(newProduct) ;
-			dispose() ;
+		if (source == confirmButton) {
+			Product newProduct = addNewProduct() ;
+			if (newProduct != null) {
+				productTable.addProduct(newProduct) ;
+				dispose() ;
+			}	
 		}
-		
+
 	}
 
 	protected Product addNewProduct() {

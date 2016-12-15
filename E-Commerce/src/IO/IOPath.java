@@ -1,0 +1,10 @@
+package IO;
+
+public abstract class IOPath {
+	
+	public static final String USER = "./users/" ;
+	public static final String MEDIA = "./media/" ;
+	
+	public static final String PRODUCTS_PATH = 
+				"./products/ecommerce_list.prod" ;
+}

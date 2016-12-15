@@ -24,6 +24,7 @@
 package IO;
 
 import java.io.FileOutputStream ;
+import java.io.File;
 import java.io.FileInputStream ;
 import java.io.ObjectOutputStream ;
 import java.io.ObjectInputStream ;
@@ -31,17 +32,36 @@ import java.io.IOException ;
 
 public class ObjectWR
 {
-    public static void write(Object obj, String name_file) throws IOException {
-        FileOutputStream fos = new FileOutputStream(name_file) ;
-        ObjectOutputStream oos = new ObjectOutputStream(fos) ;
+	// Write
+	public static void write(Object obj, String file_name) throws IOException {
+		 FileOutputStream fos = new FileOutputStream(file_name) ;
+	     writeObject(obj, fos) ;
+	}
+    public static void write(Object obj, File file) throws IOException {
+        FileOutputStream fos = new FileOutputStream(file) ;
+        writeObject(obj, fos) ;
+    }
+    private static void writeObject(Object obj, FileOutputStream fos)
+    throws IOException {
+    	ObjectOutputStream oos = new ObjectOutputStream(fos) ;
         oos.writeObject(obj) ;
         oos.close() ;
     }
 
+    // Read
     public static Object read(String name_file)
     throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(name_file) ;
-        ObjectInputStream ios = new ObjectInputStream(fis) ;
+      return returnReadObject(fis) ;
+    }
+    public static Object read(File file)
+    throws IOException, ClassNotFoundException {
+    	FileInputStream fis = new FileInputStream(file) ;
+    	return returnReadObject(fis) ;
+    }
+    private static Object returnReadObject(FileInputStream fis)
+    throws IOException, ClassNotFoundException {
+    	ObjectInputStream ios = new ObjectInputStream(fis) ;
         Object obj = (Object)ios.readObject() ;
         ios.close() ;
         return obj ;

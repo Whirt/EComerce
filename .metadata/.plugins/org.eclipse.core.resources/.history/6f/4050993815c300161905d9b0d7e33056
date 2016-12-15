@@ -1,0 +1,111 @@
+/**
+ * This class consist of the centered panel part of ECommerce's home
+ * it includes Table, and relative buttons.
+ * 
+ * It wrappers ProductTableModel.
+ */
+
+package table;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
+
+import IO.IODirectory;
+import IO.IOPath;
+import IO.ObjectWR;
+import product.Product;
+import product.ProductManager;
+
+public class ECommerceTable extends JPanel {
+	
+	// table data dimension
+	private static final int IMAGE_COLUMN_WIDTH = 150 ;
+	private static final int ROW_HEIGHT = 50 ;
+
+	// panel components
+	private TableHeader tableHeader ;
+	private ProductTableModel tableModel ;
+	private JTable tableView ;
+	private JScrollPane scrollPane ;
+	
+	// container panel components
+	private BoxLayout layout ;
+	
+	public ECommerceTable() {
+		super() ;
+		
+		tableHeader = new TableHeader() ;
+		
+		// set up table model and its content
+		ProductManager<Product> loadedProduct = loadProduct() ;
+		tableModel = new ProductTableModel(loadedProduct) ;
+		
+		tableView = new JTable(tableModel) ;
+		tableView.setRowHeight(ROW_HEIGHT) ;
+		
+		// setting center alignment
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer() ;
+		TableColumnModel columnModel = tableView.getColumnModel() ;
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER) ;
+		for (int i = 0 ; i < tableModel.getColumnCount() ; i++) {
+			if (i != ProductTableModel.IMAGE_COLUMN)
+				columnModel.getColumn(i).setCellRenderer( dtcr) ;
+		}
+		//  setting tableColumnModel
+		columnModel.getColumn(ProductTableModel.IMAGE_COLUMN).
+			setPreferredWidth(IMAGE_COLUMN_WIDTH) ;
+		
+		// wrapping into a scrollPane
+		scrollPane = new JScrollPane(tableView) ;
+		
+		// merging into the panel
+		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
+		setLayout(layout) ;
+		add(tableHeader) ;
+		add(scrollPane) ;
+	}
+	
+	// ProductTable API
+	public boolean addProduct(Product newProduct) {
+		return tableModel.addProduct(newProduct) ;
+	}
+	public Product getProduct(int index) {
+		return tableModel.getProduct(index) ;
+	}
+	public boolean removeProduct(int index) {
+		return tableModel.removeProduct(index) ;
+	}
+	public int getTableSize() {
+		return tableModel.getTableSize() ;
+	}
+	
+	// for customerFrame and adminFrame to implement mouse listener
+	public JTable getTableView() {
+		return tableView ;
+	}
+	
+	private ProductManager<Product> loadProduct() {
+		File loadProductFile = new File(IOPath.PRODUCTS_PATH) ;
+
+		ProductManager<Product> returnProd = null ;
+		if (loadProductFile.exists()) {
+			// loading steps
+			try {
+				returnProd = (ProductManager<Product>)
+				ObjectWR.read(IOPath.PRODUCTS_PATH) ;
+			} catch (IOException | ClassNotFoundException e) {
+				
+			}
+		}
+			
+		return returnProd ;
+	}
+}

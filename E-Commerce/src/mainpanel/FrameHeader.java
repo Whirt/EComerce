@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import cart.CartFrame;
+import mainframe.CartFrame;
 import user.User;
 
 public class FrameHeader extends JPanel implements ActionListener {
@@ -55,6 +55,7 @@ public class FrameHeader extends JPanel implements ActionListener {
 		add(helloLabel, BorderLayout.WEST) ;
 		add(ecommerceButton, BorderLayout.EAST) ;
 	}
+	public FrameHeader(User user) { this(user, false) ; }
 	public FrameHeader() { this(new User(), false) ; } 
 
 	public void setHelloUserName(String userName) {

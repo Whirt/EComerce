@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import table.CartTableModel;
+
 public class PaymentFrame extends JFrame implements ActionListener {
 
 	private final static int TXTMAXLEN = 15 ;

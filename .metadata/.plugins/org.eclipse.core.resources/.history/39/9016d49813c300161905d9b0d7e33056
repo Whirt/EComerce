@@ -1,0 +1,8 @@
+package IO;
+
+public abstract class IOExtension {
+
+	public static final String USER_DIR = ".suse" ;
+	public static final String PRODUCTS_DIR = ".sav" ;
+
+}

@@ -16,9 +16,11 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import mainframe.CartFrame;
 import product.ListedProduct;
 import product.ProductManager;
 import product.ProductType;
+import table.CartTableModel;
 
 public class CartTableView extends JPanel implements ActionListener {
 	

@@ -7,6 +7,9 @@
 
 package table;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,10 +18,14 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
+import IO.ErrorValue;
+import IO.IOPath;
+import IO.ObjectWR;
 import product.Product;
+import product.ProductManager;
 
 public class ECommerceTable extends JPanel {
-
+	
 	// table data dimension
 	private static final int IMAGE_COLUMN_WIDTH = 150 ;
 	private static final int ROW_HEIGHT = 50 ;
@@ -35,11 +42,13 @@ public class ECommerceTable extends JPanel {
 	public ECommerceTable() {
 		super() ;
 		
-		// making header and main product structure
 		tableHeader = new TableHeader() ;
 		
-		tableModel = new ProductTableModel() ;
-		// table view managing
+		ProductManager<Product> productManager = loadProduct() ;
+		if (productManager == null)
+			productManager = new ProductManager<Product>() ;
+		tableModel = new ProductTableModel(productManager) ;
+		
 		tableView = new JTable(tableModel) ;
 		tableView.setRowHeight(ROW_HEIGHT) ;
 		
@@ -58,14 +67,14 @@ public class ECommerceTable extends JPanel {
 		// wrapping into a scrollPane
 		scrollPane = new JScrollPane(tableView) ;
 		
-		// setting up
+		// merging into the panel
 		layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
 		setLayout(layout) ;
 		add(tableHeader) ;
 		add(scrollPane) ;
 	}
 	
-	// ProductTable API
+	// getters & setters
 	public boolean addProduct(Product newProduct) {
 		return tableModel.addProduct(newProduct) ;
 	}
@@ -78,9 +87,33 @@ public class ECommerceTable extends JPanel {
 	public int getTableSize() {
 		return tableModel.getTableSize() ;
 	}
+	public ProductManager<Product> getProductManager() {
+		return tableModel.getProductManager() ;
+	}
+	public boolean setProductManager(ProductManager<Product> productManager) {
+		return tableModel.setProductManager(productManager) ;
+	}
 	
-	// needed for customerFrame and adminFrame to implement mouse listener
+	// for customerFrame and adminFrame to implement mouse listener
 	public JTable getTableView() {
 		return tableView ;
+	}
+	
+	private ProductManager<Product> loadProduct() {
+		File loadProductFile = new File(IOPath.PRODUCTS_PATH) ;
+		ProductManager<Product> returnProd = null ;
+		if (loadProductFile.exists()) {
+			// loading steps
+			try {
+				returnProd = (ProductManager<Product>)
+				ObjectWR.read(IOPath.PRODUCTS_PATH) ;
+			} catch (IOException | ClassNotFoundException e) {
+				System.err.println("Failed to load product list") ;
+				e.printStackTrace() ;
+				System.exit(ErrorValue.IO_PRODUCT_FAILED_TO_LOAD_ERROR) ; 
+			}
+		}
+			
+		return returnProd ;
 	}
 }

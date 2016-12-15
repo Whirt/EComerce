@@ -23,9 +23,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import IO.ErrorValue;
+import IO.IOPath;
+import IO.IOExtension;
 import IO.ObjectWR;
 import ecommerce.ECommerce;
-import ecommerce.ErrorValue;
 import user.User;
 import user.UserType;
 
@@ -192,7 +194,8 @@ public class UserRegister extends JFrame implements ActionListener {
 	}	
 	
 	private boolean occupiedUsername(String username) {
-		File newFile = new File("./users/" + username + ".save") ;
+		File newFile = new File(IOPath.USER + 
+								username + IOExtension.USER) ;
 		if (newFile.exists())
 			return true ;
 		
@@ -201,7 +204,7 @@ public class UserRegister extends JFrame implements ActionListener {
 	
 	private void saveNewUser(User newUser) {
 		try { ObjectWR.write(newUser, 
-							 "./users/" + newUser.getUsername() + ".save") ;
+			  IOPath.USER + newUser.getUsername() + IOExtension.USER) ;
 		} catch (IOException e) {
 			System.err.println("User registration failed") ;
 			e.printStackTrace();

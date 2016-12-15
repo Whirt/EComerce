@@ -1,0 +1,9 @@
+package IO;
+
+public class IODirectory {
+	
+	public static String USER_DIR = "./user/" ;
+	public static String PRODUCT_DIR = "./products/"
+	public static String MEDIA_DIR = "./media/" ;
+	
+}

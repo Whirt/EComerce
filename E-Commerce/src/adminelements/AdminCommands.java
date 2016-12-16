@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -20,7 +22,6 @@ import IO.IOPath;
 import IO.ObjectWR;
 import product.Product;
 import product.ProductManager;
-import product.ProductType;
 import table.ECommerceTable;
 
 public class AdminCommands extends JPanel implements ActionListener {
@@ -34,17 +35,17 @@ public class AdminCommands extends JPanel implements ActionListener {
 	// title
 	private JLabel titleLabel ;
 	
-	// Right Panel components
+	// right Panel components
 	private JLabel nameLabel ;
-	private JTextField nameTxtField ;
+	private JTextField nameTextField ;
 	private JButton modifyButton ;
 	private JButton removeButton ;
 	private JLabel outcomeLabel ;
-	private JTextField outcomeTxtField ;
+	private JTextField outcomeTextField ;
 	private JPanel rightPanel ;
 	private FlowLayout rightLayout ;
 
-	// Left Panel components
+	// left Panel components
 	private JButton insertButton ;
 	private JButton saveButton ;
 	private JButton loadButton ;
@@ -56,7 +57,7 @@ public class AdminCommands extends JPanel implements ActionListener {
 		
 		this.ecommerceTable = ecommerceTable ;
 		
-		//title settings
+		// setting up title
 		titleLabel = new JLabel("ADMINISTRATOR COMANDS BOARD") ;
 		titleLabel.setForeground(Color.WHITE) ;
 		titleLabel.setFont(new Font(null, Font.BOLD, 20)) ;
@@ -65,8 +66,8 @@ public class AdminCommands extends JPanel implements ActionListener {
 		nameLabel = new JLabel("Name") ;
 		nameLabel.setBackground(backgroundColor) ;
 		nameLabel.setForeground(Color.WHITE) ;
- 		nameTxtField = new JTextField("", TXTMAXLEN) ;
-		nameTxtField.setEditable(true) ;
+ 		nameTextField = new JTextField("", TXTMAXLEN) ;
+		nameTextField.setEditable(true) ;
 		modifyButton = new JButton("Modify") ;
 		modifyButton.addActionListener(this) ;
 		removeButton = new JButton("Remove") ;
@@ -74,11 +75,10 @@ public class AdminCommands extends JPanel implements ActionListener {
 		outcomeLabel = new JLabel("Outcome") ;
 		outcomeLabel.setBackground(backgroundColor) ;
 		outcomeLabel.setForeground(Color.WHITE) ;
-		outcomeTxtField = new JTextField("", TXTMAXLEN*7/8) ;
-		outcomeTxtField.setEditable(false) ;
+		outcomeTextField = new JTextField("", TXTMAXLEN) ;
+		outcomeTextField.setEditable(false) ;
 		// setting up right Panel
 		rightPanel = new JPanel() {
-			// Setting inner panel color
 			@Override
 			protected void paintComponent(Graphics g) {
 				g.setColor(innerColor) ;
@@ -88,11 +88,11 @@ public class AdminCommands extends JPanel implements ActionListener {
 		rightLayout = new FlowLayout(FlowLayout.CENTER) ;
 		rightPanel.setLayout(rightLayout) ;
 		rightPanel.add(nameLabel) ;
-		rightPanel.add(nameTxtField) ;
+		rightPanel.add(nameTextField) ;
 		rightPanel.add(modifyButton) ;
 		rightPanel.add(removeButton) ;
 		rightPanel.add(outcomeLabel) ;
-		rightPanel.add(outcomeTxtField) ;
+		rightPanel.add(outcomeTextField) ;
 		
 		// left panel components
 		insertButton = new JButton("Insert") ;
@@ -103,9 +103,9 @@ public class AdminCommands extends JPanel implements ActionListener {
 		loadButton.addActionListener(this) ;
 		// setting up left panel
 		leftPanel = new JPanel() {
-			// Setting red background
 			@Override
 			protected void paintComponent(Graphics g) {
+				// Setting red background
 				g.setColor(backgroundColor) ;
 				g.fillRect(0, 0, getWidth(), getHeight());
 			}
@@ -116,7 +116,7 @@ public class AdminCommands extends JPanel implements ActionListener {
 		leftPanel.add(saveButton) ;
 		leftPanel.add(loadButton) ;
 		
-		// mixing all up
+		// merge into the main panel
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS) ;
 		setLayout(layout) ;
 		add(titleLabel) ;
@@ -129,26 +129,33 @@ public class AdminCommands extends JPanel implements ActionListener {
 		Object source = e.getSource() ;
 		if (source == insertButton) {
 			System.out.println("Arrivato fin qui!!!!!!") ;
-			// Test
+			AddProductFrame addProdFrame = new AddProductFrame(ecommerceTable) ;
+			addProdFrame.setVisible(true) ;
+			return ;
+			/*
 			Product newProd = new Product
 					("Pc", "Hp", "1232sl", ProductType.ELECTRONICS,
 					 3500F,
 					 //"./media/logo.png") ;
 					 "http://ssl-product-images.www8-hp.com/digmedialib"
 					 +"/prodimg/lowres/c05059975.png") ;
-			ecommerceTable.addProduct(newProd) ;
+			*/
 		}
 		if (source == saveButton) {
 			saveProductManager() ;
+			outcomeTextField.setText("Saved Successfully") ;
 			return ;
 		}
 		if (source == loadButton) {
 			loadProductManager() ;
+			outcomeTextField.setText("Loaded Successfully") ;
+			return ;
 		}
 		
 	}
 	
 	private void saveProductManager() {
+		// save product manager into standard product list path
 		File file = new File(IOPath.PRODUCTS_PATH) ;
 		try {
 			ObjectWR.write(ecommerceTable.getProductManager(), file);
@@ -159,6 +166,7 @@ public class AdminCommands extends JPanel implements ActionListener {
 		}
 	}
 	private void loadProductManager() {
+		// load product manager from standard product list path
 		File file = new File(IOPath.PRODUCTS_PATH) ;
 		if (!file.exists()) {
 			System.err.println("Failed attempt to load no existing file") ;

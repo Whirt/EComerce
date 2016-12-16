@@ -22,7 +22,7 @@ public class Frame extends JFrame {
 	public Frame(String username) {
 		super(username + " E-Commerce home") ;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT)) ;
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE) ;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
 		setResizable(false) ;
 	}
 	public Frame() { this("E-Commerce home") ; } 

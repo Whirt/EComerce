@@ -42,7 +42,7 @@ public abstract class ProductHandlerFrame extends JFrame {
 	private static final int START_X = 100 ;
 	private static final int START_Y = 80 ;
 	private static final int WIDTH = 360 ;
-	private static final int HEIGHT = 310 ;
+	private static final int HEIGHT = 313 ;
 	
 	// constructor part
 	protected ECommerceTable productTable ;
@@ -97,6 +97,7 @@ public abstract class ProductHandlerFrame extends JFrame {
 		priceTextField = new JTextField("", TXTMAXLEN) ;
 		discountTextField = new JTextField("", TXTMAXLEN) ;
 		detailTextArea = new JTextArea(TXTAREAROW, TXTAREACOL) ;
+		detailTextArea.setLineWrap(true) ;
 		categoryComboBox = new JComboBox<ProductType>(ProductType.values()) ;
 		specialSaleCheck = new JCheckBox() ;
 		// setting background color

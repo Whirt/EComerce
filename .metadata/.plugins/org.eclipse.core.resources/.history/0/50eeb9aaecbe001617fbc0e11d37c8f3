@@ -1,9 +1,0 @@
-/**
- * Cart frame is a singleton
- */
-
-package cart;
-
-public class CartFrame {
-
-}

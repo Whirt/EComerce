@@ -1,5 +1,0 @@
-package mainpanel;
-
-public class CartPanel extends JPanel {
-
-}
